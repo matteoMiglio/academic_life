@@ -1,10 +1,10 @@
 class MessageBoard < ApplicationRecord
   belongs_to :course
-  has_many :post
-  has_many :group
-  has_many :document
-  has_many :review
-  has_many :user, :through => :review
-  has_many :rate
-  has_many :message_board, :through => :rate
+  has_many :posts
+  has_many :groups
+  has_many :documents
+  has_many :reviews
+  has_many :users, :through => :reviews
+  has_many :rates
+  has_many :message_boards, :through => :rates
 end
