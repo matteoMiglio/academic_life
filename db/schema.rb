@@ -10,25 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_135042) do
-
-  create_table "approvals", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_approvals_on_post_id"
-    t.index ["user_id"], name: "index_approvals_on_user_id"
-  end
-
-  create_table "belongs", force: :cascade do |t|
-    t.integer "course_id"
-    t.integer "degree_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_belongs_on_course_id"
-    t.index ["degree_id"], name: "index_belongs_on_degree_id"
-  end
+ActiveRecord::Schema.define(version: 2018_08_31_132023) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -51,6 +33,13 @@ ActiveRecord::Schema.define(version: 2018_08_28_135042) do
     t.integer "credit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "courses_degrees", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "degree_id"
+    t.index ["course_id"], name: "index_courses_degrees_on_course_id"
+    t.index ["degree_id"], name: "index_courses_degrees_on_degree_id"
   end
 
   create_table "degrees", force: :cascade do |t|
@@ -103,29 +92,11 @@ ActiveRecord::Schema.define(version: 2018_08_28_135042) do
     t.index ["message_board_id"], name: "index_groups_on_message_board_id"
   end
 
-  create_table "joins", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_joins_on_group_id"
-    t.index ["user_id"], name: "index_joins_on_user_id"
-  end
-
   create_table "message_boards", force: :cascade do |t|
     t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_message_boards_on_course_id"
-  end
-
-  create_table "participates", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_participates_on_event_id"
-    t.index ["user_id"], name: "index_participates_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -146,15 +117,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_135042) do
     t.datetime "updated_at", null: false
     t.index ["message_board_id"], name: "index_rates_on_message_board_id"
     t.index ["user_id"], name: "index_rates_on_user_id"
-  end
-
-  create_table "registereds", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_registereds_on_course_id"
-    t.index ["user_id"], name: "index_registereds_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -179,6 +141,34 @@ ActiveRecord::Schema.define(version: 2018_08_28_135042) do
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users_courses", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_users_courses_on_course_id"
+    t.index ["user_id"], name: "index_users_courses_on_user_id"
+  end
+
+  create_table "users_events", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_users_events_on_event_id"
+    t.index ["user_id"], name: "index_users_events_on_user_id"
+  end
+
+  create_table "users_groups", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_users_groups_on_group_id"
+    t.index ["user_id"], name: "index_users_groups_on_user_id"
+  end
+
+  create_table "users_posts", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.index ["post_id"], name: "index_users_posts_on_post_id"
+    t.index ["user_id"], name: "index_users_posts_on_user_id"
   end
 
 end

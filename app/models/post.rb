@@ -1,10 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :message_board
-  has_many :comment
-  has_many :user, :through => :comment
-  has_many :approval
-  has_many :user, :through => :approval
+  has_many :comments
+  has_many :users, :through => :comments
+  has_and_belongs_to_many :users
 
   # Validations
   validates :user, :message_board, :description, presence: true

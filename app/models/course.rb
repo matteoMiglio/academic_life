@@ -1,7 +1,6 @@
 class Course < ApplicationRecord
   has_one :message_board
-  has_many :registered
-  has_many :user, :through => :registered
-  has_many :belong
-  has_many :degree, :through => :belong
+  has_and_belongs_to_many :users
+  has_many :belongs
+  has_many :degrees, :through => :belongs
 end
