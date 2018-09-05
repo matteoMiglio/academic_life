@@ -5,3 +5,58 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+[
+    # 3 addictions
+    Document,
+
+    # 2 addictions
+    Review,
+    Rate,
+    Comment,
+    Post,
+    Event,
+
+    # 1 addiction
+    Group,
+    MessageBoard,
+    Degree,
+
+    # No requirements
+    User, 
+    Course, 
+    Category, 
+    Department
+].each(&:delete_all)
+
+# No requirements
+load 'db/seeds/user.rb'
+load 'db/seeds/course.rb'
+load 'db/seeds/category.rb'
+load 'db/seeds/department.rb'
+
+# Order matters
+load 'db/seeds/message_board.rb' # Depends on course
+load 'db/seeds/degree.rb'        # Depends on department
+load 'db/seeds/group.rb'         # Depends on message_board
+
+load 'db/seeds/event.rb'         # Depends on user and group
+load 'db/seeds/post.rb'          # Depends on user and message_board
+load 'db/seeds/comment.rb'       # Depends on user and post
+load 'db/seeds/rate.rb'          # Depends on user and message_board
+load 'db/seeds/review.rb'        # Depends on user and message_board
+
+load 'db/seeds/document.rb'      # Depends on user, message_board and category
+
+# Tables without models
+load 'db/seeds/users_posts.rb'
+load 'db/seeds/users_courses.rb'
+load 'db/seeds/users_groups.rb'
+load 'db/seeds/users_events.rb'
+load 'db/seeds/courses_degrees.rb'
+
+
+
+
+
+

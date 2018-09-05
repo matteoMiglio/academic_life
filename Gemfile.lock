@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/fulvi0/populator.git
+  revision: cad8067b580f7e84fb3dcd4dabc3e95f6c4519ee
+  specs:
+    populator (1.0.0)
+
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 316029319d4daef4b6a00eeaf58fc1781f818ab7
+  branch: master
+  specs:
+    faker (1.9.1)
+      i18n (>= 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -204,9 +218,11 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  faker!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (= 0.20.0)
+  populator!
   puma (~> 3.11)
   rails (~> 5.2.0)
   sass-rails (~> 5.0)
