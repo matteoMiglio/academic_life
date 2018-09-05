@@ -1,5 +1,5 @@
 class CreateEventsUsersJoinTable < ActiveRecord::Migration[5.2]
-  def change
+  def up
     create_table :events_users, id: false do |t|
       t.integer :event_id
       t.integer :user_id
@@ -7,5 +7,9 @@ class CreateEventsUsersJoinTable < ActiveRecord::Migration[5.2]
   
     add_index :events_users, :event_id
     add_index :events_users, :user_id
+  end
+
+  def down
+    drop_table :events_users
   end
 end

@@ -1,5 +1,5 @@
 class CreateReviews < ActiveRecord::Migration[5.2]
-  def change
+  def up
     create_table :reviews do |t|
       t.string :feedback
       t.references :user, foreign_key: true
@@ -7,5 +7,9 @@ class CreateReviews < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :reviews
   end
 end

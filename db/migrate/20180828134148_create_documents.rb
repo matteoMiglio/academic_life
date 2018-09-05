@@ -1,5 +1,5 @@
 class CreateDocuments < ActiveRecord::Migration[5.2]
-  def change
+  def up
     create_table :documents do |t|
       t.string :name
       t.string :description
@@ -10,5 +10,9 @@ class CreateDocuments < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :documents
   end
 end
