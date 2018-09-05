@@ -161,14 +161,27 @@ ActiveRecord::Schema.define(version: 2018_08_31_132023) do
     t.string "name"
     t.string "surname"
     t.string "email"
-    t.string "password_hash"
-    t.string "password_salt"
     t.date "birthday"
     t.string "address"
     t.string "serial_number"
     t.boolean "admin"
+    t.string "crypted_password"
+    t.string "password_salt"
+    t.string "persistence_token"
+    t.string "single_access_token"
+    t.string "perishable_token"
+    t.integer "login_count", default: 0, null: false
+    t.integer "failed_login_count", default: 0, null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string "current_login_ip"
+    t.string "last_login_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["perishable_token"], name: "index_users_on_perishable_token", unique: true
+    t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
+    t.index ["single_access_token"], name: "index_users_on_single_access_token", unique: true
   end
 
 end
