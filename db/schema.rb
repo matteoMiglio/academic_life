@@ -177,9 +177,6 @@ ActiveRecord::Schema.define(version: 2018_08_31_132023) do
     t.datetime "last_login_at"
     t.string "current_login_ip"
     t.string "last_login_ip"
-    t.boolean "active", default: false
-    t.boolean "approved", default: false
-    t.boolean "confirmed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["perishable_token"], name: "index_users_on_perishable_token", unique: true

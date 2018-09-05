@@ -34,11 +34,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string    :current_login_ip
       t.string    :last_login_ip
 
-      # Authlogic::Session::MagicStates
-      t.boolean   :active, default: false
-      t.boolean   :approved, default: false
-      t.boolean   :confirmed, default: false
-
       t.timestamps
     end
   end
