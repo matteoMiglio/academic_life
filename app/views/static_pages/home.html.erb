@@ -10,12 +10,8 @@
   </head>
 
   <body>
-
-    <h1>Authlogic Example App</h1>
-    <%= pluralize User.logged_in.count, "user" %> currently logged in
-    <br />
-    <br />
-
-    <%= yield %>
+    <% if current_user %>
+      <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+    <% end %>
   </body>
 </html>

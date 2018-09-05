@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_authentic
+
   has_many :events
   has_many :posts
   has_many :documents
