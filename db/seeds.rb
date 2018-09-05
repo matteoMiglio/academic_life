@@ -7,26 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 [
-    # 3 addictions
-    Document,
+  # 3 addictions
+  Document,
 
-    # 2 addictions
-    Review,
-    Rate,
-    Comment,
-    Post,
-    Event,
+  # 2 addictions
+  Review,
+  Rate,
+  Comment,
+  Post,
+  Event,
 
-    # 1 addiction
-    Group,
-    MessageBoard,
-    Degree,
+  # 1 addiction
+  Group,
+  MessageBoard,
+  Degree,
 
-    # No requirements
-    User, 
-    Course, 
-    Category, 
-    Department
+  # No requirements
+  User, 
+  Course, 
+  Category, 
+  Department
 ].each(&:delete_all)
 
 # No requirements
