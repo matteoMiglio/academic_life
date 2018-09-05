@@ -5,6 +5,6 @@ class Group < ApplicationRecord
 
   # Validations
   validates :name, :state, :message_board, presence: true
-  validates :name, length: {maximum: 100, too_long: "Nome troppo lungo!"}
-  #validates :state, length: {maximum: 10}, inclusion: { in [public, private] }
+  validates :name, length: { maximum: 100, too_long: "Nome troppo lungo!" }
+  validates :state, length: { maximum: 10 }, inclusion: { in: %w(public, private) }
 end

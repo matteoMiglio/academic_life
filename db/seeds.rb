@@ -49,10 +49,10 @@ load 'db/seeds/review.rb'        # Depends on user and message_board
 load 'db/seeds/document.rb'      # Depends on user, message_board and category
 
 # Tables without models
-load 'db/seeds/users_posts.rb'
-load 'db/seeds/users_courses.rb'
-load 'db/seeds/users_groups.rb'
-load 'db/seeds/users_events.rb'
+load 'db/seeds/posts_users.rb'
+load 'db/seeds/courses_users.rb'
+load 'db/seeds/groups_users.rb'
+load 'db/seeds/events_users.rb'
 load 'db/seeds/courses_degrees.rb'
 
 
