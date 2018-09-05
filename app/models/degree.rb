@@ -1,5 +1,4 @@
 class Degree < ApplicationRecord
   belongs_to :department
-  has_many :belongs
-  has_many :courses, :through => :belongs
+  has_and_belongs_to_many :courses
 end

@@ -1,11 +1,11 @@
-class CreateUsersPostsJoinTable < ActiveRecord::Migration[5.2]
+class CreatePostsUsersJoinTable < ActiveRecord::Migration[5.2]
   def change
-    create_table :users_posts, id: false do |t|
-      t.integer :user_id
+    create_table :posts_users, id: false do |t|
       t.integer :post_id
+      t.integer :user_id
     end
   
-    add_index :users_posts, :user_id
-    add_index :users_posts, :post_id
+    add_index :posts_users, :post_id
+    add_index :posts_users, :user_id
   end
 end
