@@ -55,6 +55,8 @@ group :development do
   # To populate database
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'populator', :github => 'fulvi0/populator'
+  # The Ruby's extension for chrome needs this gem
+  gem 'meta_request'
 end
 
 group :test do
