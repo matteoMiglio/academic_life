@@ -4,22 +4,20 @@ one:
   name: MyString
   surname: MyString
   email: MyString
-  password_hash: MyString
+  crypted_password: MyString
   password_salt: MyString
   birthday: 2018-08-28
   address: MyString
   serial_number: MyString
   admin: false
-  is_active: false
 
 two:
   name: MyString
   surname: MyString
   email: MyString
-  password_hash: MyString
+  crypted_password: MyString
   password_salt: MyString
   birthday: 2018-08-28
   address: MyString
   serial_number: MyString
   admin: false
-  is_active: false
