@@ -9,27 +9,50 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <%= link_to 'Logical', root_path, class: 'navbar-brand' %>
-        </div>
-        <div id="navbar">
-          <ul class="nav navbar-nav">
-            <li><%= link_to 'Home', root_path %></li>
+  <body style="padding-top: 90px;">
+    <% if current_user %>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="">AcademicLife</a>
+
+        <span class="navbar-text">
+          <a href="#" class="btn" role="button">
+            <%= octicon "bell" %>
+          </a>
+          <a href="#" class="btn" role="button">
+            <%= octicon "person" %>
+          </a>
+          <%= link_to sign_out_path, method: :delete, class: 'btn' do %>
+            <%= octicon "sign-out" %>
+          <% end %>
+        </span>
+
+        <!--<span><%= current_user.email %></span>-->
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <%= link_to 'Insegnamenti', courses_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <!--%= link_to 'Documenti', documents_path, class: 'nav-link' %-->
+              Documenti
+            </li>
+            <li class="nav-item">
+              <!--%= link_to 'Gruppi', groups_path, class: 'nav-link' %-->
+              Gruppi
+            </li>
+            <li class="nav-item">
+              <!--%= link_to 'Eventi', events_path, class: 'nav-link' %-->
+              Eventi
+            </li>
           </ul>
-          <ul class="nav navbar-nav pull-right">
-            <% if current_user %>
-              <li><span><%= current_user.email %></span></li>
-              <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to 'Sign In', sign_in_path %></li>
-            <% end %>
-          </ul>
         </div>
-      </div>
-    </nav>
+
+      </nav>
+    <% end %>
 
     <div class="container">
       <% flash.each do |key, value| %>
