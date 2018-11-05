@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   get 'courses/index'
   get 'courses/show'
-  get 'user/new'
-  get 'user/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'user_sessions#new'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resources :user_sessions, only: [:create, :destroy]
   resources :courses, only: [:index, :show]
 
