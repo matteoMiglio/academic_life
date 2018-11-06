@@ -12,8 +12,8 @@ gem 'sass-rails', '~> 5.0'
 # Use octicons to insert icons in html files
 gem 'octicons'
 gem 'octicons_helper'
-# Bootstrap
-gem 'bootstrap', '~> 4.0'
+# Bootstrap-sass is a Sass-powered version of Bootstrap
+gem 'bootstrap-sass', '3.3.7'
 # Sprocket-rails
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
 # Jquery-rails
