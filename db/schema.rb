@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_132023) do
+ActiveRecord::Schema.define(version: 2018_11_08_115124) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_08_31_132023) do
     t.integer "credit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "professor"
   end
 
   create_table "courses_degrees", id: false, force: :cascade do |t|
