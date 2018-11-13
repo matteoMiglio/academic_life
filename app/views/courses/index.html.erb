@@ -1,7 +1,5 @@
 <h1 align="center">Insegnamenti</h1>
 
-<!--div class="card-deck"-->
-  <% @courses.each do |course| %>
-      <%= render @courses %>
-  <% end %>
-<!--/div-->
+<ul class="courses">
+  <%= render @courses %>
+</ul>

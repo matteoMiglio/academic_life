@@ -11,5 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "courses";
+
+body {
+  padding-top: 90px;
+}
