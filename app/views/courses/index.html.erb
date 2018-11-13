@@ -1,5 +1,13 @@
-<h1 align="center">Insegnamenti</h1>
+<h1>Insegnamenti</h1>
 
 <ul class="courses">
-  <%= render @courses %>
+  <% if @courses.length > 0 %>
+    <%= render @courses %>
+  <% else %>
+    <div class="card text-center">
+      <div class="card-body">
+        Non hai ancora insegnamenti caricati.
+      </div>
+    </div>
+  <% end %>
 </ul>

@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
+    @user = current_user
+
+    @courses = User.find(@user.id).courses.order(:credit)
   end
 
   def show
