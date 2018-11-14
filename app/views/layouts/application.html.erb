@@ -11,45 +11,7 @@
 
   <body>
     <% if current_user %>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="">AcademicLife</a>
-
-        <span class="navbar-text">
-          <a href="#" class="btn" role="button">
-            <%= octicon "bell" %>
-          </a>
-          <%= link_to user_path(current_user) do %>
-            <%= octicon "person" %>
-          <% end %>
-          <%= link_to sign_out_path, method: :delete, class: 'btn' do %>
-            <%= octicon "sign-out" %>
-          <% end %>
-        </span>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <%= link_to 'Insegnamenti', courses_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <!--%= link_to 'Documenti', documents_path, class: 'nav-link' %-->
-              Documenti
-            </li>
-            <li class="nav-item">
-              <!--%= link_to 'Gruppi', groups_path, class: 'nav-link' %-->
-              Gruppi
-            </li>
-            <li class="nav-item">
-              <!--%= link_to 'Eventi', events_path, class: 'nav-link' %-->
-              Eventi
-            </li>
-          </ul>
-        </div>
-
-      </nav>
+      <%= render 'layouts/navbar' %>
     <% end %>
 
     <div class="container">
