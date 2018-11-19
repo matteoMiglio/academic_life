@@ -1,4 +1,6 @@
 class MessageBoard < ApplicationRecord
+  validates :course_id, presence: true
+
   belongs_to :course
   has_many :posts
   has_many :groups
