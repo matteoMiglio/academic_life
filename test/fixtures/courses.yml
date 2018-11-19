@@ -3,7 +3,9 @@
 one:
   name: MyString
   credit: 1
+  professor: "MyString"
 
 two:
   name: MyString
   credit: 1
+  professor: "MyString"
