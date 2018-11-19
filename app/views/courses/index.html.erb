@@ -1,7 +1,17 @@
-<h1 align="center">Insegnamenti</h1>
+<h1>Insegnamenti</h1>
 
-<!--div class="card-deck"-->
-  <% @courses.each do |course| %>
-      <%= render @courses %>
+<ul class="courses">
+  <% if @courses.length > 0 %>
+    <%= render @courses %>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-12 col-lg-8 offset-lg-2">
+        <div class="card text-center">
+          <div class="card-body">
+            Non hai ancora insegnamenti caricati.
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-<!--/div-->
+</ul>

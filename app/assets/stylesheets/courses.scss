@@ -1,3 +1,15 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px !important;
+}
+
+ul.courses {
+  list-style: none;
+  padding: 0;
+
+  li { margin-bottom: 10px; }
+}

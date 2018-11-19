@@ -1,10 +1,12 @@
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= course.name %></h5>
-    <p class="card-text">Crediti: <%= course.credit %></p>
-    <p class="card-text">Professore: <%= course.professor %></p>
+<li id="course-<%= course.id %>">
+  <div class="card text-center" >
+    <div class="card-body">
+      <h5 class="card-title"><%= course.name %></h5>
+      <p class="card-text">Crediti: <%= course.credit %></p>
+      <p class="card-text">Professore: <%= course.professor %></p>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Visualizza', course, class: 'card-link'%>
+    </div>
   </div>
-  <div class="card-footer">
-    <%= link_to 'Visualizza', course, class: 'card-link'%>
-  </div>
-</div>
+</li>

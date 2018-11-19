@@ -1,11 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  description: MyString
+older:
+  description: "Questo post è di 2 anni fa"
+  user: two
+  message_board: one
+  created_at: <%= 2.years.ago %>
+
+medium:
+  description: "Questo post è di 1 ora fa"
   user: one
   message_board: one
+  created_at: <%= 1.hours.ago %>
 
-two:
-  description: MyString
+recent:
+  description: "Questo post è di 10 minuti fa"
+  user: one
+  message_board: two
+  created_at: <%= 10.minutes.ago %>
+
+most_recent:
+  description: "Ciao rega, ho appena pubblicato"
   user: two
   message_board: two
+  created_at: <%= Time.zone.now %>
