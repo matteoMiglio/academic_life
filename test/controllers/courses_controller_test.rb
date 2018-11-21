@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest  
   setup do
-    @course = courses(:one)
+    @course = courses(:so)
     @message_board = @course.message_board
   end
 
@@ -13,6 +13,6 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get show" do
     get course_url(@course)
-    assert_redirected_to message_board_url(@message_board)
+    assert_redirected_to message_board_posts_url(@course)
   end
 end

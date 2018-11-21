@@ -7,6 +7,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    redirect_to :controller => 'message_boards', :action => 'show', :id => params[:id]
+    redirect_to message_board_posts_url(params[:id])
   end
 end

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  credit: 1
-  professor: "MyString"
+so:
+  name: "Sistemi Operativi"
+  credit: 6
+  professor: "Cesare Stefanelli"
 
-two:
-  name: MyString
+rdc:
+  name: "Reti di Calcolatori"
   credit: 1
-  professor: "MyString"
+  professor: "Mauro Tortonesi"

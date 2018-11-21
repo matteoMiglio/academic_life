@@ -4,7 +4,7 @@ class PostTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:luca)
-    @message_board = message_boards(:one)
+    @message_board = message_boards(:rdc)
     @post = Post.new(description: "Lorem ipsum", user_id: @user.id, message_board_id: @message_board.id)
   end
 

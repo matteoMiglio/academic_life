@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  course: 
+# di so viene fatto il build in messsage_board_test
 
-two:
-  course: two
+rdc:
+  course: rdc

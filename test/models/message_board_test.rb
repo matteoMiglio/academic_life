@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MessageBoardTest < ActiveSupport::TestCase
   def setup
-    @course = courses(:one)
+    @course = courses(:so)
     @message_board = @course.build_message_board
   end
 
