@@ -12,10 +12,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  #test "should get show" do
-  #  get message_board_post_url(@message_board, @post)
-  #  assert_response :success
-  #end
+  test "should get show" do
+    get message_board_post_url(@message_board, @post)
+    assert_response :success
+  end
 
   test "should get create" do
     assert_difference "Post.count" do

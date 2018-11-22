@@ -2,6 +2,7 @@
   <div class="text-center">
     <%= post.id %>
     <%= post.description %>
-    <%= post.user.name %> <%= post.user.surname %> 
+    <%= post.user.name %> <%= post.user.surname %>
+    <%= link_to "Show", message_board_post_url(@message_board, post.id) %>
   </div>
 </li>
