@@ -83,6 +83,7 @@ end
 
 group :production do
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'populator', :github => 'fulvi0/populator'
   gem 'pg', '0.20.0'
 end
 
