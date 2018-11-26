@@ -6,7 +6,7 @@
       <p class="card-text">Professore: <%= course.professor %></p>
     </div>
     <div class="card-footer">
-      <%= link_to 'Visualizza', course, class: 'card-link'%>
+      <%= link_to 'Visualizza', user_course_url(current_user.id, course.id), class: 'card-link'%>
     </div>
   </div>
 </li>
