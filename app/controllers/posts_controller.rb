@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   def index
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
-    @posts = @message_board.posts
+    @posts = @message_board.posts.includes(:users)
+    @posts.each do |post|
+      post.user.name
+      post.user.surname
+    end
   end
 
   def show
