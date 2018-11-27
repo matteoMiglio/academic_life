@@ -1,9 +1,7 @@
 class CoursesController < ApplicationController
   def index
-    # bisogna creare un apposito metodo
-    # @user = current_user
-    # @courses = User.find(current_user.id).courses.order(:credit)
-    @courses = Course.all
+    @user = User.find(params[:user_id])
+    @courses = @user.courses.order(:credit)
   end
 
   def show

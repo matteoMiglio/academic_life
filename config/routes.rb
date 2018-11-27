@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'user_sessions#new'
 
-  resources :users, only: [:new, :create, :show] 
+  resources :users, only: [:new, :create, :show] do
+    resources :courses, only: [:index, :show]
+  end
+  
   resources :user_sessions, only: [:create, :destroy]
-  resources :courses, only: [:index, :show]
+  
   resources :message_boards, only: [:show] do
     resources :posts, only: [:index, :show, :create, :destroy]
   end
