@@ -1,6 +1,4 @@
 class MessageBoard < ApplicationRecord
-  validates :course_id, presence: true
-
   belongs_to :course
   has_many :posts
   has_many :groups
@@ -9,4 +7,6 @@ class MessageBoard < ApplicationRecord
   has_many :users, :through => :reviews
   has_many :rates
   has_many :message_boards, :through => :rates
+
+  validates :course_id, presence: true
 end

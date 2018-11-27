@@ -2,11 +2,7 @@ class PostsController < ApplicationController
   def index
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
-    @posts = @message_board.posts.includes(:users)
-    @posts.each do |post|
-      post.user.name
-      post.user.surname
-    end
+    @posts = @message_board.posts.to_index
   end
 
   def show
@@ -16,21 +12,19 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(posts_params)
-    if @post.save
-      flash[:success] = "Post inserito!"
-    else
-      flash[:danger] = "Post non inserito!"
-    end
-    redirect_to :controller => 'message_boards', :action => 'show', :id => params[:message_board_id]
+    @post.save ? flash[:success] = "Post inserito!" 
+               : flash[:danger] = "Post non inserito!"
+    redirect_to :controller => 'message_boards', 
+                :action => 'show', 
+                :id => params[:message_board_id]
   end
 
   def destroy
-    if Post.find(params[:id]).destroy
-      flash[:success] = "Post eliminato!"
-    else
-      flash[:danger] = "Post non eliminato!"
-    end
-    redirect_to :controller => 'message_boards', :action => 'show', :id => params[:message_board_id]
+    Post.find(params[:id]).destroy ? flash[:success] = "Post eliminato!" 
+                                   : flash[:danger] = "Post non eliminato!"
+    redirect_to :controller => 'message_boards', 
+                :action => 'show', 
+                :id => params[:message_board_id]
   end
 
   private
