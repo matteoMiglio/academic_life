@@ -1,6 +1,10 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
-<%= @post.id %>
-<%= @post.description %>
-<%= @user.name %> <%= @user.surname %>
+<div id="post-<% @post.id %>" class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.name %> <%= @user.surname %></h5>
+    <p class="card-text"><%= @post.description %></p>
+  </div>
+  <div class="card-footer text-muted text-center">
+    <%= time_ago_in_words(@post.updated_at) %>
+  </div>
+</div>
 
