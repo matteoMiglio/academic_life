@@ -2,12 +2,13 @@ class PostsController < ApplicationController
   def index
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
-    @posts = @message_board.posts.to_index
+    @posts = @message_board.posts.with_users
   end
 
   def show
     @post = Post.find(params[:id])
-    @user = @post.user
+    @post.user.name
+    @post.user.surname
   end
 
   def create

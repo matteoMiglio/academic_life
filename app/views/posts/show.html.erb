@@ -1,10 +1,4 @@
-<div id="post-<% @post.id %>" class="card">
-  <div class="card-body">
-    <h5 class="card-title"><%= @user.name %> <%= @user.surname %></h5>
-    <p class="card-text"><%= @post.description %></p>
-  </div>
-  <div class="card-footer text-muted text-center">
-    <%= time_ago_in_words(@post.updated_at) %>
-  </div>
-</div>
+<ul class="posts">
+  <%= render @post %>
+</ul>
 

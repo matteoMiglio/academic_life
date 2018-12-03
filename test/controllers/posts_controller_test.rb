@@ -27,7 +27,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get destroy" do
-    delete message_board_post_url(@message_board, @post)
+    assert_difference 'Post.count', -1 do
+      delete message_board_post_url(@message_board, @post)
+    end
     assert_redirected_to message_board_url(@message_board)
   end
 end
