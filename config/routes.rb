@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resources :approvals
+    resources :approvals, only: [:create, :destroy]
   end
 
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
