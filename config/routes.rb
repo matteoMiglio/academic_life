@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show] do
     resources :courses, only: [:index, :show]
   end
-  
+
   resources :user_sessions, only: [:create, :destroy]
-  
+
   resources :message_boards, only: [:show] do
     resources :posts, only: [:index, :show, :create, :destroy]
+  end
+
+  resources :posts do
+    resources :approvals
   end
 
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out

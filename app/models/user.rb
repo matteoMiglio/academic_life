@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :message_boards, :through => :reviews
   has_many :rates
   has_many :message_boards, :through => :rates
+  has_many :approvals, dependent: :destroy
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :events
   has_and_belongs_to_many :groups
