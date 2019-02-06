@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   validates :description, presence: true, length: { maximum: 255, too_long: "Post troppo lungo!" }
 
   scope :ordered,    -> { order('created_at desc') }
-  scope :with_users, -> { includes(:users).ordered.each do |post|
+  scope :with_users, -> { includes(:user).ordered.each do |post|
                             post.user.name
                             post.user.surname
                           end }
