@@ -3,13 +3,17 @@
     <div class="card-body">
       <div class="row">
         <div class="col-2 col-md-1" align="center">
-          <%= button_to post_approvals_path(post), method: :post, class: 'btn btn-link text-dark' do %>
+
+          <%= button_to post_approvals_path(post.id), method: :post, class: 'btn btn-link text-dark' do %>
             <%= octicon "chevron-up" %>
           <% end %>
+
           <p class="my-0"> <%= post.approvals.count %> </p>
-          <%= button_to post_approval_path(post.id, post.approvals), method: :post, class: 'btn btn-link text-dark' do %>
+
+          <%= link_to post_approval_path(post.id, post.approvals), method: :delete, class: 'btn btn-link text-dark' do %>
             <%= octicon "chevron-down" %>
           <% end %>
+
         </div>
         <div class="col">
           <h5 class="card-title"><%= post.user.name %> <%= post.user.surname %></h5>
