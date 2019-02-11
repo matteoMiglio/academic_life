@@ -1,0 +1,5 @@
+$('.arrow-down').bind('ajax:success', function() {
+  var count = $('#count-approval-label').text();
+  var countDown = parseInt(count) - 1;
+  $('#count-approval-label').text(countDown);
+});

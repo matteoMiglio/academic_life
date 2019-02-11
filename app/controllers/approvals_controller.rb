@@ -4,7 +4,10 @@ class ApprovalsController < ApplicationController
   def create
     if not already_approval?
       if @post.approvals.create(user: current_user)
-        redirect_to post_path(@post), :notice => 'Liked!'
+        respond_to do |format|
+          format.js
+          format.html { redirect_to post_path(@post) }
+        end
       end
     end
   end
@@ -12,7 +15,10 @@ class ApprovalsController < ApplicationController
   def destroy
     if already_approval?
       @post.approvals.where(user: current_user).destroy_all
-      redirect_to post_path(@post), notice => 'Unliked!'
+      respond_to do |format|
+        format.js
+        format.html { redirect_to post_path(@post) }
+      end
     end
   end
 

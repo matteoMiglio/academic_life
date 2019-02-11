@@ -4,13 +4,13 @@
       <div class="row">
         <div class="col-2 col-md-1" align="center">
 
-          <%= button_to post_approvals_path(post.id), method: :post, class: 'btn btn-link text-dark' do %>
+          <%= link_to post_approvals_path(post.id), method: :post, remote: true, class: 'btn btn-link text-dark arrow-up' do %>
             <%= octicon "chevron-up" %>
           <% end %>
 
-          <p class="my-0"> <%= post.approvals.count %> </p>
+          <p id="count-approval-label" class="my-0"> <%= post.approvals.count %> </p>
 
-          <%= link_to post_approval_path(post.id, post.approvals), method: :delete, class: 'btn btn-link text-dark' do %>
+          <%= link_to post_approval_path(post.id, post.approvals), method: :delete, remote: true, disable: true, class: 'btn btn-link text-dark arrow-down' do %>
             <%= octicon "chevron-down" %>
           <% end %>
 
