@@ -3,4 +3,18 @@
 <%= @post.id %>
 <%= @post.description %>
 <%= @user.name %> <%= @user.surname %>
+<br><hr>
+<ul class="comments">
+  <%= render @comments %>
+</ul>
 
+<%= form_for(@new_comment) do |f| %>
+  <%= render 'shared/errors', object: f.object %>
+
+  <%= f.label :description, "Scrivi un commento" %>
+  <%= f.text_area :description, class: 'form-control' %>
+
+  <%= f.hidden_field :post_id, value: @post.id %>
+
+  <%= f.submit "Commenta", class: "btn btn-primary" %>
+<% end %>
