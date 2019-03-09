@@ -1,11 +1,12 @@
-<div class="card new-post">
+<div class="card post-form">
   <div class="card-body">
     <h5 class="card-title">Pubblica un nuovo post</h5>
-    <form action="/create" method="post">
+    <%= form_for [@message_board, @new_post] do |f| %>
+      <%= render 'shared/errors', object: f.object %>
       <div class="form-group">
-         <textarea class="form-control"></textarea>
+        <%= f.text_area :description, class: "form-control" %>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
