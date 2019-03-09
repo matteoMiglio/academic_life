@@ -6,12 +6,14 @@
       <% if current_page?(action: 'index') %>
         <%= link_to "Show", message_board_post_url(@message_board, post.id), 
                             class: "card-link" %>
-      <% end %>
       
-      <% if current_user?(post.user_id) %>
-          <%= link_to "Delete", message_board_post_url(@message_board, post),
+        <% if current_user.id == post.user_id %>
+          <%= link_to "Delete", message_board_post_url(@message_board, post.id),
+                                method: :delete,
                                 data: { confirm: "Sei sicuro?" },
                                 class: "card-link" %>
+        <% end %>
+
       <% end %>
     </div>
     <div class="card-footer text-muted text-center">
