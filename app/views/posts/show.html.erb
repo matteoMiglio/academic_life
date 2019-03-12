@@ -1,12 +1,11 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
-<%= @post.id %>
-<%= @post.description %>
-<%= @user.name %> <%= @user.surname %>
+<ul class="posts">
+  <%= render @post %>
+</ul>
 <br><hr>
 <ul class="comments">
   <%= render @comments %>
 </ul>
+
 
 <%= form_for(@new_comment) do |f| %>
   <%= render 'shared/errors', object: f.object %>
