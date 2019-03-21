@@ -1,19 +1,21 @@
 <ul class="posts">
   <%= render @post %>
 </ul>
-<br><hr>
-<ul class="comments">
-  <%= render @comments %>
-</ul>
 
+<% if @comments.any? %>
+  <div class="card card-comments">
+    <div class="card-header text-center">
+      Commenti
+    </div>
+    <div class="card-body">
 
-<%= form_for(@new_comment) do |f| %>
-  <%= render 'shared/errors', object: f.object %>
-
-  <%= f.label :description, "Scrivi un commento" %>
-  <%= f.text_area :description, class: 'form-control' %>
-
-  <%= f.hidden_field :post_id, value: @post.id %>
-
-  <%= f.submit "Commenta", class: "btn btn-primary" %>
+      <ul class="list-group list-group-flush">
+        <%= render @comments %>
+      </ul>
+    </div>
+  </div>
 <% end %>
+
+<div class="new_comment">
+  <%= render "/comments/new" %>
+</div>

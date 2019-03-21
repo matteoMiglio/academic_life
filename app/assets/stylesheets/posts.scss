@@ -13,3 +13,24 @@ ul.posts {
   li:first-child { margin-top: 10px; }
   li { margin-bottom: 10px; }
 }
+
+.card-comments {
+  
+  margin-bottom: 16px;
+
+  div.card-body {
+    padding: 0rem 0rem;
+
+    .list-group-item {
+      padding-top: 20px;
+    }
+
+    .user-comment {
+      padding-left: 0px !important;
+    }
+  }
+}
+
+.comment-form {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,13 @@
+<div class="card comment-form">
+  <div class="card-body">
+    <h5 class="card-title">Scrivi un commento:</h5>
+    <%= form_for(@new_comment) do |f| %>
+      <%= render 'shared/errors', object: f.object %>
+      <div class="form-group">
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.submit "Pubblica", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
