@@ -5,15 +5,17 @@
   <a class="navbar-brand" href="">AcademicLife</a>
 
   <span class="navbar-text">
-    <a href="#" class="btn" role="button">
-      <%= octicon "bell" %>
-    </a>
-    <%= link_to user_url(current_user) do %>
-      <%= octicon "person" %>
-    <% end %>
-    <%= link_to sign_out_path, method: :delete, class: 'btn' do %>
-      <%= octicon "sign-out" %>
-    <% end %>
+    <div class="d-flex justify-content-end">
+      <div class="p-2">
+        <!-- https://stackoverflow.com/questions/31419317/linking-font-awesome-icon-to-rails-attribute -->
+        <%= link_to ('<i class="fas fa-user"></i>').html_safe, user_url(current_user) %>
+      </div>
+      
+      <div class="p-2">
+        <%= link_to ('<i class="fas fa-sign-out-alt"></i>').html_safe, sign_out_path, method: :delete %>
+      </div>
+    
+    </div>
   </span>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
