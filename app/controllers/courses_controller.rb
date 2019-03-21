@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
   end
 
   def show
-    redirect_to message_board_posts_url(params[:id])
+    @message_board = MessageBoard.find_by(course_id: params[:id])
+    redirect_to message_board_posts_url(@message_board.id)
   end
 end

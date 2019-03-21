@@ -1,27 +1,36 @@
-<li id="post-<% post.id %>">
+<li id="post-<% post.id %>" class="post">
   <div class="card">
     <div class="card-body">
-      <div class="row">
-        <div class="col-2 col-md-1" align="center">
+      <h5 class="card-title"><%= post.user.name %> <%= post.user.surname %></h5>
+      <p class="card-text"><%= post.description %></p>
+      <% if current_page?(action: 'index') %>
+        <%= link_to "Show", message_board_post_url(@message_board, post.id),
+                            class: "card-link" %>
 
-            <% pre_approval = post.approvals.find { |approval| approval.user_id == current_user.id} %>
-            <% if pre_approval %>
-              <%= button_to "Disapprova", post_approval_url(post.id, post.approvals), method: :delete, remote: true, class: 'btn btn-link text-dark' %>
-            <% else %>
-              <%= button_to "Approva", post_approvals_url(post.id), method: :post, remote: true, class: 'btn btn-link text-dark' %>
-            <% end %>
+        <% if current_user.id == post.user_id %>
+          <%= link_to "Delete", message_board_post_url(@message_board, post.id),
+                                method: :delete,
+                                data: { confirm: "Sei sicuro?" },
+                                class: "card-link" %>
+        <% end %>
 
-          <p id="count-approval-label-<%= post.id %>" class="my-0"> <%= post.approvals.count %> </p>
+      <% end %>
 
-        </div>
-        <div class="col">
-          <h5 class="card-title"><%= post.user.name %> <%= post.user.surname %></h5>
-          <p class="card-text"><%= post.description %></p>
-          <a class="card-link">
-            <%= link_to "Show", message_board_post_url(@message_board, post.id) %>
-          </a>
-        </div>
+      <%--
+      <div class="col-2 col-md-1" align="center">
+
+          <% pre_approval = post.approvals.find { |approval| approval.user_id == current_user.id} %>
+          <% if pre_approval %>
+            <%= button_to "Disapprova", post_approval_url(post.id, post.approvals), method: :delete, remote: true, class: 'btn btn-link text-dark' %>
+          <% else %>
+            <%= button_to "Approva", post_approvals_url(post.id), method: :post, remote: true, class: 'btn btn-link text-dark' %>
+          <% end %>
+
+        <p id="count-approval-label-<%= post.id %>" class="my-0"> <%= post.approvals.count %> </p>
+
       </div>
+      --%>
+
     </div>
     <div class="card-footer text-muted text-center">
       <%= time_ago_in_words(post.updated_at) %>
