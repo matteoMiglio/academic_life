@@ -16,21 +16,6 @@
 
       <% end %>
 
-      <%--
-      <div class="col-2 col-md-1" align="center">
-
-          <% pre_approval = post.approvals.find { |approval| approval.user_id == current_user.id} %>
-          <% if pre_approval %>
-            <%= button_to "Disapprova", post_approval_url(post.id, post.approvals), method: :delete, remote: true, class: 'btn btn-link text-dark' %>
-          <% else %>
-            <%= button_to "Approva", post_approvals_url(post.id), method: :post, remote: true, class: 'btn btn-link text-dark' %>
-          <% end %>
-
-        <p id="count-approval-label-<%= post.id %>" class="my-0"> <%= post.approvals.count %> </p>
-
-      </div>
-      --%>
-
     </div>
     <div class="card-footer text-muted text-center">
       <%= time_ago_in_words(post.updated_at) %>

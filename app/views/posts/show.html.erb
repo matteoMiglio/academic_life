@@ -1,3 +1,6 @@
 <ul class="posts">
   <%= render @post %>
+  <% if current_user.id != @post.user_id %>
+    <%=  render 'approvals/approval',  :post => @post %>
+  <% end %>
 </ul>

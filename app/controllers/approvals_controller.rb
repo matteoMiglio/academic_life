@@ -5,10 +5,7 @@ class ApprovalsController < ApplicationController
     if not already_approved?
       @approval = @post.approvals.create(user: current_user)
       if @approval
-        respond_to do |format|
-          format.js
-          format.html { redirect_to post_path(@post) }
-        end
+        redirect_to message_board_post_url(@post.message_board_id, @post)
       end
     end
   end
@@ -16,10 +13,7 @@ class ApprovalsController < ApplicationController
   def destroy
     if already_approved?
       @post.approvals.where(user: current_user).destroy_all
-      respond_to do |format|
-        format.js
-        format.html { redirect_to post_path(@post) }
-      end
+      redirect_to message_board_post_url(@post.message_board_id, @post)
     end
   end
 
