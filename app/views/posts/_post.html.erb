@@ -1,20 +1,27 @@
 <li id="post-<% post.id %>" class="post">
   <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"><%= post.user.name %> <%= post.user.surname %></h5>
-      <p class="card-text"><%= post.description %></p>
-      <% if current_page?(action: 'index') %>
-        <%= link_to "Show", message_board_post_url(@message_board, post.id),
-                            class: "card-link" %>
-
-        <% if current_user.id == post.user_id %>
-          <%= link_to "Delete", message_board_post_url(@message_board, post.id),
-                                method: :delete,
-                                data: { confirm: "Sei sicuro?" },
-                                class: "card-link" %>
+    <div class="card-body row">
+      <div class="col-1">
+        <% if current_user.id != post.user_id %>
+          <%=  render 'approvals/approval',  :post => post %>
         <% end %>
+      </div>
+      <div class="col">
+        <h5 class="card-title"><%= post.user.name %> <%= post.user.surname %></h5>
+        <p class="card-text"><%= post.description %></p>
+        <% if current_page?(action: 'index') %>
+          <%= link_to "Show", message_board_post_url(@message_board, post.id),
+                              class: "card-link" %>
 
-      <% end %>
+          <% if current_user.id == post.user_id %>
+            <%= link_to "Delete", message_board_post_url(@message_board, post.id),
+                                  method: :delete,
+                                  data: { confirm: "Sei sicuro?" },
+                                  class: "card-link" %>
+          <% end %>
+
+        <% end %>
+      </div>
 
     </div>
     <div class="card-footer text-muted text-center">
