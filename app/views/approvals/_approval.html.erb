@@ -2,9 +2,17 @@
   <% pre_like = post.approvals.find { |approval| approval.user_id == current_user.id} %>
 
   <% if pre_like %>
-    <%= button_to 'Unlike', post_approval_path(post.id, pre_like), method: :delete %>
+    <%= link_to post_approval_path(post.id, pre_like),
+                method: :delete,
+                :style => 'font-size: 2em;' do %>
+      <i class="far fa-thumbs-down"></i>
+    <% end %>
   <% else %>
-    <%= button_to 'Like', post_approvals_path(post.id), method: :post %>
+    <%= link_to post_approvals_path(post.id),
+                method: :post,
+                :style => 'font-size: 2em' do %>
+      <i class="far fa-thumbs-up"></i>
+    <% end %>
   <% end %>
 
   <%= post.approvals.count %>
