@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_115124) do
+ActiveRecord::Schema.define(version: 2019_01_13_164127) do
+
+  create_table "approvals", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_approvals_on_post_id"
+    t.index ["user_id"], name: "index_approvals_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -127,6 +136,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_115124) do
     t.integer "message_board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "approval"
     t.index ["message_board_id"], name: "index_posts_on_message_board_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
