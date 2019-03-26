@@ -4,8 +4,11 @@ luca:
   name: Luca
   surname: Rossi
   email: luca.rossi@gmail.com
-  crypted_password: MyString
-  password_salt: MyString
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::SCrypt.encrypt("password" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  single_access_token: <%= Authlogic::Random.friendly_token %>
+  perishable_token: <%= Authlogic::Random.friendly_token %>>
   birthday: 1978-08-12
   address: MyString
   serial_number: 439881

@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :documents
   has_many :comments
-  has_many :posts, :through => :comments
   has_many :reviews
   has_many :message_boards, :through => :reviews
   has_many :rates
@@ -13,5 +12,4 @@ class User < ApplicationRecord
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :events
   has_and_belongs_to_many :groups
-  has_and_belongs_to_many :posts
 end

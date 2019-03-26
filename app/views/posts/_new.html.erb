@@ -5,6 +5,7 @@
       <%= render 'shared/errors', object: f.object %>
       <div class="form-group">
         <%= f.text_area :description, class: "form-control" %>
+        <%= f.hidden_field :message_board_id, :value => @message_board.id %>
       </div>
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
