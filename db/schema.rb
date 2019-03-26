@@ -136,7 +136,6 @@ ActiveRecord::Schema.define(version: 2019_01_13_164127) do
     t.integer "message_board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "approval"
     t.index ["message_board_id"], name: "index_posts_on_message_board_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
