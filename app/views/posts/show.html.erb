@@ -2,3 +2,20 @@
   <%= render @post %>
 </ul>
 
+<% if @comments.any? %>
+  <div class="card card-comments">
+    <div class="card-header text-center">
+      Commenti
+    </div>
+    <div class="card-body">
+
+      <ul class="list-group list-group-flush">
+        <%= render @comments %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class="new_comment">
+  <%= render "/comments/new" %>
+</div>

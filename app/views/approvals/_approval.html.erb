@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <% if current_user.id != post.user_id %>
+
+      <% pre_like = post.approvals.find { |approval| approval.user_id == current_user.id} %>
+
+      <% if pre_like %>
+        <%= link_to post_approval_path(post.id, pre_like),
+                    method: :delete,
+                    :style => 'font-size: 2em;' do %>
+          <i class="far fa-thumbs-down"></i>
+        <% end %>
+      <% else %>
+        <%= link_to post_approvals_path(post.id),
+                    method: :post,
+                    :style => 'font-size: 2em' do %>
+          <i class="far fa-thumbs-up"></i>
+        <% end %>
+      <% end %>
+
+    <% else %>
+      <i class="fas fa-pen" style="font-size: 2em;
+                                   margin-top: 10px;
+                                   margin-bottom: 10px">
+      </i>
+    <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <%= post.approvals.count %>
+  </div>
+</div>

@@ -8,6 +8,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    #@user = @post.user
+    @comments = @post.comments.with_users
+    @new_comment = Comment.new
     @post.user.name
     @post.user.surname
   end
@@ -16,14 +19,14 @@ class PostsController < ApplicationController
     @new_post = current_user.posts.build(post_params) 
     @new_post.save ? flash[:success] = "Post inserito!" 
                : flash[:danger] = "Post non inserito!"
-    redirect_to :controller => 'posts', 
+    redirect_to :controller => 'posts',
                 :action => 'index'
   end
 
   def destroy
-    Post.find(params[:id]).destroy ? flash[:success] = "Post eliminato!" 
+    Post.find(params[:id]).destroy ? flash[:success] = "Post eliminato!"
                                    : flash[:danger] = "Post non eliminato!"
-    redirect_to :controller => 'posts', 
+    redirect_to :controller => 'posts',
                 :action => 'index'
   end
 
@@ -32,4 +35,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:description, :message_board_id)
   end
+
 end

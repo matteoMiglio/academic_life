@@ -4,6 +4,7 @@ require 'rails/test_help'
 require "minitest/reporters"
 require "authlogic/test_case"
 Minitest::Reporters.use!
+require "authlogic/test_case"
 
 class ActiveSupport::TestCase 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.

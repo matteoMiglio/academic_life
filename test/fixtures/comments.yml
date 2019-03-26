@@ -1,11 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyString
-  user: one
-  post: one
+  description: "Questo è il primo commento"
+  user: giovanni
+  post: most_recent
+  created_at: <%= 1.hours.ago %>
 
-two:
-  description: MyString
-  user: two
+older:
+  description: "Questo è il primo commento"
+  user: giovanni
+  post: most_recent
+  created_at: <%= 2.years.ago %>
+
+most_recent:
+  description: "MyString"
+  user: luca
   post: two
+  created_at: <%= Time.zone.now %>
+
+example:
+  description: "PROVAAA"
+  user: luca
+  post: recent
+  created_at: <%= 2.hours.ago %>
