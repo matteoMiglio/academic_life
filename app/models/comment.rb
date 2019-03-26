@@ -13,6 +13,5 @@ class Comment < ApplicationRecord
   scope :with_users, -> { includes(:user).ordered.each do |comment|
                             comment.user.name
                             comment.user.surname
-                          end 
-                        }
+                          end }
 end

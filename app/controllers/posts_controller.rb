@@ -2,7 +2,14 @@ class PostsController < ApplicationController
   def index
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
-    @posts = @message_board.posts.with_users
+    # versione senza paginazione
+    # @posts = @message_board.posts.with_users
+    # versione con paginazione
+    @posts = @message_board.posts.pagination(params[:page])
+    @posts.each do |post|
+      post.user.name
+      post.user.surname
+    end
     @new_post = Post.new
   end
 

@@ -14,6 +14,9 @@ gem 'octicons'
 gem 'octicons_helper'
 # Bootstrap
 gem 'bootstrap', '~> 4.0'
+# Pagination
+gem 'will_paginate', '~> 3.1', '>= 3.1.7'
+gem 'bootstrap-will_paginate', '~> 1.0'
 # Sprocket-rails
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
 # Jquery-rails
