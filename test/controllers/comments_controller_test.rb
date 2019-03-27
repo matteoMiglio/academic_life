@@ -5,7 +5,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @message_board = message_boards(:rdc)
     @post = posts(:recent)
-    @user = users(:ben)
+    @user = users(:luca)
     @comment = comments(:example)
   end
 
