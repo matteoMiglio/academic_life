@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body row">
       <div class="col-1">
-        <%=  render 'approvals/approval',  :post => post %>
+        <%=  render 'approvals/approval', :post => post, :pre_approval => @pre_approval %>
       </div>
       <div class="col">
         <h5 class="card-title"><%= post.user.name %> <%= post.user.surname %></h5>

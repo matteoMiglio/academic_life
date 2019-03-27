@@ -19,12 +19,10 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  #test "should destroy approval" do
-  #  article = articles(:one)
-  #  assert_difference('Article.count', -1) do
-  #    delete article_url(article)
-  #  end
+  test "should destroy approval" do
+    login(@user)
+    delete post_approval_path(@post.id, @approval)
 
-  #  assert_redirected_to articles_path
-  #end
+    assert_redirected_to message_board_post_url(@post.message_board_id, @post)
+  end
 end

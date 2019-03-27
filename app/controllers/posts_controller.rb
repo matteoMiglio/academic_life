@@ -9,12 +9,14 @@ class PostsController < ApplicationController
     @posts.each do |post|
       post.user.name
       post.user.surname
+      @pre_approval = post.approvals.find { |approval| approval.user_id == current_user.id }
     end
     @new_post = Post.new
   end
 
   def show
     @post = Post.find(params[:id])
+    @pre_approval = @post.approvals.find { |approval| approval.user_id == current_user.id }
     @post.user.name
     @post.user.surname
     @comments = @post.comments.with_users
@@ -22,8 +24,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @new_post = current_user.posts.build(post_params) 
-    @new_post.save ? flash[:success] = "Post inserito!" 
+    @new_post = current_user.posts.build(post_params)
+    @new_post.save ? flash[:success] = "Post inserito!"
                : flash[:danger] = "Post non inserito!"
     redirect_to :controller => 'posts',
                 :action => 'index'
