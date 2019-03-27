@@ -8,7 +8,7 @@ require "authlogic/test_case"
 
 Minitest::Reporters.use!
 
-class ActiveSupport::TestCase 
+class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
@@ -16,7 +16,7 @@ class ActiveSupport::TestCase
   setup :activate_authlogic
 
   def login(user)
-    post user_sessions_url, :params => { :user_session => { :email => user.email, 
+    post user_sessions_url, :params => { :user_session => { :email => user.email,
                                                             :password => 'password' } }
   end
 
