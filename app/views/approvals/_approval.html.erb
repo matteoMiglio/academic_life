@@ -5,13 +5,13 @@
       <% if @pre_approval %>
         <%= link_to post_approval_path(post.id, @pre_approval),
                     method: :delete,
-                    :style => 'font-size: 2em;' do %>
+                    class: 'link-approval' do %>
           <i class="far fa-thumbs-down"></i>
         <% end %>
       <% else %>
         <%= link_to post_approvals_path(post.id),
                     method: :post,
-                    :style => 'font-size: 2em' do %>
+                    class: 'link-approval' do %>
           <i class="far fa-thumbs-up"></i>
         <% end %>
       <% end %>

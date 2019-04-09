@@ -2,6 +2,10 @@
   <%= render @post %>
 </ul>
 
+<div class="new_comment">
+  <%= render "/comments/new" %>
+</div>
+
 <% if @comments.any? %>
   <div class="card card-comments">
     <div class="card-header text-center">
@@ -15,7 +19,3 @@
     </div>
   </div>
 <% end %>
-
-<div class="new_comment">
-  <%= render "/comments/new" %>
-</div>

@@ -11,8 +11,8 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
   test "should create approval" do
     login(@user)
     assert_difference('Approval.count') do
-      post post_approvals_path(@post.id), params: { post: { user_id: @user.id,
-                                                    post_id: @post.id} }
+      post post_approvals_url(@post.id), params: { post: { user_id: @user.id,
+                                                            post_id: @post.id} }
     end
 
     assert_redirected_to message_board_post_url(@post.message_board_id, @post)
@@ -21,7 +21,7 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy approval" do
     login(@user)
-    delete post_approval_path(@post.id, @approval)
+    delete post_approval_url(@post.id, @approval)
 
     assert_redirected_to message_board_post_url(@post.message_board_id, @post)
   end
