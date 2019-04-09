@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def create
     @new_post = current_user.posts.build(post_params)
     @new_post.save ? flash[:success] = "Post inserito!"
-               : flash[:danger] = "Post non inserito!"
+                   : flash[:danger] = "Post non inserito!"
     redirect_to :controller => 'posts',
                 :action => 'index'
   end

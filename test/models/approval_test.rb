@@ -16,7 +16,7 @@ class ApprovalTest < ActiveSupport::TestCase
     assert_not @approval.valid?
   end
 
-  test "message_board id should be present" do
+  test "post id should be present" do
     @approval.post_id = nil
     assert_not @approval.valid?
   end

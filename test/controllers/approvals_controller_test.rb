@@ -2,27 +2,25 @@ require 'test_helper'
 
 class ApprovalsControllerTest < ActionDispatch::IntegrationTest
   def setup
-    #@message_board = message_boards(:rdc)
+    @message_board = message_boards(:rdc)
     @user = users(:luca)
-    @post = posts(:recent)
+    @post = posts(:older)
     @approval = approvals(:one)
   end
 
   test "should create approval" do
     login(@user)
     assert_difference('Approval.count') do
-      post post_approvals_path(@post.id), params: { post: { user_id: @user.id,
-                                                    post_id: @post.id} }
+      post post_approvals_url(@post), params: { post: { user_id: @user.id,
+                                                        post_id: @post.id} }
     end
-
-    assert_redirected_to message_board_post_url(@post.message_board_id, @post)
+    assert_redirected_to message_board_post_url(@message_board, @post)
   end
 
 
   test "should destroy approval" do
     login(@user)
-    delete post_approval_path(@post.id, @approval)
-
-    assert_redirected_to message_board_post_url(@post.message_board_id, @post)
+    delete post_approval_url(@post, @approval)
+    assert_redirected_to message_board_post_url(@message_board, @post)
   end
 end
