@@ -10,8 +10,10 @@ class Comment < ApplicationRecord
   validates :description, length: { maximum: 255, too_long: "Commento troppo lungo!" }
 
   scope :ordered, -> { order('created_at asc') }
-  scope :with_users, -> { includes(:user).ordered.each do |comment|
-                            comment.user.name
-                            comment.user.surname
-                          end }
+  scope :pagination, -> (page) { includes(:user).paginate(page: page, per_page: 3).ordered }
+  
+  #scope :with_users, -> { includes(:user).ordered.each do |comment|
+  #                          comment.user.name
+  #                          comment.user.surname
+  #                        end }
 end

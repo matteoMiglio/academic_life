@@ -19,7 +19,13 @@ class PostsController < ApplicationController
     @pre_approval = @post.approvals.find { |approval| approval.user_id == current_user.id }
     @post.user.name
     @post.user.surname
-    @comments = @post.comments.with_users
+
+    @comments = @post.comments.pagination(params[:page])
+    @comments.each do |comment|
+      comment.user.name
+      comment.user.surname
+    end
+
     @new_comment = Comment.new
   end
 
