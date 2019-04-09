@@ -20,7 +20,9 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get destroy" do
     login(@user)
-    delete comment_url(@comment)
+    assert_difference 'Comment.count', -1 do
+      delete comment_url(@comment)
+    end
     assert_redirected_to message_board_post_url(@message_board, @post)
   end
 end
