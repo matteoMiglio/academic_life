@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  post: most_recent
-  user: luca
-
-two:
   post: older
   user: luca
