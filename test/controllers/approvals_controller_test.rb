@@ -12,8 +12,7 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
   test "should create approval" do
     login(@user)
     assert_difference('Approval.count') do
-      post post_approvals_url(@post1), params: { post: { user_id: @user.id,
-                                                        post_id: @post1.id} }
+      post post_approvals_url(@post1), params: { post_id: @post1.id }
     end
     assert_redirected_to message_board_post_url(@message_board, @post1)
   end

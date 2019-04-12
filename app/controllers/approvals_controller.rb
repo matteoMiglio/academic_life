@@ -22,13 +22,12 @@ class ApprovalsController < ApplicationController
   end
 
   private
+    def find_post
+      @post = Post.find(params[:post_id])
+    end
 
-  def find_post
-    @post = Post.find(params[:post_id])
-  end
-
-  def already_approved?
-    Approval.where(user_id: current_user.id, post_id: params[:post_id]).exists?
-  end
+    def already_approved?
+      Approval.where(user_id: current_user.id, post_id: params[:post_id]).exists?
+    end
   
 end
