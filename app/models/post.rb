@@ -9,9 +9,5 @@ class Post < ApplicationRecord
   validates :description, presence: true, length: { maximum: 255, too_long: "Post troppo lungo!" }
 
   scope :ordered,    -> { order('created_at desc') }
-  scope :pagination, -> (page) { includes(:user).paginate(page: page, per_page: 5).ordered }
-  #scope :with_users, -> { includes(:user).ordered.each do |post|
-  #  post.user.name
-  #  post.user.surname
-  #end }
+  scope :pagination, -> (page) { includes(:user, :approvals).paginate(page: page, per_page: 5).ordered }
 end

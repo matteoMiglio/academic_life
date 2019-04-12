@@ -11,9 +11,4 @@ class Comment < ApplicationRecord
 
   scope :ordered, -> { order('created_at asc') }
   scope :pagination, -> (page) { includes(:user).paginate(page: page, per_page: 3).ordered }
-  
-  #scope :with_users, -> { includes(:user).ordered.each do |comment|
-  #                          comment.user.name
-  #                          comment.user.surname
-  #                        end }
 end
