@@ -6,7 +6,7 @@ class MessageBoard < ApplicationRecord
   has_many :reviews
   has_many :users, :through => :reviews
   has_many :rates
-  has_many :message_boards, :through => :rates
+  has_many :users, :through => :rates
 
-  validates :course_id, presence: true
+  validates :course, presence: true
 end

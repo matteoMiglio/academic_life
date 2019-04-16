@@ -2,8 +2,7 @@ require 'test_helper'
 
 class MessageBoardTest < ActiveSupport::TestCase
   def setup
-    @course = courses(:so)
-    @message_board = @course.build_message_board
+    @message_board = message_boards(:rdc)
   end
 
   test "should be valid" do

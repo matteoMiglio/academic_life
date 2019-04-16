@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :message_board
   has_many :comments
-  has_many :approvals, dependent: :destroy
+  has_many :approvals
 
   validates :user, presence: true
   validates :message_board, presence: true

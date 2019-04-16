@@ -2,7 +2,7 @@ class Rate < ApplicationRecord
   belongs_to :user
   belongs_to :message_board
 
-  # Validations
-  validates :user, :message_board, :grade, presence: true
-  validates :grade, numericality: { only_integer: true }
+  validates :user, presence: true
+  validates :message_board, presence: true
+  validates :grade, presence: true, numericality: { only_integer: true }
 end

@@ -3,8 +3,7 @@ class Group < ApplicationRecord
   has_many :events
   has_and_belongs_to_many :users
 
-  # Validations
-  validates :name, :state, :message_board, presence: true
-  validates :name, length: { maximum: 100, too_long: "Nome troppo lungo!" }
-  validates :state, length: { maximum: 10 }, inclusion: { in: %w(public, private) }
+  validates :message_board, presence: true
+  validates :name, presence: true, length: { maximum: 100, too_long: "Nome troppo lungo!" }
+  validates :state, presence: true, length: { maximum: 10 }, inclusion: { in: %w(public, private) }
 end
