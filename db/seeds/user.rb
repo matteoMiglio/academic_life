@@ -10,7 +10,7 @@ User.populate 1 do |user|
   user.birthday           = Faker::Date.birthday(18, 65)
   user.address            = Faker::Address.full_address
   user.serial_number      = Faker::Number.unique.number(6)
-  user.admin              = 1
+  user.admin              = Faker::Boolean.boolean(1)
   user.login_count        = 0
   user.failed_login_count = 0
 end
