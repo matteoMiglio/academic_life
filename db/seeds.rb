@@ -14,8 +14,9 @@
   Review,
   Rate,
   Comment,
-  Post,
   Event,
+  Approval,
+  Post,
 
   # 1 addiction
   Group,
@@ -45,6 +46,7 @@ load 'db/seeds/post.rb'          # Depends on user and message_board
 load 'db/seeds/comment.rb'       # Depends on user and post
 load 'db/seeds/rate.rb'          # Depends on user and message_board
 load 'db/seeds/review.rb'        # Depends on user and message_board
+load 'db/seeds/approval.rb'      # Depends on user and post
 
 load 'db/seeds/document.rb'      # Depends on user, message_board and category
 

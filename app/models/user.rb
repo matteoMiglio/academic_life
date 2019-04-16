@@ -1,15 +1,15 @@
 class User < ApplicationRecord
   acts_as_authentic
 
-  has_many :events
-  has_many :posts
-  has_many :documents
-  has_many :comments
-  has_many :reviews
+  has_many :events, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :documents, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :message_boards, :through => :reviews
-  has_many :rates
+  has_many :rates, dependent: :destroy
   has_many :message_boards, :through => :rates
-  has_many :approvals
+  has_many :approvals, dependent: :destroy
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :events
   has_and_belongs_to_many :groups
