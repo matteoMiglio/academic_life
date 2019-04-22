@@ -13,6 +13,7 @@
   # 2 addictions
   Review,
   Rate,
+  Member,
   Comment,
   Event,
   Approval,
@@ -47,13 +48,13 @@ load 'db/seeds/comment.rb'       # Depends on user and post
 load 'db/seeds/rate.rb'          # Depends on user and message_board
 load 'db/seeds/review.rb'        # Depends on user and message_board
 load 'db/seeds/approval.rb'      # Depends on user and post
+load 'db/seeds/member.rb'        # Depends on user and group
 
 load 'db/seeds/document.rb'      # Depends on user, message_board and category
 
 # Tables without models
 load 'db/seeds/posts_users.rb'
 load 'db/seeds/courses_users.rb'
-load 'db/seeds/groups_users.rb'
 load 'db/seeds/events_users.rb'
 load 'db/seeds/courses_degrees.rb'
 

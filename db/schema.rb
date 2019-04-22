@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_164127) do
+ActiveRecord::Schema.define(version: 2019_04_22_072319) do
 
   create_table "approvals", force: :cascade do |t|
     t.integer "post_id"
@@ -116,11 +116,14 @@ ActiveRecord::Schema.define(version: 2019_01_13_164127) do
     t.index ["message_board_id"], name: "index_groups_on_message_board_id"
   end
 
-  create_table "groups_users", id: false, force: :cascade do |t|
-    t.integer "group_id"
+  create_table "members", force: :cascade do |t|
+    t.string "membership"
     t.integer "user_id"
-    t.index ["group_id"], name: "index_groups_users_on_group_id"
-    t.index ["user_id"], name: "index_groups_users_on_user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_members_on_group_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "message_boards", force: :cascade do |t|

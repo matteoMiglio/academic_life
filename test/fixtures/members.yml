@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+luca:
+  membership: creator
+  user: luca
+  group: lafayette
+
+giovanni:
+  membership: undefined
+  user: giovanni
+  group: lafayette
