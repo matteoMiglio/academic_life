@@ -1,0 +1,23 @@
+<li id="member-<% member.id %>" class="member">
+  <div class="card">
+    <div class="card-body row text-center">
+      <div class="col">
+        <h5 class="card-title mb-0"><%= member.user.name %> <%= member.user.surname %></h5>
+      </div>
+      <div class="col">
+        <span class="badge badge-<%= color(member.membership) %>"> <%= member.membership %> </span>
+      </div>
+      <div class="col">
+        <%= time_ago_in_words(member.updated_at) %> ago
+      </div>
+      <div class="col">
+        <% if current_user.id == member.user_id %>
+          <%= link_to "Leave", "#",
+                               method: :delete,
+                               data: { confirm: "Sei sicuro?" },
+                               class: "card-link text-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

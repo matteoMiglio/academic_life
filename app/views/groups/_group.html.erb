@@ -22,7 +22,7 @@
           <%= link_to "Leave", "#",
                               class: "card-link text-danger" %>
         <% end %>
-        <%= link_to "Members", "#",
+        <%= link_to "Members", message_board_group_members_url(@message_board, group.id),
                                class: "card-link" %>
       <% end %>
     </div>

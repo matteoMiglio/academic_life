@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'members/index'
   get 'groups/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'user_sessions#new'
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :message_boards, only: [:show] do
     resources :posts, only: [:index, :show, :create, :destroy]
-    resources :groups, only: [:index, :show]
+    resources :groups, only: [:index, :show, :create] do
+      resources :members, only: [:index]
+    end
   end
 
   resources :comments, only: [:create, :destroy]

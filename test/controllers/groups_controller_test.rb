@@ -18,4 +18,13 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     get message_board_group_url(@message_board, @group)
     assert_response :success
   end
+
+  test "should get create" do
+    login(@user)
+    assert_difference "Group.count" do
+      post message_board_groups_url(@message_board), params: { group: { name: "Lorem Ipsum",
+                                                                        state: "private" } }
+    end
+    assert_redirected_to message_board_groups_url(@message_board)
+  end
 end

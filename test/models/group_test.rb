@@ -19,6 +19,11 @@ class GroupTest < ActiveSupport::TestCase
     assert_not @group.valid?
   end
 
+  test "name should be at least 5 characters" do
+    @group.name = 'a'*4
+    assert_not @group.valid?
+  end
+
   test "state should be 'public' or 'private'" do
     @group.state = 'a'*6
     assert_not @group.valid?
