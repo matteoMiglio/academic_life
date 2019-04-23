@@ -3,12 +3,22 @@ class PostsController < ApplicationController
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
     @posts = @message_board.posts.pagination(params[:page])
+    @posts.each do |post|
+      post.user.name
+      post.user.surname
+    end
     @new_post = Post.new
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:approvals).find(params[:id])
+    @post.user.name
+    @post.user.surname
     @comments = @post.comments.pagination(params[:page])
+    @comments.each do |comment|
+      comment.user.name
+      comment.user.surname
+    end
     @new_comment = Comment.new
   end
 

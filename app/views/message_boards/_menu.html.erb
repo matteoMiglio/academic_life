@@ -1,14 +1,6 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Posts</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Membri</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Eventi</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Documenti</a>
-  </li>
-</ul>
+<%= nav_bar do %>
+  <%= nav_link 'Posts', message_board_posts_path(@message_board) %>
+  <%= nav_link 'Membri', '#' %>
+  <%= nav_link 'Gruppi', message_board_groups_path(@message_board) %>
+  <%= nav_link 'Eventi', '#' %>
+<% end %>

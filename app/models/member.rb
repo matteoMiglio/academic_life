@@ -4,7 +4,7 @@ class Member < ApplicationRecord
 
   validates :user, presence: true
   validates :group, presence: true
-  validates :membership, presence: true, inclusion: { in: %w(undefined, member, creator) }
+  validates :membership, presence: true, inclusion: { in: %w(invited member creator) }
 
   after_destroy do 
     Group.find(group_id).destroy if membership == 'creator'

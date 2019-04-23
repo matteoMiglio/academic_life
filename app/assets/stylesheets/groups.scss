@@ -1,0 +1,19 @@
+// Place all the styles related to the Groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.group-form {
+  margin-top: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px !important;
+}
+
+ul.groups {
+  list-style: none;
+  padding: 0;
+
+  li:first-child { margin-top: 10px; }
+  li { margin-bottom: 10px; }
+}

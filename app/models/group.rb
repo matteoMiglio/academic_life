@@ -6,5 +6,7 @@ class Group < ApplicationRecord
 
   validates :message_board, presence: true
   validates :name, presence: true, length: { maximum: 100, too_long: "Nome troppo lungo!" }
-  validates :state, presence: true, inclusion: { in: %w(public, private) }
+  validates :state, presence: true, inclusion: { in: %w(public private) }
+
+  scope :with_members, -> (id) { includes(:members).where(message_board_id: id) }
 end
