@@ -9,6 +9,6 @@
     <a class="nav-link" href="#">Eventi</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Documenti</a>
+    <%= link_to 'Documenti', message_board_documents_url(@message_board.id), class: 'nav-link' %>
   </li>
 </ul>
