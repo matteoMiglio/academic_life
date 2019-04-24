@@ -15,7 +15,12 @@ module GroupsHelper
     end
   end
 
-  def group_link(role, url)
+  def accept_link(role, url)
+    options = { class: "card-link text-success" }
+    link_to "Accept", url, options if role == "invited"
+  end
+
+  def exit_link(role, url)
     options = { class: "card-link text-danger" }
     text = case role
       when "creator"
@@ -26,5 +31,10 @@ module GroupsHelper
         "Refuse"
     end
     link_to text, url, options
+  end
+
+  def members_link(role, url)
+    options = { class: "card-link" }
+    link_to "Members", url, options if role == "creator" or role == "member"
   end
 end

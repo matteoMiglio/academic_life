@@ -9,20 +9,13 @@
       </p>
     </div>
     <div class="card-footer text-muted text-center">
-      <% if current_page?(action: 'index') %>
-        <%= link_to "Show", message_board_group_url(@message_board, group.id),
-                            class: "card-link" %>
-      <% else %>
-        <% if role == "invited" %>
-          <%= link_to "Accept", "#",
-                                class: "card-link text-success" %>
-        <% end %>
-        <%= group_link role, '#' %>
-        <% if role == "creator" or role == "member" %>
-          <%= link_to "Members", message_board_group_members_url(@message_board, group.id),
-                                 class: "card-link" %>
-        <% end %>
-      <% end %>
+    <% if current_page?(action: 'index') %>
+      <%= link_to "Show", message_board_group_url(@message_board, group.id), class: "card-link" %>
+    <% else %>
+      <%= accept_link role, "#" %>
+      <%= exit_link role, "#" %>
+      <%= members_link role, message_board_group_members_url(@message_board, group.id) %>
+    <% end %>
     </div>
   </div>
 </li>
