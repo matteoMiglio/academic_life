@@ -27,7 +27,9 @@
   User, 
   Course, 
   Category, 
-  Department
+  Department,
+  ActiveStorage::Blob,
+  ActiveStorage::Attachment
 ].each(&:delete_all)
 
 # No requirements

@@ -7,11 +7,14 @@
           <h5 class="card-title"><%= document.name %></h5>  
         </div>
       
-        <div class="p-2">
-          <%= button_to "Download", 
-              rails_blob_path(document.file, disposition: 'attachment'),
-              class: "btn btn-success" %>
-        </div>
+        
+        <% if document.file.attached? %>
+          <div class="p-2">
+            <%= link_to "Download", 
+                rails_blob_url(document.file, disposition: 'attachment'),
+                class: "btn btn-success" %>
+          </div>
+        <% end %>       
 
         <% if current_user.id == document.user_id %>
           <div class="p-2">

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :message_boards, only: [:show] do
     resources :posts, only: [:index, :show, :create, :destroy]
-    resources :documents
+    resources :documents, only: [:index, :new, :create, :destroy]
   end
 
   resources :comments, only: [:create, :destroy]

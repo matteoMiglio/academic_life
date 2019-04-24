@@ -1,6 +1,6 @@
 # This migration comes from active_storage (originally 20170806125915)
 class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
-  def change
+  def up
     create_table :active_storage_blobs do |t|
       t.string   :key,        null: false
       t.string   :filename,   null: false
@@ -22,5 +22,10 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
 
       t.index [ :record_type, :record_id, :name, :blob_id ], name: "index_active_storage_attachments_uniqueness", unique: true
     end
+  end
+
+  def down
+    drop_table :active_storage_blobs
+    drop_table :active_storage_attachments
   end
 end
