@@ -1,2 +1,19 @@
-<h1>Documents#new</h1>
-<p>Find me in app/views/documents/new.html.erb</p>
+<h1><%= @course.name %></h1>
+<%= render "message_boards/menu", :type => "documents" %>
+
+<div class="card post-form">
+  <div class="card-body">
+    <h5 class="card-title">Pubblica un nuovo documento</h5>
+    <%= form_for [@message_board, @document] do |f| %>
+      <%= render 'shared/errors', object: f.object %>
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_area :description, class: "form-control" %>
+        <%= f.file_field :file, class: "form-control" %>
+        <%= f.collection_select(:category_id, @categories, :id, :name) %>
+        <%= f.hidden_field :message_board_id, :value => @message_board.id %>
+      </div>
+      <%= f.submit "Pubblica", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

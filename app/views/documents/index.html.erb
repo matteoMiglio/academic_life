@@ -1,2 +1,6 @@
 <h1><%= @course.name %></h1>
-<%= render "message_boards/menu" %>
+<%= render "message_boards/menu", :type => "documents" %>
+
+<ul class="documents">
+  <%= render @documents %>
+</ul>

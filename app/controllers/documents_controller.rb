@@ -4,6 +4,7 @@ class DocumentsController < ApplicationController
   def index
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
+    @documents = @message_board.documents.pagination(params[:page])
   end
 
   def create
@@ -16,10 +17,15 @@ class DocumentsController < ApplicationController
   end
 
   def new
+    @message_board = MessageBoard.find(params[:message_board_id])
+    @course = @message_board.course
+    @categories = Category.all
     @document = Document.new
   end
 
   def destroy
+
+    @document.file.purge
     @document.destroy ? flash[:success] = "Documento eliminato!" : flash[:danger] = "Documento non eliminato!"
 
     redirect_to :controller => 'documents',
@@ -29,7 +35,7 @@ class DocumentsController < ApplicationController
 
   private
     def documents_params
-      params.require(:document).permit(:name, :description, :category_id, :message_board_id)
+      params.require(:document).permit(:name, :description, :category_id, :message_board_id, :file)
     end
 
     def correct_user
