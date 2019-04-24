@@ -58,9 +58,3 @@ load 'db/seeds/courses_users.rb'
 load 'db/seeds/groups_users.rb'
 load 'db/seeds/events_users.rb'
 load 'db/seeds/courses_degrees.rb'
-
-
-
-
-
-

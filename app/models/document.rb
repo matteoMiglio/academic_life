@@ -10,7 +10,8 @@ class Document < ApplicationRecord
   validates :category, presence: true
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 300 }
-  #validates :path, presence: true, length: { maximum: 70 }
 
-  scope :pagination, -> (page) { includes(:user).paginate(page: page, per_page: 5) }
+  scope :with_eager_loaded_image, -> { eager_load(file_attachment: :blob) }
+  scope :with_preloaded_image, -> { preload(file_attachment: :blob) }
+  scope :pagination, -> (page) { paginate(page: page, per_page: 5).with_preloaded_image }
 end
