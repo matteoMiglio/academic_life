@@ -9,7 +9,7 @@ class Group < ApplicationRecord
                                              minimum: 5, too_short: "Nome troppo corto!" }
   validates :state, presence: true, inclusion: { in: %w(public private) }
 
-  scope :ordered,    -> { order('created_at desc') }
+  scope :ordered,      -> { order('updated_at desc') }
   scope :with_members, -> (id) { includes(:members).where(message_board_id: id).ordered }
 
   def create_group(creator)

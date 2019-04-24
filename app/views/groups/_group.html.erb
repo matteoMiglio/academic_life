@@ -15,15 +15,13 @@
       <% else %>
         <% if role == "invited" %>
           <%= link_to "Accept", "#",
-                              class: "card-link text-success" %>
-          <%= link_to "Refuse", "#",
-                                class: "card-link text-danger" %>
-        <% else %>
-          <%= link_to "Leave", "#",
-                              class: "card-link text-danger" %>
+                                class: "card-link text-success" %>
         <% end %>
-        <%= link_to "Members", message_board_group_members_url(@message_board, group.id),
-                               class: "card-link" %>
+        <%= group_link role, '#' %>
+        <% if role == "creator" or role == "member" %>
+          <%= link_to "Members", message_board_group_members_url(@message_board, group.id),
+                                 class: "card-link" %>
+        <% end %>
       <% end %>
     </div>
   </div>
