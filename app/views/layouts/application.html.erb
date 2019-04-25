@@ -25,8 +25,26 @@
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+
+          <% if not @errors.nil? %>
+            <div id="error_explanation">
+              <div class="alert alert-danger">
+                The form contains <%= pluralize(@errors.length, "error") %>.
+              </div>
+
+              <ul>
+                <% @errors.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+              
+            </div>
+          <% end %>
+
         </div>
       <% end %>
+
+      
 
       <%= yield %>
     </div>
