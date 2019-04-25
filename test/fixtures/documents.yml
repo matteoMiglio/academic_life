@@ -1,17 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
+prova:
+  name: Appunti IS2
+  description: Appunti presi oggi a lezione di Ingegneria del Software II
   path: MyString
-  message_board: one
-  user: one
+  message_board: rdc
+  user: luca
   category: one
-
-two:
-  name: MyString
-  description: MyString
-  path: MyString
-  message_board: two
-  user: two
-  category: two

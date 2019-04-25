@@ -28,7 +28,9 @@
   User, 
   Course, 
   Category, 
-  Department
+  Department,
+  ActiveStorage::Blob,
+  ActiveStorage::Attachment
 ].each(&:delete_all)
 
 # No requirements
@@ -57,9 +59,3 @@ load 'db/seeds/posts_users.rb'
 load 'db/seeds/courses_users.rb'
 load 'db/seeds/events_users.rb'
 load 'db/seeds/courses_degrees.rb'
-
-
-
-
-
-
