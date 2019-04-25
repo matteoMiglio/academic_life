@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_22_072319) do
+ActiveRecord::Schema.define(version: 2019_04_24_141352) do
 
   create_table "approvals", force: :cascade do |t|
     t.integer "post_id"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2019_04_22_072319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_members_on_group_id"
+    t.index ["user_id", "group_id"], name: "index_members_on_user_id_and_group_id", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
   end
 

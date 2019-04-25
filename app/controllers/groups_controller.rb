@@ -24,6 +24,13 @@ class GroupsController < ApplicationController
                 :action     => 'index'
   end
 
+  def destroy
+    Group.find(params[:id]).destroy ? flash[:success] = "Gruppo eliminato!"
+                                    : flash[:danger]  = "Gruppo non eliminato!"
+    redirect_to :controller => 'groups', 
+                :action => 'index' 
+  end
+
   private
 
   def group_params

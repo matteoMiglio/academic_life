@@ -1,5 +1,8 @@
 <h1><%= @group.name %></h1>
-<%= render "new" %>
+
+<% if current_user.id == @creator.user_id %>
+  <%= render "new" %>
+<% end %>
 
 <ul class="members">
   <%= render @members %>

@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   resources :message_boards, only: [:show] do
     resources :posts, only: [:index, :show, :create, :destroy]
-    resources :groups, only: [:index, :show, :create] do
-      resources :members, only: [:index]
+    resources :groups, only: [:index, :show, :create, :destroy] do
+      resources :members, only: [:index, :create, :update, :destroy]
     end
   end
 

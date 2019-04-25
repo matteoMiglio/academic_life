@@ -5,7 +5,7 @@ luca:
   user: luca
   group: lafayette
 
-giovanni:
-  membership: undefined
-  user: giovanni
+dario:
+  membership: member
+  user: dario
   group: lafayette

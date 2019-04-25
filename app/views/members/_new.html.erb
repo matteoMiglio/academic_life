@@ -1,0 +1,16 @@
+<div class="card member-form">
+  <div class="card-body">
+    <h5 class="card-title">Aggiungi un membro</h5>
+    <%= form_for [@message_board, @group, @new_member] do |f| %>
+      <%= render 'shared/errors', object: f.object %>
+      <div class="form-row">
+        <div class="col-4">
+          <%= f.select :user_id, options_for_select(@users), { include_blank: true }, class: "form-control" %>
+        </div>
+        <div class="col-1">
+          <%= f.submit "Aggiungi", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

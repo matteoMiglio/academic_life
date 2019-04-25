@@ -27,4 +27,11 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to message_board_groups_url(@message_board)
   end
+
+  test "should get destroy" do
+    assert_difference 'Group.count', -1 do
+      delete message_board_group_url(@message_board, @group)
+    end
+    assert_redirected_to message_board_groups_url(@message_board)
+  end
 end

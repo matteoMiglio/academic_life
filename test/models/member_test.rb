@@ -2,6 +2,7 @@ require 'test_helper'
 
 class MemberTest < ActiveSupport::TestCase
   def setup
+    @user = users(:luca)
     @member = members(:luca)
   end
 
@@ -19,6 +20,10 @@ class MemberTest < ActiveSupport::TestCase
     assert_not @member.valid?
   end
 
+  test "user id should be different in a group" do
+    assert_not @user.members.build.valid?
+  end
+  
   test "user id should be present" do
     @member.user_id = nil
     assert_not @member.valid?
