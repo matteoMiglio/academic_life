@@ -13,5 +13,5 @@ class Document < ApplicationRecord
 
   scope :with_eager_loaded_image, -> { eager_load(file_attachment: :blob) }
   scope :with_preloaded_image, -> { preload(file_attachment: :blob) }
-  scope :pagination, -> (page) { paginate(page: page, per_page: 5).with_preloaded_image }
+  scope :pagination, -> (page, entries) { paginate(page: page, per_page: 5, total_entries: entries).with_preloaded_image }
 end
