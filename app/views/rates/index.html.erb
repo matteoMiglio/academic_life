@@ -1,0 +1,20 @@
+<h1><%= @course.name %></h1>
+<%= render "message_boards/menu" %>
+
+<div class="card rate-card">
+  <div class="card-body">
+    <h5 class="card-title">Media dei voti</h5>
+    <p class="card-text"><span class="badge badge-success"><%= @media %></span></p>
+    <p class="card-text">Totale: <%= pluralize(@total_rates.length , "voto", "voti") %></p>
+  </div>
+</div>
+
+<% if not @new_rate.nil? %>
+  <%= render "new" %>
+<% else %>
+  <div class="card rate-card">
+    <div class="card-body">
+      Hai già inserito il tuo voto. Bravo!
+    </div>
+  </div>
+<% end %>

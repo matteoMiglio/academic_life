@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   resources :message_boards, only: [:show] do
     resources :posts, only: [:index, :show, :create, :destroy]
-    resources :documents, only: [:index, :new, :create, :destroy]
     resources :groups, only: [:index, :show, :create, :destroy] do
       resources :members, only: [:index, :create, :update, :destroy]
     end
+    resources :documents, only: [:index, :new, :create, :destroy]
+    resources :rates, only: [:index, :create]
   end
 
   resources :comments, only: [:create, :destroy]
