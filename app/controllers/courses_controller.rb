@@ -2,6 +2,9 @@ class CoursesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @courses = @user.courses.order(:credit).to_a
+    @courses.each do |course|
+      course.message_board.id
+    end
   end
 
   def show
