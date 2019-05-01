@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+luca:
   feedback: MyString
-  user: one
-  message_board: one
+  user: luca
+  message_board: rdc
 
-two:
+giovanni:
   feedback: MyString
-  user: two
-  message_board: two
+  user: giovanni
+  message_board: rdc

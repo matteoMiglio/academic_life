@@ -1,0 +1,8 @@
+<h1><%= @course.name %></h1>
+<%= new_form @reviews %>
+
+<ul class="reviews">
+  <%= render @reviews %>
+</ul>
+
+<%= will_paginate @posts, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>

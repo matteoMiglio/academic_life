@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     resources :documents, only: [:index, :new, :create, :destroy]
     resources :rates, only: [:index, :create]
+    resources :reviews, only: [:index, :create]
   end
 
   resources :comments, only: [:create, :destroy]
