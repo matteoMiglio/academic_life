@@ -3,13 +3,21 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comments_params)
-    @comment.save ? flash[:success] = "Commento inserito!" : flash[:danger] = "Commento non inserito!"
 
-    @message_board_id = Post.find(comments_params[:post_id]).message_board
+    if @comment.save
+      flash[:success] = "Commento inserito!" 
 
-    redirect_to :controller => 'posts', :action => 'show', 
-                :id => comments_params[:post_id], #id del post
-                :message_board_id => @message_board_id
+      redirect_to :controller => 'posts', :action => 'show', 
+                  :id => comments_params[:post_id], #id del post
+                  :message_board_id => Post.find(comments_params[:post_id]).message_board
+    else 
+      flash[:danger] = "Commento non inserito!"
+
+      redirect_to :controller => 'posts', :action => 'show', 
+                  :id => comments_params[:post_id], #id del post
+                  :message_board_id => Post.find(comments_params[:post_id]).message_board,
+                  :errors => @comment.errors.full_messages
+    end
   end
 
   def destroy

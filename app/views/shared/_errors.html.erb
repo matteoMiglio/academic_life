@@ -1,7 +1,7 @@
 <% if not @errors.nil? %>
   <div id="error_explanation">
     <hr>
-    <p>La form contiene <%= pluralize(@errors.length, "error") %>:
+    <p>La form contiene <%= pluralize(@errors.length , "errore", "errori") %>:
       <ul>
       <% @errors.each do |msg| %>
         <li><%= msg %></li>

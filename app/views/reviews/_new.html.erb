@@ -2,7 +2,6 @@
   <div class="card-body">
     <h5 class="card-title">Dai una tua opinione sul corso</h5>
     <%= form_for [@message_board, @new_review] do |f| %>
-      <%= render 'shared/errors', object: f.object %>
       <div class="form-group">
         <%= f.text_area :feedback, class: "form-control" %>
         <%= f.hidden_field :message_board_id, :value => @message_board.id %>
