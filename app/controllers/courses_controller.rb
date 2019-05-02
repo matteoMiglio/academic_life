@@ -1,7 +1,10 @@
 class CoursesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @courses = @user.courses.order(:credit)
+    @courses = @user.courses.includes(:message_board).order(:credit)
+    @courses.each do |course|
+      course.message_board.id
+    end
   end
 
   def show

@@ -4,7 +4,16 @@ class DocumentsController < ApplicationController
   def index
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
+<<<<<<< HEAD
     @documents = @message_board.documents.pagination(params[:page])
+=======
+    @documents = @message_board.documents.pagination(params[:page], @message_board.documents.size)
+
+    @documents.each do |document|
+      document.file
+    end
+  end
+>>>>>>> tmp
 
     @errors = nil
   end
@@ -39,7 +48,6 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-
     @document.file.purge
     @document.destroy ? flash[:success] = "Documento eliminato!" : flash[:danger] = "Documento non eliminato!"
 

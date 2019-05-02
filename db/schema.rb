@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_123335) do
+ActiveRecord::Schema.define(version: 2019_04_30_190225) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2019_04_23_123335) do
   create_table "documents", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "path"
     t.integer "message_board_id"
     t.integer "user_id"
     t.integer "category_id"
@@ -137,11 +136,15 @@ ActiveRecord::Schema.define(version: 2019_04_23_123335) do
     t.index ["message_board_id"], name: "index_groups_on_message_board_id"
   end
 
-  create_table "groups_users", id: false, force: :cascade do |t|
-    t.integer "group_id"
+  create_table "members", force: :cascade do |t|
+    t.string "membership"
     t.integer "user_id"
-    t.index ["group_id"], name: "index_groups_users_on_group_id"
-    t.index ["user_id"], name: "index_groups_users_on_user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_members_on_group_id"
+    t.index ["user_id", "group_id"], name: "index_members_on_user_id_and_group_id", unique: true
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "message_boards", force: :cascade do |t|
@@ -185,6 +188,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_123335) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["message_board_id"], name: "index_reviews_on_message_board_id"
+    t.index ["user_id", "message_board_id"], name: "index_reviews_on_user_id_and_message_board_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 

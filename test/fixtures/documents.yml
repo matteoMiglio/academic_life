@@ -3,7 +3,6 @@
 prova:
   name: Appunti IS2
   description: Appunti presi oggi a lezione di Ingegneria del Software II
-  path: MyString
   message_board: rdc
   user: luca
   category: one

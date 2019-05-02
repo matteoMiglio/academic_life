@@ -1,17 +1,8 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to 'Posts', message_board_posts_url(@message_board.id), 
-                         class: "nav-link " + (type == "posts" ? "active" : "") %>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Membri</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Eventi</a>
-  </li>
-  <li class="nav-item">
-    <%= link_to 'Documenti', message_board_documents_url(@message_board.id), 
-                             class: "nav-link " + (type == "documents" ? "active" : "") %>
-  </li>
-</ul>
+<%= nav_bar do %>
+  <%= nav_link 'Posts', message_board_posts_path(@message_board) %>
+  <%= nav_link 'Iscritti', '#' %>
+  <%= nav_link 'Gruppi', message_board_groups_path(@message_board) %>
+  <%= nav_link 'Eventi', '#' %>
+  <%= nav_link 'Documenti', message_board_documents_url(@message_board) %>
+<% end %>
 

@@ -1,0 +1,24 @@
+<li id="group-<% group.id %>" class="group">
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title"> <%= group.name %> </h5>
+      <p class="card-text"> 
+        Membri: <span class="badge badge-secondary"> <%= group.members.length %> </span>
+      </p>
+      <p class="card-text"> Ruolo:
+        <% member = current_member(group.members) %>
+        <% role = member.membership %>
+        <span class="badge badge-<%= color(role) %>"> <%= role %> </span>
+      </p>
+    </div>
+    <div class="card-footer text-muted text-center">
+    <% if current_page?(action: 'index') %>
+      <%= link_to "Show", message_board_group_url(@message_board, group.id), class: "card-link" %>
+    <% else %>
+      <%= accept_link(member) %>
+      <%= exit_link(member) %>
+      <%= members_link(role) %>
+    <% end %>
+    </div>
+  </div>
+</li>

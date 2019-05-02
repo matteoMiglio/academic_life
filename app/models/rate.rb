@@ -4,5 +4,5 @@ class Rate < ApplicationRecord
 
   validates :user, presence: true
   validates :message_board, presence: true
-  validates :grade, presence: true, numericality: { only_integer: true }
+  validates :grade, presence: true, numericality: { only_integer: true, greater_than: 17, less_than: 32 }
 end

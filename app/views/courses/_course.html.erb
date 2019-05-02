@@ -7,6 +7,8 @@
     </div>
     <div class="card-footer">
       <%= link_to 'Visualizza', user_course_url(current_user.id, course.id), class: 'card-link'%>
+      <%= link_to 'Voti', message_board_rates_url(course.message_board.id), class: 'card-link'%>
+      <%= link_to 'Opinioni', message_board_reviews_url(course.message_board.id), class: 'card-link'%>
     </div>
   </div>
 </li>

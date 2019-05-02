@@ -1,0 +1,11 @@
+<li id="review-<%= review.id %>" class="review">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= review.user.name %> <%= review.user.surname %></h5>
+      <p class="card-text"><%= review.feedback %></p>
+    </div>
+    <div class="card-footer text-muted text-center">
+      <%= time_ago_in_words(review.updated_at) %> ago
+    </div>
+  </div>
+</li>

@@ -1,0 +1,15 @@
+<div class="card rate-form">
+  <div class="card-body">
+    <h5 class="card-title">Inserisci voto dell'insegnamento</h5>
+    <%= form_for [@message_board, @new_rate] do |f| %>
+      <%= render 'shared/errors', object: f.object %>
+      
+      <div class="form-group">
+        <%= f.text_field :grade, class: "form-control" %>
+      </div>
+
+      <%= f.hidden_field :message_board_id, :value => @message_board.id %>
+      <%= f.submit "Pubblica", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

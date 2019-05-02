@@ -1,0 +1,14 @@
+// Place all the styles related to the Reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.review-form {
+  margin-top: 10px;
+}
+
+ul.reviews {
+  list-style: none;
+  padding: 0;
+
+  li:first-child { margin-top: 10px; }
+  li { margin-bottom: 10px; }
+}
