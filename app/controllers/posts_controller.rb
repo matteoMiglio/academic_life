@@ -8,6 +8,8 @@ class PostsController < ApplicationController
       post.user.surname
     end
     @new_post = Post.new
+
+    @errors = params[:errors] if not params[:errors].nil?
   end
 
   def show
@@ -19,15 +21,28 @@ class PostsController < ApplicationController
       comment.user.name
       comment.user.surname
     end
+    
     @new_comment = Comment.new
+
+    @errors = params[:errors] if not params[:errors].nil?
   end
 
   def create
     @new_post = current_user.posts.build(post_params)
-    @new_post.save ? flash[:success] = "Post inserito!"
-                   : flash[:danger] = "Post non inserito!"
-    redirect_to :controller => 'posts',
-                :action => 'index'
+
+    if @new_post.save
+      flash[:success] = "Post inserito!"
+      
+      redirect_to :controller => 'posts',
+                  :action => 'index'
+    else 
+      flash[:danger] = "Post non inserito!"
+
+      redirect_to :controller => 'posts',
+                  :action => 'index',
+                  :errors => @new_post.errors.full_messages
+    end
+
   end
 
   def destroy

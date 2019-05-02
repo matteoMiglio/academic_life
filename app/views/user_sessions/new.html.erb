@@ -3,7 +3,7 @@
 </div>
 
 <%= form_for @user_session do |f| %>
-  <%= render 'shared/errors', object: f.object %>
+  <%= render 'shared/login_errors', object: f.object %>
 
   <div class="form-group">
     <%= f.label :email %>

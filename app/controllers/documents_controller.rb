@@ -11,20 +11,33 @@ class DocumentsController < ApplicationController
     end
   end
 
-  def create
-    @document = current_user.documents.build(documents_params)
-    @document.save ? flash[:success] = "Documento inserito!" : flash[:danger] = "Documento non inserito!"
-
-    redirect_to :controller => 'documents',
-                :action => 'index',
-                :message_board_id => params[:message_board_id]
-  end
-
   def new
     @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
     @categories = Category.all
     @document = Document.new
+
+    @errors = params[:errors]
+  end
+
+  def create
+    @document = current_user.documents.build(documents_params)
+
+    if @document.save
+      flash[:success] = "Documento inserito!"
+
+      redirect_to :controller => 'documents',
+                  :action => 'index',
+                  :message_board_id => params[:message_board_id]
+    else
+      flash[:danger] = "Documento non inserito!"
+
+      redirect_to :controller => 'documents',
+                  :action => 'new',
+                  :message_board_id => params[:message_board_id],
+                  :errors => @document.errors.full_messages
+    end
+
   end
 
   def destroy

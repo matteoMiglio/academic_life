@@ -18,15 +18,27 @@ class RatesController < ApplicationController
     if @total_rates.find_by(user_id: current_user).nil?
       @new_rate = Rate.new
     end
+
+    @errors = params[:errors] if not params[:errors].nil?
   end
 
   def create
     @rate = current_user.rates.build(rates_params)
-    @rate.save ? flash[:success] = "Voto inserito!" : flash[:danger] = "Voto non inserito!"
 
-    redirect_to :controller => 'rates', 
-                :action => 'index', 
-                :message_board_id => rates_params[:message_board_id]
+    if @rate.save
+      flash[:success] = "Voto inserito!" 
+
+      redirect_to :controller => 'rates', 
+                  :action => 'index', 
+                  :message_board_id => rates_params[:message_board_id]
+    else 
+      flash[:danger] = "Voto non inserito!"
+
+      redirect_to :controller => 'rates', 
+                  :action => 'index', 
+                  :message_board_id => rates_params[:message_board_id],
+                  :errors => @rate.errors.full_messages
+    end
   end
 
   private

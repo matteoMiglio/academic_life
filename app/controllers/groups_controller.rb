@@ -7,6 +7,8 @@ class GroupsController < ApplicationController
       group.members.each { |member| member.membership if current_user.id == member.user_id }
     end
     @new_group = Group.new
+
+    @errors = params[:errors] if not params[:errors].nil?
   end
 
   def show
@@ -21,7 +23,8 @@ class GroupsController < ApplicationController
     @new_group.create_group(@creator) ? flash[:success] = "Gruppo creato!"
                                       : flash[:danger]  = "Gruppo non creato!"
     redirect_to :controller => 'groups',
-                :action     => 'index'
+                :action     => 'index',
+                :errors => @new_group.errors.full_messages
   end
 
   def destroy
