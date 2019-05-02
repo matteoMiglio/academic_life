@@ -21,12 +21,6 @@ class DocumentsController < ApplicationController
   def create
     @document = current_user.documents.build(documents_params)
 
-    # @document.save ? flash[:success] = "Documento inserito!" : flash[:danger] = "Documento non inserito!"
-
-    # redirect_to :controller => 'documents',
-    #             :action => 'index',
-    #             :message_board_id => params[:message_board_id]
-
     if @document.save
       flash[:success] = "Documento inserito!"
 
