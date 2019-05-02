@@ -1,7 +1,7 @@
 <h1><%= @course.name %></h1>
 <%= render "message_boards/menu" %>
 
-<div class="d-flex flex-row">
+<div class="d-flex flex-row upload-button">
   <div class="ml-auto p-2">
     <%= link_to "Upload documento", 
                   new_message_board_document_url(@message_board.id),
