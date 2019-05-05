@@ -14,4 +14,6 @@ class User < ApplicationRecord
   has_many :approvals, dependent: :destroy
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :events
+
+  has_many :notifications, foreign_key: :recipient_id
 end
