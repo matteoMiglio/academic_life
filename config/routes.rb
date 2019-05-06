@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :create, :destroy]
     resources :groups, only: [:index, :show, :create, :destroy] do
       resources :members, only: [:index, :create, :update, :destroy]
+      resources :events, only: [:show, :create, :update, :destroy]
     end
     resources :documents, only: [:index, :new, :create, :destroy]
     resources :rates, only: [:index, :create]
