@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
   def show
     @message_board = MessageBoard.find(params[:message_board_id])
     @group = Group.includes(:members).find(params[:id])
+    @events = Group.find(params[:id]).events
   end
 
   def create
