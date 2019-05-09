@@ -7,8 +7,9 @@ class Notification < ApplicationRecord
   # validates :actor, presence: true
   # validates :notifiable, presence: true
 
-  scope :unread, ->{ where(read_at: nil) }
-  scope :ordered,    -> { order('created_at desc') }
-  scope :pagination, -> (page, entries) { paginate(page: page, per_page: 5, total_entries: entries)
+  scope :unread, -> { where(read_at: nil) }
+  scope :ordered, -> { order('created_at desc') }
+  scope :pagination, -> (page, entries) { includes(:actor)
+                                          .paginate(page: page, per_page: 5, total_entries: entries)
                                           .ordered }
 end

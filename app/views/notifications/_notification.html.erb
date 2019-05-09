@@ -1,9 +1,9 @@
-<li class="list-group-item" id="notification-<%= notification.id %>" >
+<li class="list-group-item <%= notification.read_at.nil? ? 'notification-unread' : '' %>"
+    id="notification-<%= notification.id %>">
   
   <div class="d-flex flex-row">
-
     <div class="p-2 notification-column">
-      <h6>Nome cognome ha commentato il tuo post</h6>
+      <h6><%= notification.actor.name %> <%= notification.actor.surname %> <%= notification.action %></h6>
     </div>  
   </div>
 
@@ -13,11 +13,13 @@
 
   <div class="d-flex flex-row">
     <div class="p-2 notification-column">   
-      <%= button_to "Visualizza", "#", class: "btn btn-success" %>
+      <%= link_to "Visualizza", 
+                  notification_url(notification), 
+                  class: "btn btn-success" %>
     </div>
     <div class="p-2 notification-column">   
-      <%= button_to "Elimina", "#", 
-          data: { confirm: "Vuoi eliminare la notifica?" }, class: "btn btn-danger" %>
+      <%= button_to "Elimina", notification, method: :delete, 
+                    data: { confirm: "Vuoi eliminare la notifica?" }, class: "btn btn-danger" %>
     </div>
   </div>
 </li>

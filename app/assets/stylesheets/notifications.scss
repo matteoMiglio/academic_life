@@ -5,15 +5,21 @@
 
 .card-notifications {
 
+  margin-bottom: 20px;
+
   div.card-body {
     padding: 0rem 0rem;
 
     .list-group-item {
       padding-top: 20px;
+
+      .notification-column {
+        padding-left: 0px !important;
+      }
     }
 
-    .notification-column {
-      padding-left: 0px !important;
+    .notification-unread {
+      background-color: azure;
     }
   }
 
