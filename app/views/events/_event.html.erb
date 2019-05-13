@@ -1,0 +1,28 @@
+<li class="list-group-item" id="event-<%= event.id %>" >
+  
+  <div class="d-flex flex-row">
+    <div>
+      <h5 class="float-left"> <%= event.name %></h5>
+      <% @creator.each do |creator| %>
+        <% if creator.event_id == event.id %>
+          <%= link_to message_board_group_event_url(@message_board, @group, event), method: :delete do %>
+            <button type="button" class="btn btn-danger btn-sm float-right ml-3">Elimina evento</button>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div> 
+    
+  <p class="event-details">
+    <i class="fas fa-calendar-alt mr-2"></i>
+    <%= event.appointment.to_formatted_s(:short) %>
+  </p>
+  <p class="event-details">
+    <i class="fas fa-map-marker-alt mr-2"></i>
+    <%= event.place %>
+  </p>
+  <p><%= event.description %> </p>
+
+  <p class="text-muted"><%= time_ago_in_words(event.created_at) %> ago</p>
+
+</li>
