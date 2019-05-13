@@ -2,16 +2,11 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
   def setup
-    @group = groups(:lafayette)
-    @event = Event.new(name: "Progetto",
-                        description: "Discussione casi d'uso",
-                        appointment: "2019-05-05 16:06:45",
-                        place: "Ingegneria",
-                        group_id: @group.id)
+    @event = events(:evento)
   end
 
   test "should be valid" do
-    assert @event.valid?
+    assert @event.valid? 
   end
 
   test "group id should be present" do
@@ -52,6 +47,6 @@ class EventTest < ActiveSupport::TestCase
   test "place should be at most 100 characters" do
     @event.place = "a" * 101
     assert_not @event.valid?
-  end
+  end 
 
 end
