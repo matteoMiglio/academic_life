@@ -12,7 +12,8 @@ class GroupsController < ApplicationController
   def show
     @message_board = MessageBoard.find(params[:message_board_id])
     @group = Group.includes(:members).find(params[:id])
-    @events = Group.find(params[:id]).events
+    @events = @group.events.where('appointment > ?', DateTime.now.beginning_of_day)
+    @creator = Participant.where(role: "creator")
   end
 
   def create
