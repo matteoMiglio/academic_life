@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+luca:
+  role: creator
+  user: luca
+  event: evento
+
+giovanni:
+  role: member
+  user: giovanni
+  event: evento
