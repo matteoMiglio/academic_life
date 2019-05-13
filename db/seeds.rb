@@ -11,6 +11,7 @@
   Document,
 
   # 2 addictions
+  Participant,
   Review,
   Rate,
   Member,
@@ -51,6 +52,7 @@ load 'db/seeds/rate.rb'          # Depends on user and message_board
 load 'db/seeds/review.rb'        # Depends on user and message_board
 load 'db/seeds/approval.rb'      # Depends on user and post
 load 'db/seeds/member.rb'        # Depends on user and group
+load 'db/seeds/participant.rb'   # Depends on user and event
 
 load 'db/seeds/document.rb'      # Depends on user, message_board and category
 
