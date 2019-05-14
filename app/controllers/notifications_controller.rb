@@ -3,12 +3,16 @@ class NotificationsController < ApplicationController
   def index
     @length_notifications = Notification.where(recipient_id: current_user).count
 
-    @notifications = Notification.where(recipient_id: current_user)
-                                 .pagination(params[:page], @length_notifications)
+    if @length_notifications > 0
+      @notifications = Notification.where(recipient_id: current_user)
+                                  .pagination(params[:page], @length_notifications)
 
-    @notifications.each do |notification|
-      notification.actor.name
-      notification.actor.surname
+      @notifications.each do |notification|
+        notification.actor.name
+        notification.actor.surname
+      end
+    else
+      @notifications = nil
     end
   end
 
@@ -24,6 +28,12 @@ class NotificationsController < ApplicationController
                     :action => 'show',
                     :id => @notification.notifiable.post
 
+      elsif @notification.notifiable.class == Group
+
+        redirect_to :controller => 'groups',
+                    :action => 'show',
+                    :message_board_id => @notification.notifiable.message_board,
+                    :id => @notification.notifiable
       elsif
 
         flash[:danger] = "Promemoria altre classi di notifiche"

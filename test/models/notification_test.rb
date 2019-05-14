@@ -4,7 +4,7 @@ class NotificationTest < ActiveSupport::TestCase
   def setup
     @user = users(:giovanni)
     @current_user = users(:luca)
-    @comment = comments(:example)
+    @comment = Comment.new(description: "ciao", post_id: 2, user_id: @current_user)
     @notification = Notification.new(recipient_id: @user, actor_id: @current_user, 
                                      action: "comment", notifiable: @comment)
   end
@@ -18,13 +18,8 @@ class NotificationTest < ActiveSupport::TestCase
     assert_not @notification.valid?
   end
 
-  test "notifiable_id should be present" do
-    @notification.notifiable_id = nil
-    assert_not @notification.valid?
-  end
-
-  test "notifiable_type should be present" do
-    @notification.notifiable_type = nil
+  test "notifiable should be present" do
+    @notification.notifiable = nil
     assert_not @notification.valid?
   end
 

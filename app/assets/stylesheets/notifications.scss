@@ -11,10 +11,16 @@
     padding: 0rem 0rem;
 
     .list-group-item {
-      padding-top: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
 
       .notification-column {
         padding-left: 0px !important;
+      }
+
+      .text-muted {
+        font-size: smaller;
+        margin-bottom: 2px;
       }
     }
 

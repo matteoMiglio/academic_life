@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :get_unread_notifications #, if: :user_signed_in?
 
   def get_unread_notifications
-    @unread_notifications = Notification.where(recipient_id: 1, read_at: nil).count
+    @unread_notifications = Notification.where(recipient_id: current_user, read_at: nil).count
   end
 
   private

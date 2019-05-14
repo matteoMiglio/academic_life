@@ -17,6 +17,13 @@ class MembersController < ApplicationController
     @new_member = @group.members.build(user_id: member_params[:user_id], membership: "invited")
     @new_member.save ? flash[:success] = "Membro aggiunto!"
                      : flash[:danger]  = "Membro non aggiunto!"
+
+    # invio la notifica
+    Notification.create(recipient: @new_member.user, 
+                        actor: current_user, 
+                        action: "ti ha invitato in un gruppo privato.", 
+                        notifiable: @group)
+
     redirect_to :controller => 'members',
                 :action => 'index'
   end
@@ -34,6 +41,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.destroy ? flash[:success] = "Membro eliminato!"
                     : flash[:danger]  = "Membro non eliminato!"
+                    
     if @member.user_id == current_user.id
       redirect_to :controller => 'groups', 
                   :action => 'index' 
