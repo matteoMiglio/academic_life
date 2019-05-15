@@ -6,7 +6,7 @@ class GroupTest < ActiveSupport::TestCase
   end
 
   test "should be valid" do
-    assert @group.valid?
+    assert @group.valid? 
   end
 
   test "name should be present" do

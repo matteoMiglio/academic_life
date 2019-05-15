@@ -12,8 +12,9 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :groups, :through => :members
   has_many :approvals, dependent: :destroy
+  has_many :participants, dependent: :destroy
+  has_many :events, :through => :participants
+  has_many :notifications, foreign_key: :recipient_id
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :events
-
-  has_many :notifications, foreign_key: :recipient_id
 end

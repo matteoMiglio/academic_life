@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_05_04_163758) do
+=======
+ActiveRecord::Schema.define(version: 2019_05_02_081559) do
+>>>>>>> tmp
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -112,12 +116,10 @@ ActiveRecord::Schema.define(version: 2019_05_04_163758) do
     t.string "description"
     t.datetime "appointment"
     t.string "place"
-    t.integer "user_id"
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_events_on_group_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "events_users", id: false, force: :cascade do |t|
@@ -163,6 +165,17 @@ ActiveRecord::Schema.define(version: 2019_05_04_163758) do
     t.string "notifiable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.string "role"
+    t.integer "user_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participants_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_participants_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
