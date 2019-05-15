@@ -2,11 +2,12 @@ require 'test_helper'
 
 class NotificationTest < ActiveSupport::TestCase
   def setup
-    @user = users(:giovanni)
+    @user = users(:dario)
     @current_user = users(:luca)
-    @comment = Comment.new(description: "ciao", post_id: 2, user_id: @current_user)
+    @post = posts(:medium)
+    @comment = Comment.new(description: "ciao", post_id: @post, user_id: @current_user)
     @notification = Notification.new(recipient_id: @user, actor_id: @current_user, 
-                                     action: "comment", notifiable: @comment)
+                                     action: "ha commentato un tuo post.", notifiable: @comment)
   end
 
   test "should be valid" do

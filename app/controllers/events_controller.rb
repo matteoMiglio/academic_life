@@ -12,7 +12,13 @@ class EventsController < ApplicationController
     @event.participants.create(role: "creator", user_id: current_user.id)
     @group.users.each do |user|
       if user.id != current_user.id
+        
         @event.participants.create(role: "member", user_id: user.id)
+
+        Notification.create(recipient: user, 
+                            actor: current_user, 
+                            action: "ha creato un evento in un gruppo di cui fai parte.", 
+                            notifiable: @event)
       end
     end
     

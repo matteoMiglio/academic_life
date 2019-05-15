@@ -2,7 +2,7 @@
 
 comment_notification:
   recipient_id: 1
-  actor_id: 2
+  actor_id: 4
   read_at: 2019-05-04 18:37:58
   action: "comment"
   notifiable_id: 3

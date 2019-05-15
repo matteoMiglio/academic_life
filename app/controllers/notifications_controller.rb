@@ -34,9 +34,17 @@ class NotificationsController < ApplicationController
                     :action => 'show',
                     :message_board_id => @notification.notifiable.message_board,
                     :id => @notification.notifiable
+
+      elsif @notification.notifiable.class == Event
+
+        redirect_to :controller => 'groups',
+                    :action => 'show',
+                    :message_board_id => @notification.notifiable.group.message_board,
+                    :id => @notification.notifiable.group
+
       elsif
 
-        flash[:danger] = "Promemoria altre classi di notifiche"
+        flash[:danger] = "Nessun link."
 
       end
 
