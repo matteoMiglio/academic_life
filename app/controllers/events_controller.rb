@@ -6,14 +6,16 @@ class EventsController < ApplicationController
     @message_board = MessageBoard.find(params[:message_board_id])
     @group = Group.find(params[:group_id])
     @event = current_user.events.build(events_params)
-    @event.save ? flash[:success] = "Evento creato!" 
-                : flash[:danger] = "Errore creazione evento"
-    
-    @event.participants.create(role: "creator", user_id: current_user.id)
-    @group.users.each do |user|
-      if user.id != current_user.id
-        @event.participants.create(role: "member", user_id: user.id)
+    if @event.save 
+      @event.participants.create(role: "creator", user_id: current_user.id)
+      @group.users.each do |user|
+        if user.id != current_user.id
+          @event.participants.create(role: "member", user_id: user.id)
+        end
+        flash[:success] = "Evento creato!" 
       end
+    else
+      flash[:danger] = "Errore creazione evento"
     end
     
     redirect_to message_board_group_url(@message_board, @group)
@@ -26,7 +28,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    Event.find(params[:id]).destroy ? flash[:succes] = "Evento eliminato!"
+    Event.find(params[:id]).destroy ? flash[:success] = "Evento eliminato!"
                                     : flash[:danger] = "Errore eliminazione evento"
     
     @message_board = MessageBoard.find(params[:message_board_id])
