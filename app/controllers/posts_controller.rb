@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource :message_board
+  before_action :load_posts, only: :index
+  before_action :load_post, only: :show
+  load_and_authorize_resource :post, through: :message_board
+
   def index
-    @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
-    @posts = @message_board.posts.pagination(params[:page], @message_board.posts.size)
     @posts.each do |post|
       post.user.name
       post.user.surname
@@ -11,10 +14,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:approvals).find(params[:id])
     @post.user.name
     @post.user.surname
-    @comments = @post.comments.pagination(params[:page], @post.comments.size)
+    @comments = @post.comments.paginated(params[:page], @post.comments.size)
     @comments.each do |comment|
       comment.user.name
       comment.user.surname
@@ -23,9 +25,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @new_post = current_user.posts.build(post_params)
+    @new_post = @message_board.posts.build(description: post_params[:description], 
+                                       user_id: current_user.id)
     @new_post.save ? flash[:success] = "Post inserito!"
-                   : flash[:danger] = "Post non inserito!"
+               : flash[:danger] = "Post non inserito!"
     redirect_to :controller => 'posts',
                 :action => 'index'
   end
@@ -39,7 +42,18 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:post).permit(:description, :message_board_id)
-  end
+    def post_params
+      params.require(:post).permit(:description)
+    end
+
+    def load_posts
+      @posts = @message_board.posts.paginated(params[:page], @message_board.posts.size)
+    end
+
+    def load_post
+      @post = @message_board.posts.includes(:approvals).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:warning] = "Il post che vuoi visualizzare non esiste in questa bacheca"
+      redirect_to :action => 'index'
+    end
 end

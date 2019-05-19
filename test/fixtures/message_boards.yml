@@ -2,5 +2,8 @@
 
 # di so viene fatto il build in messsage_board_test
 
+so:
+  course: so
+
 rdc:
   course: rdc

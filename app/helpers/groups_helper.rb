@@ -18,7 +18,7 @@ module GroupsHelper
     role = member.membership
     options = { method: :patch, class: "card-link text-success" }
     url = message_board_group_member_url(@message_board, @group, member)
-    link_to "Accept", url, options if role == "invited"
+    link_to "Accept", url, options if can? :update, member
   end
 
   def exit_link(member)

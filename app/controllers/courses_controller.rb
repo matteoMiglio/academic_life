@@ -1,7 +1,9 @@
 class CoursesController < ApplicationController
+  load_and_authorize_resource :user
+  load_and_authorize_resource :course, through: :user
+
   def index
-    @user = User.find(params[:user_id])
-    @courses = @user.courses.includes(:message_board).order(:credit)
+    @courses = @courses.includes(:message_board).order(:credit)
     @courses.each do |course|
       course.message_board.id
     end

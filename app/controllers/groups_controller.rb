@@ -19,14 +19,14 @@ class GroupsController < ApplicationController
     @new_group = @message_board.groups.build(group_params)
     @creator = @new_group.members.build(membership: "creator", user_id: current_user.id)
     @new_group.create_group(@creator) ? flash[:success] = "Gruppo creato!"
-                                      : flash[:danger]  = "Gruppo non creato!"
+                                      : flash[:danger] = "Gruppo non creato!"
     redirect_to :controller => 'groups',
-                :action     => 'index'
+                :action => 'index'
   end
 
   def destroy
     Group.find(params[:id]).destroy ? flash[:success] = "Gruppo eliminato!"
-                                    : flash[:danger]  = "Gruppo non eliminato!"
+                                    : flash[:danger] = "Gruppo non eliminato!"
     redirect_to :controller => 'groups', 
                 :action => 'index' 
   end

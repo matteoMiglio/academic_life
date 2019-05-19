@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :user_sessions, only: [:create, :destroy]
 
-  resources :message_boards, only: [:show] do
+  resources :message_boards do
     resources :posts, only: [:index, :show, :create, :destroy]
     resources :groups, only: [:index, :show, :create, :destroy] do
       resources :members, only: [:index, :create, :update, :destroy]

@@ -1,8 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :correct_user, only: :destroy
-
   def index
-    @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
     @documents = @message_board.documents.pagination(params[:page], @message_board.documents.size)
 
@@ -21,7 +19,6 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    @message_board = MessageBoard.find(params[:message_board_id])
     @course = @message_board.course
     @categories = Category.all
     @document = Document.new
