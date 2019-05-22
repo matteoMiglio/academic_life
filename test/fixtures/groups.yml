@@ -4,3 +4,13 @@ lafayette:
   name: Lafayette
   state: private
   message_board: rdc
+
+mahan:
+  name: Mahan
+  state: private
+  message_board: rdc
+
+napoleone:
+  name: Napoleone
+  state: private
+  message_board: rdc

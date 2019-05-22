@@ -36,15 +36,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to message_board_posts_url(@message_board)
   end
 
-  test "user can only access to his message boards" do
-    other_message_board = message_boards(:so)
-    assert @ability.can?(:index, @message_board)
-    assert @ability.cannot?(:index, other_message_board)                                               
-  end
-
   test "user can only destroy posts which they own" do
     other_post = posts(:older)
-    assert @ability.can?(:destroy, @post)  
-    assert @ability.cannot?(:destroy, other_post)                                               
+    ability = Ability.new(@user)
+    assert ability.can?(:destroy, @post)  
+    assert ability.cannot?(:destroy, other_post)                                               
   end
 end

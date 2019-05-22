@@ -1,11 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-luca:
+luca_lafayette:
   membership: creator
   user: luca
   group: lafayette
 
-dario:
+dario_lafayette:
   membership: member
   user: dario
   group: lafayette
+
+luca_mahan:
+  membership: member
+  user: luca
+  group: mahan
+
+luca_napoleone:
+  membership: invited
+  user: luca
+  group: napoleone
+
+giovanni_napoleone:
+  membership: creator
+  user: giovanni
+  group: napoleone

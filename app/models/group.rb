@@ -9,8 +9,11 @@ class Group < ApplicationRecord
                                              minimum: 5, too_short: "Nome troppo corto!" }
   validates :state, presence: true, inclusion: { in: %w(public private) }
 
-  scope :ordered,      -> { order('updated_at desc') }
-  scope :with_members, -> (id) { includes(:members).where(message_board_id: id).ordered }
+  scope :ordered, -> { order('updated_at desc') }
+  scope :paginated, -> (id, page, entries) { includes(:members)
+                                             .where(message_board_id: id)
+                                             .paginate(page: page, per_page: 5, total_entries: entries)
+                                             .ordered }
 
   def create_group(creator)
     Group.transaction do

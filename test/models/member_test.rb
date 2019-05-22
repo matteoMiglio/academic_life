@@ -3,7 +3,7 @@ require 'test_helper'
 class MemberTest < ActiveSupport::TestCase
   def setup
     @user = users(:luca)
-    @member = members(:luca)
+    @member = members(:luca_lafayette)
   end
 
   test "should be valid" do

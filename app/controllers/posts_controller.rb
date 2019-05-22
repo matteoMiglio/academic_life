@@ -26,16 +26,16 @@ class PostsController < ApplicationController
 
   def create
     @new_post = @message_board.posts.build(description: post_params[:description], 
-                                       user_id: current_user.id)
+                                           user_id: current_user.id)
     @new_post.save ? flash[:success] = "Post inserito!"
-               : flash[:danger] = "Post non inserito!"
+                   : flash[:danger] = "Post non inserito!"
     redirect_to :controller => 'posts',
                 :action => 'index'
   end
 
   def destroy
-    Post.find(params[:id]).destroy ? flash[:success] = "Post eliminato!"
-                                   : flash[:danger] = "Post non eliminato!"
+    @post.destroy ? flash[:success] = "Post eliminato!"
+                  : flash[:danger] = "Post non eliminato!"
     redirect_to :controller => 'posts',
                 :action => 'index'
   end
