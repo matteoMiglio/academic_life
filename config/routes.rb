@@ -28,4 +28,7 @@ Rails.application.routes.draw do
 
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
   get '/sign_in', to: 'user_sessions#new', as: :sign_in
+
+  get 'errors/access_denied'
+  get 'errors/record_not_found'
 end

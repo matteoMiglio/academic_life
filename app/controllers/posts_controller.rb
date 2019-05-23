@@ -52,8 +52,5 @@ class PostsController < ApplicationController
 
     def load_post
       @post = @message_board.posts.includes(:approvals).find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      flash[:warning] = "Il post che vuoi visualizzare non esiste in questa bacheca"
-      redirect_to :action => 'index'
     end
 end

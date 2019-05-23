@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :warning, :danger, :info
 
   rescue_from CanCan::AccessDenied do |exception|
-      redirect_to root_url, warning: exception.message
+    redirect_to errors_access_denied_url
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    redirect_to errors_record_not_found_url
   end
 
   private
