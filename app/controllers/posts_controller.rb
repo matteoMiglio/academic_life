@@ -11,7 +11,6 @@ class PostsController < ApplicationController
       post.user.surname
     end
     @new_post = Post.new
-
     @errors = params[:errors] if not params[:errors].nil?
   end
 
@@ -23,14 +22,13 @@ class PostsController < ApplicationController
       comment.user.name
       comment.user.surname
     end
-    
     @new_comment = Comment.new
-
     @errors = params[:errors] if not params[:errors].nil?
   end
 
   def create
-    @new_post = current_user.posts.build(post_params)
+    @new_post = @message_board.posts.build(user_id: current_user.id,
+                                           description: post_params[:description])
     if @new_post.save
       flash[:success] = "Post inserito!"
       redirect_to :controller => 'posts',

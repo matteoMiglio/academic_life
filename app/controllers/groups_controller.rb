@@ -50,4 +50,5 @@ class GroupsController < ApplicationController
 
     def load_group
       @group = @message_board.groups.includes(:members).find(params[:id])
+    end
 end
