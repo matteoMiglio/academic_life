@@ -17,7 +17,7 @@ class MemberTest < ActiveSupport::TestCase
 
   test "membership should be 'udefined' or 'member' or 'creator'" do
     @member.membership = 'a'*6
-    assert_not @member.valid?
+    assert_not @member.valid? 
   end
 
   test "user id should be different in a group" do

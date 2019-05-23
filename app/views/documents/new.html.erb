@@ -5,7 +5,6 @@
   <div class="card-body">
     <h5 class="card-title">Pubblica un nuovo documento</h5>
     <%= form_for [@message_board, @document] do |f| %>
-      <%= render 'shared/errors', object: f.object %>
       
       <div class="form-group">
         <label for="document_name">Nome</label>

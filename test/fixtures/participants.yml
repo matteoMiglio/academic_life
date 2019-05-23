@@ -1,6 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-rate_one:
-  grade: 28
+luca:
+  role: creator
   user: luca
-  message_board: rdc
+  event: evento
+
+giovanni:
+  role: member
+  user: giovanni
+  event: evento

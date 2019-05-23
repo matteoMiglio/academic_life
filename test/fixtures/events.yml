@@ -1,17 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-  appointment: 2018-08-28 15:40:43
-  place: MyString
-  user: one
-  group: one
-
-two:
-  name: MyString
-  description: MyString
-  appointment: 2018-08-28 15:40:43
-  place: MyString
-  user: two
-  group: two
+evento: 
+  name: "Progetto"
+  description: "Discussione casi d'uso"
+  appointment: 2020-05-05 16:06:45
+  place: "Ingegneria"
+  group: lafayette

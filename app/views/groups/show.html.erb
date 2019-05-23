@@ -1,3 +1,28 @@
 <ul class="groups">
   <%= render @group %>
 </ul>
+
+<div class="d-flex flex-row">
+  <div class="ml-auto p-2">
+    <%= link_to "Crea evento", 
+                  new_message_board_group_event_url(@message_board, @group),
+                  class: "btn btn-info" %>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header text-center">
+    Eventi
+  </div>
+  <div class="card-body">
+    <% if @events.any? %>
+      <ul class="list-group list-group-flush">
+        <%=  render @events,  :creator => @creator,
+                              :message_board => @message_board,
+                              :group => @group %>
+      </ul>
+    <% else %>
+      <h5 align="center"> Non sono ancora presenti eventi per questo gruppo </h5>
+    <% end %>
+  </div>
+</div>

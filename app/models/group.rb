@@ -5,8 +5,7 @@ class Group < ApplicationRecord
   has_many :users, :through => :members
 
   validates :message_board, presence: true
-  validates :name, presence: true, length: { maximum: 100, too_long: "Nome troppo lungo!",
-                                             minimum: 5, too_short: "Nome troppo corto!" }
+  validates :name, presence: true, length: { maximum: 100, minimum: 5 }
   validates :state, presence: true, inclusion: { in: %w(public private) }
 
   scope :ordered, -> { order('updated_at desc') }

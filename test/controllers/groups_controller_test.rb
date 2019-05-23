@@ -13,7 +13,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "shoul get show" do
+  test "should get show" do
     login(@user)
     get message_board_group_url(@message_board, @group)
     assert_response :success

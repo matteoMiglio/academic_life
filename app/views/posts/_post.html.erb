@@ -1,7 +1,7 @@
 <li id="post-<% post.id %>" class="post">
   <div class="card">
     <div class="card-body row">
-      <div class="col-1">
+      <div class="col-1 px-2">
         <%=  render 'approvals/approval', :post => post, 
                                           :pre_approval => find_my_approval(post.approvals),
                                           :approvals_count => post.approvals.length %>

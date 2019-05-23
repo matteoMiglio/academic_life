@@ -1,12 +1,13 @@
 class Event < ApplicationRecord
-  belongs_to :user
   belongs_to :group
-  has_and_belongs_to_many :users
+  has_many :participants, dependent: :destroy
+  has_many :users, :through => :participants
 
-  validates :user, presence: true
+  default_scope -> { order(appointment: :asc) }
+
   validates :group, presence: true
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 300 }
-  validates :appointment, presence: true, date: true 
+  validates :appointment, presence: true, date: true
   validates :place, presence: true, length: { maximum: 100 }
 end

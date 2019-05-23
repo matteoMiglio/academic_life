@@ -10,9 +10,12 @@ class GroupsController < ApplicationController
       group.members.each { |member| member.membership if current_user.id == member.user_id }
     end
     @new_group = Group.new
+    @errors = params[:errors] if not params[:errors].nil?
   end
 
   def show
+    @events = @group.events.where('appointment > ?', DateTime.now.beginning_of_day)
+    @creator = Participant.where(role: "creator")
   end
 
   def create
@@ -23,7 +26,8 @@ class GroupsController < ApplicationController
     @new_group.create_group(@creator) ? flash[:success] = "Gruppo creato!"
                                       : flash[:danger] = "Gruppo non creato!"
     redirect_to :controller => 'groups',
-                :action => 'index'
+                :action => 'index',
+                :errors => @new_group.errors.full_messages
   end
 
   def destroy
@@ -46,8 +50,4 @@ class GroupsController < ApplicationController
 
     def load_group
       @group = @message_board.groups.includes(:members).find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      flash[:warning] = "Il gruppo che vuoi visualizzare non esiste in questa bacheca"
-      redirect_to :action => 'index'
-    end
 end

@@ -11,6 +11,8 @@ class PostsController < ApplicationController
       post.user.surname
     end
     @new_post = Post.new
+
+    @errors = params[:errors] if not params[:errors].nil?
   end
 
   def show
@@ -21,16 +23,24 @@ class PostsController < ApplicationController
       comment.user.name
       comment.user.surname
     end
+    
     @new_comment = Comment.new
+
+    @errors = params[:errors] if not params[:errors].nil?
   end
 
   def create
-    @new_post = @message_board.posts.build(description: post_params[:description], 
-                                           user_id: current_user.id)
-    @new_post.save ? flash[:success] = "Post inserito!"
-                   : flash[:danger] = "Post non inserito!"
-    redirect_to :controller => 'posts',
-                :action => 'index'
+    @new_post = current_user.posts.build(post_params)
+    if @new_post.save
+      flash[:success] = "Post inserito!"
+      redirect_to :controller => 'posts',
+                  :action => 'index'
+    else 
+      flash[:danger] = "Post non inserito!"
+      redirect_to :controller => 'posts',
+                  :action => 'index',
+                  :errors => @new_post.errors.full_messages
+    end
   end
 
   def destroy
