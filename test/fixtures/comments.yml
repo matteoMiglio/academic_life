@@ -19,7 +19,7 @@ most_recent:
   created_at: <%= Time.zone.now %>
 
 example:
-  description: "PROVAAA"
+  description: "sono un commento di esempio"
   user: luca
   post: recent
   created_at: <%= 2.hours.ago %>

@@ -26,14 +26,23 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to message_board_post_url(@message_board, @post)
   end
 
-  test "user can only comment in his message boards" do
+  test "user can only create comments in his posts" do
     login(@user)
-    mb = message_boards(:so)
-    p_so = posts(:post_so)
-    p_rdc = posts(:older)
+    other_post = posts(:post_so)
     assert_no_difference "Comment.count" do
-      post message_board_post_comments_url(@message_board, p_so), 
+      post message_board_post_comments_url(@message_board, other_post), 
           params: { comment: { description: "Lorem Ipsum" } }
     end
+    assert_response :redirect
+    get errors_record_not_found_url
+    assert_response :success
+  end
+
+  test "user can only destroy his comments" do
+    login(@user)
+    other_comment = comments(:older)
+    ability = Ability.new(@user)
+    ability.can?(:destroy, @comment)
+    ability.cannot?(:destroy, other_comment)
   end
 end
