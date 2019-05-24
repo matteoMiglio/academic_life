@@ -6,8 +6,10 @@
     </div>
     <% if current_user.id == comment.user_id %>
       <div class="ml-auto p-2">   
-        <%= button_to "Elimina", comment, method: :delete, 
-            data: { confirm: "Vuoi eliminare il commento?" }, class: "btn btn-danger" %>
+        <%= button_to "Elimina", message_board_post_comment_url(@message_board, @post, comment), 
+                                 method: :delete, 
+                                 data: { confirm: "Vuoi eliminare il commento?" }, 
+                                 class: "btn btn-danger" %>
       </div>
     <% end %>
   </div>

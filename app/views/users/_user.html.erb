@@ -1,9 +1,7 @@
 <div class="row mt-5">
   <div class="col-12 col-md-6 mx-auto" align="center">
       <img class="image-profile" src="https://picsum.photos/200/300/?random"/>
-      <h4>
-        <%= @user.name %> <%= @user.surname %>
-      </h4>
+      <hr>
   </div>
   <div class="col-12 col-md-6 mx-auto">
     <div>
@@ -13,11 +11,6 @@
       <p class="text-muted"><%= @user.birthday%></p>
       <h5>Indirizzo</h5>
       <p class="text-muted"><%= @user.address%></p>
-    </div>
-    <div class="mt-4">
-      <h5>Corsi attivi: <font class="text-muted"><%= @user.courses.count %></font></h5>
-      <h5>Documenti caricati: <font class="text-muted"><%= @user.documents.count %></font></h5>
-      <h5>Eventi creati: <font class="text-muted"><%= @user.documents.count %></font></h5>
     </div>
   </div>
 </div>

@@ -23,3 +23,9 @@ most_recent:
   user: giovanni
   message_board: rdc
   created_at: <%= Time.zone.now %>
+
+post_so:
+  description: "sono un post in so"
+  user: giovanni
+  message_board: so
+  created_at: <%= Time.zone.now %>

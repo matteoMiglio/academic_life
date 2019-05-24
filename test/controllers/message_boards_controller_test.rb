@@ -9,7 +9,7 @@ class MessageBoardsControllerTest < ActionDispatch::IntegrationTest
  
   test "user can only access to his message boards" do
     other_message_board = message_boards(:so)
-    assert @ability.can?(:index, @message_board)
-    assert @ability.cannot?(:index, other_message_board)                                               
+    assert @ability.can?(:read, @message_board)
+    assert @ability.cannot?(:read, other_message_board)                                               
   end
 end

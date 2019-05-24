@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create, :destroy]
 
   resources :message_boards do
-    resources :posts, only: [:index, :show, :create, :destroy]
+    resources :posts, only: [:index, :show, :create, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :groups, only: [:index, :show, :create, :destroy] do
       resources :members, only: [:index, :create, :update, :destroy]
       resources :events, only: [:new, :create, :destroy]
@@ -18,8 +20,6 @@ Rails.application.routes.draw do
     resources :rates, only: [:index, :create]
     resources :reviews, only: [:index, :create]
   end
-
-  resources :comments, only: [:create, :destroy]
 
   resources :posts do
     resources :approvals, only: [:create, :destroy]

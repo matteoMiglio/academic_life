@@ -1,47 +1,39 @@
 class CommentsController < ApplicationController
-  before_action :correct_user, only: :destroy
+  load_and_authorize_resource :message_board
+  load_and_authorize_resource :post, through: :message_board
+  load_and_authorize_resource :comment, through: :post
 
   def create
-    @comment = current_user.comments.build(comments_params)
+    @comment = @post.comments.build(description: comment_params[:description],
+                                    user_id: current_user.id)
     if @comment.save
       flash[:success] = "Commento inserito!" 
-
-      redirect_to :controller => 'posts', :action => 'show', 
-                  :id => comments_params[:post_id], #id del post
-                  :message_board_id => Post.find(comments_params[:post_id]).message_board
+      redirect_to :controller => 'posts', 
+                  :action => 'show', 
+                  :id => @post.id,
+                  :message_board_id => @message_board.id
     else 
       flash[:danger] = "Commento non inserito!"
-
-      redirect_to :controller => 'posts', :action => 'show', 
-                  :id => comments_params[:post_id], #id del post
-                  :message_board_id => Post.find(comments_params[:post_id]).message_board,
+      redirect_to :controller => 'posts', 
+                  :action => 'show', 
+                  :id => @post.id,
+                  :message_board_id => @post.message_board_id,
                   :errors => @comment.errors.full_messages
     end
   end
 
   def destroy
-    @post_id = @comment.post_id
-    @message_board_id = Post.find(@post_id).message_board
     @comment.destroy ? flash[:success] = "Commento eliminato!" 
                      : flash[:danger] = "Commento non eliminato!"
-
-    redirect_to :controller => 'posts', :action => 'show', 
-                :id => @post_id, #id del post
-                :message_board_id => @message_board_id
+    redirect_to :controller => 'posts', 
+                :action => 'show', 
+                :id => @post.id,
+                :message_board_id => @message_board.id
   end
 
   private
   
-    def comments_params
-      params.require(:comment).permit(:description, :post_id)
-    end
-
-    def correct_user
-      @comment = current_user.comments.find_by(id: params[:id])
-
-      if @comment.nil?
-        flash[:danger] = "Non puoi eliminare un commento scritto da un altro!"
-        redirect_to request.referrer 
-      end
+    def comment_params
+      params.require(:comment).permit(:description)
     end
 end

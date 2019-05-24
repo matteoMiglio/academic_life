@@ -23,7 +23,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should get create" do
     login(@user)
     assert_difference "Post.count" do
-      post message_board_posts_url(@message_board), params: { post: { description: "Lorem Ipsum" } }
+      post message_board_posts_url(@message_board),
+           params: { post: { description: "Lorem Ipsum" } }
     end
     assert_redirected_to message_board_posts_url(@message_board)
   end
