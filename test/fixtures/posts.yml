@@ -6,6 +6,12 @@ older:
   message_board: rdc
   created_at: <%= 2.years.ago %>
 
+post_so:
+  description: "sono un post in so"
+  user: giovanni
+  message_board: so
+  created_at: <%= 1.years.ago %>
+
 medium:
   description: "Questo post è di 1 ora fa"
   user: luca
@@ -22,10 +28,4 @@ most_recent:
   description: "Ciao rega, ho appena pubblicato"
   user: giovanni
   message_board: rdc
-  created_at: <%= Time.zone.now %>
-
-post_so:
-  description: "sono un post in so"
-  user: giovanni
-  message_board: so
   created_at: <%= Time.zone.now %>

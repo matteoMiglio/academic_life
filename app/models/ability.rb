@@ -19,11 +19,13 @@ class Ability
     can :destroy, Group, members: { user_id: user.id, membership: "creator" }
 
     # nested resources of group
-    can :read, Member
-    can :create, Member, group: { members: { user_id: user.id, membership: "creator" } }
-    can :update, Member, membership: "invited", user_id: user.id
-    can :destroy, Member, user_id: user.id
-    can :destroy, Member, group: { members: { user_id: user.id, membership: "creator" } }
+    can :index, Member
+    # only the creator can add and delete other members
+    can [:create, :destroy], Member, group: { members: { user_id: user.id, membership: "creator" } }
+    # an invited user can refuse an invite or join a group
+    can [:update, :destroy], Member, membership: "invited", user_id: user.id
+    # an membered user can leave a group
+    can :destroy, Member, membership: "member", user_id: user.id
 
     # nested resources of post
     can :create, Comment

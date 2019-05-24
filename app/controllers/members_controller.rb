@@ -1,10 +1,10 @@
 class MembersController < ApplicationController
-  load_and_authorize_resource :group
+  load_and_authorize_resource :message_board
+  load_and_authorize_resource :group, through: :message_board
   before_action :load_members, only: :index
   load_and_authorize_resource :member, through: :group
   
   def index
-    @message_board = MessageBoard.find(params[:message_board_id])
     @users = @message_board.course.users.map { |user| [helpers.full_name(user), user.id] }
     @creator = @group.members.find_creator
     @members.each do |member|
@@ -15,7 +15,8 @@ class MembersController < ApplicationController
   end
 
   def create
-    @new_member = @group.members.build(user_id: member_params[:user_id], membership: "invited")
+    @id_member_to_add = @message_board.course.users.find(member_params[:user_id]).id
+    @new_member = @group.members.build(user_id: @id_member_to_add, membership: "invited")
     @new_member.save ? flash[:success] = "Membro aggiunto!"
                      : flash[:danger] = "Membro non aggiunto!"
     redirect_to :controller => 'members',
@@ -31,14 +32,20 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @member.destroy ? flash[:success] = "Membro eliminato!"
-                    : flash[:danger] = "Membro non eliminato!"
-    if @member.user_id == current_user.id
+    if @member.membership == "creator"
       redirect_to :controller => 'groups', 
-                  :action => 'index' 
+                  :action => 'destroy',
+                  :id => @member.group_id
     else
-      redirect_to :controller => 'members', 
-                  :action => 'index' 
+      @member.destroy ? flash[:success] = "Membro eliminato!"
+                      : flash[:danger] = "Membro non eliminato!"
+      if @member.user_id == current_user.id
+        redirect_to :controller => 'groups', 
+                    :action => 'index' 
+      else
+        redirect_to :controller => 'members', 
+                    :action => 'index' 
+      end
     end
   end
 

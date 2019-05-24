@@ -38,3 +38,17 @@ dario:
   address: MyString
   serial_number: 430881
   admin: false
+
+lucio:
+  name: Lucio
+  surname: Caracciolo
+  email: lucio.caracciolo@gmail.com
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::SCrypt.encrypt("password" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  single_access_token: <%= Authlogic::Random.friendly_token %>
+  perishable_token: <%= Authlogic::Random.friendly_token %>>
+  birthday: 1960-08-12
+  address: MyString
+  serial_number: 438989
+  admin: false

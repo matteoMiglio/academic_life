@@ -4,9 +4,10 @@ so:
   name: "Sistemi Operativi"
   credit: 6
   professor: "Cesare Stefanelli"
+  users: lucio
 
 rdc:
   name: "Reti di Calcolatori"
   credit: 1
   professor: "Mauro Tortonesi"
-  users: luca
+  users: luca, giovanni
