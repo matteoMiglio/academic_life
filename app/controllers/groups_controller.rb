@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @events = @group.events.where('appointment > ?', DateTime.now.beginning_of_day)
+    @events = @group.events.find_next
     @creator = Participant.where(role: "creator")
   end
 
