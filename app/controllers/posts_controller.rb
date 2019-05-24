@@ -15,8 +15,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post.user.name
-    @post.user.surname
     @comments = @post.comments.paginated(params[:page], @post.comments.size)
     @comments.each do |comment|
       comment.user.name
@@ -59,6 +57,6 @@ class PostsController < ApplicationController
     end
 
     def load_post
-      @post = @message_board.posts.includes(:approvals).find(params[:id])
+      @post = @message_board.posts.includes(:user, :approvals).find(params[:id])
     end
 end

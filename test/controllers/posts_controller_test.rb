@@ -37,6 +37,36 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to message_board_posts_url(@message_board)
   end
 
+  test "user can only index posts in his message boards" do
+    other_message_board = message_boards(:so)
+    login(@user)
+    get message_board_posts_url(other_message_board)
+    assert_response :redirect
+    get errors_access_denied_url
+    assert_response :success
+  end
+
+  test "user can only show posts in his message boards" do
+    other_post = posts(:post_so)
+    login(@user)
+    get message_board_post_url(@message_board, other_post)
+    assert_response :redirect
+    get errors_record_not_found_url
+    assert_response :success
+  end
+
+  test "user can only create posts in his message boards" do
+    other_message_board = message_boards(:so)
+    login(@user)
+    assert_no_difference "Post.count" do
+      post message_board_posts_url(other_message_board),
+           params: { post: { description: "Lorem Ipsum" } }
+    end
+    assert_response :redirect
+    get errors_access_denied_url
+    assert_response :success
+  end
+
   test "user can only destroy posts which they own" do
     other_post = posts(:older)
     ability = Ability.new(@user)
