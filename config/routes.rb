@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'user_sessions#new'
 
+  resources :notifications, only: [:index, :show, :destroy]
+
   resources :users, only: [:show] do
     resources :courses, only: [:index, :show]
   end
@@ -24,8 +26,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :approvals, only: [:create, :destroy]
   end
-
-  resources :notifications, only: [:index, :show, :destroy]
 
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
   get '/sign_in', to: 'user_sessions#new', as: :sign_in

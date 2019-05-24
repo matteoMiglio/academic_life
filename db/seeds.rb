@@ -30,6 +30,7 @@
   Course, 
   Category, 
   Department,
+  Notification,
   ActiveStorage::Blob,
   ActiveStorage::Attachment
 ].each(&:delete_all)
@@ -55,6 +56,7 @@ load 'db/seeds/member.rb'        # Depends on user and group
 load 'db/seeds/participant.rb'   # Depends on user and event
 
 load 'db/seeds/document.rb'      # Depends on user, message_board and category
+load 'db/seeds/notification.rb'
 
 # Tables without models
 load 'db/seeds/posts_users.rb'

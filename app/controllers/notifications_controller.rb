@@ -20,27 +20,23 @@ class NotificationsController < ApplicationController
     @notification = Notification.find_by(id: params[:id])
 
     @notification.read_at = Time.zone.now
+
     if @notification.save
 
       if @notification.notifiable.class == Comment
 
-        redirect_to :controller => 'posts',
-                    :action => 'show',
-                    :id => @notification.notifiable.post
+        redirect_to message_board_post_url(@notification.notifiable.post.message_board, 
+                                           @notification.notifiable.post)
 
       elsif @notification.notifiable.class == Group
 
-        redirect_to :controller => 'groups',
-                    :action => 'show',
-                    :message_board_id => @notification.notifiable.message_board,
-                    :id => @notification.notifiable
+        redirect_to message_board_group_url(@notification.notifiable.message_board,
+                                            @notification.notifiable)
 
       elsif @notification.notifiable.class == Event
 
-        redirect_to :controller => 'groups',
-                    :action => 'show',
-                    :message_board_id => @notification.notifiable.group.message_board,
-                    :id => @notification.notifiable.group
+        redirect_to message_board_group_url(@notification.notifiable.group.message_board,
+                                            @notification.notifiable.group)
 
       elsif
 
@@ -51,9 +47,6 @@ class NotificationsController < ApplicationController
     else
 
       flash[:danger] = "Errore durante lettura della notifica!"
-
-      redirect_to :controller => 'notifications',
-                  :action => 'index'
     end
   end
 
@@ -63,7 +56,6 @@ class NotificationsController < ApplicationController
     @notifications.destroy ? flash[:success] = "Notifica eliminata!" 
                            : flash[:danger] = "Notifica non eliminata!"
 
-    redirect_to :controller => 'notifications', 
-                :action => 'index'
+    redirect_to notifications_url()
   end
 end

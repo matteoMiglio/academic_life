@@ -4,9 +4,8 @@ class NotificationTest < ActiveSupport::TestCase
   def setup
     @user = users(:dario)
     @current_user = users(:luca)
-    @post = posts(:medium)
-    @comment = Comment.new(description: "ciao", post_id: @post, user_id: @current_user)
-    @notification = Notification.new(recipient_id: @user, actor_id: @current_user, 
+    @comment = comments(:example)
+    @notification = Notification.new(recipient_id: @user.id, actor_id: @current_user.id, 
                                      action: "ha commentato un tuo post.", notifiable: @comment)
   end
 

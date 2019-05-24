@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-comment_notification:
+c_notification:
   recipient_id: 1
   actor_id: 4
   read_at: 2019-05-04 18:37:58
-  action: "comment"
+  action: "ha commentato"
   notifiable_id: 3
   notifiable_type: "Comment"
 
