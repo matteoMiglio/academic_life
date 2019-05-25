@@ -14,6 +14,12 @@ Member.populate 40 do |member|
   member.group_id   = Faker::Number.between(21, 30)
 end
 
+Member.populate 1 do |member|
+  member.membership = 'invited'
+  member.user_id    = 1
+  member.group_id   = Faker::Number.between(21, 30)
+end
+
 Member.populate 40 do |member|
   member.membership = 'member'
   member.user_id    = Faker::Number.unique.between(1, 40)

@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   load_and_authorize_resource :message_board
+  load_and_authorize_resource :post, through: :message_board
   before_action :load_posts, only: :index
   before_action :load_post, only: :show
-  load_and_authorize_resource :post, through: :message_board
 
   def index
     @course = @message_board.course

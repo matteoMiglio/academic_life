@@ -1,0 +1,25 @@
+<li class="list-group-item <%= notification.read_at.nil? ? 'notification-unread' : '' %>"
+    id="notification-<%= notification.id %>">
+  
+  <div class="d-flex flex-row">
+    <div class="p-2 notification-column">
+      <h6><%= notification.actor.name %> <%= notification.actor.surname %> <%= notification.action %></h6>
+    </div>  
+  </div>
+
+  <div class="d-flex flex-row">
+    <p class="text-muted"><%= time_ago_in_words(notification.created_at) %> ago</p>
+  </div>
+
+  <div class="d-flex flex-row">
+    <div class="p-2 notification-column">   
+      <%= link_to "Visualizza", 
+                  notification_url(notification), 
+                  class: "btn btn-success" %>
+    </div>
+    <div class="p-2 notification-column">   
+      <%= button_to "Elimina", notification, method: :delete, 
+                    data: { confirm: "Vuoi eliminare la notifica?" }, class: "btn btn-danger" %>
+    </div>
+  </div>
+</li>

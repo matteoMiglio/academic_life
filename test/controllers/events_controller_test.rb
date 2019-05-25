@@ -11,11 +11,13 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   test "should get create" do
     login(@user)
     assert_difference "Event.count" do
-      post message_board_group_events_url(@message_board, @group), params: { event: { name: @event.name,
-                                                                        description: @event.description,
-                                                                        appointment: @event.appointment,
-                                                                        place: @event.place,
-                                                                        group_id: @group.id } }
+      post message_board_group_events_url(@message_board, @group), 
+            params: { event: { name: @event.name,
+                               description: @event.description,
+                               appointment: @event.appointment,
+                               place: @event.place,
+                               group_id: @group.id 
+                              } }
       end
     assert_redirected_to message_board_group_url(@message_board, @group)
   end

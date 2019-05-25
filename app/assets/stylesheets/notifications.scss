@@ -1,0 +1,32 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.card-notifications {
+
+  margin-bottom: 20px;
+
+  div.card-body {
+    padding: 0rem 0rem;
+
+    .list-group-item {
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      .notification-column {
+        padding-left: 0px !important;
+      }
+
+      .text-muted {
+        font-size: smaller;
+        margin-bottom: 2px;
+      }
+    }
+
+    .notification-unread {
+      background-color: azure;
+    }
+  }
+
+}
