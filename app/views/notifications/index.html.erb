@@ -1,0 +1,24 @@
+<h1>Notifiche</h1>
+
+<div class="row">
+  <div class="col-xs-12 col-lg-8 offset-lg-2">
+    <% if not @notifications.nil? %>
+      <div class="card card-notifications">
+        <div class="card-body">
+
+          <ul class="list-group list-group-flush">
+            <%= render @notifications %>
+          </ul>
+        </div>
+      </div>
+      <%= will_paginate @notifications, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+
+    <% else %>
+      <div class="card text-center">
+        <div class="card-body">
+          Non hai nessuna notifica.
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+c_notification:
+  recipient_id: 1
+  actor_id: 4
+  read_at: 2019-05-04 18:37:58
+  action: "ha commentato"
+  notifiable_id: 3
+  notifiable_type: "Comment"
+
+group_notification:
+  recipient_id: 1
+  actor_id: 2
+  read_at: 2019-05-04 18:37:58
+  action: "group"
+  notifiable_id: 1
+  notifiable_type: "Group"

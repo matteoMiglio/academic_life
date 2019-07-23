@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :correct_user, only: :destroy
+  
   def index
     @course = @message_board.course
     @documents = @message_board.documents.pagination(params[:page], @message_board.documents.size)

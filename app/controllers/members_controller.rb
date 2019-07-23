@@ -17,8 +17,19 @@ class MembersController < ApplicationController
   def create
     @id_member_to_add = @message_board.course.users.find(member_params[:user_id]).id
     @new_member = @group.members.build(user_id: @id_member_to_add, membership: "invited")
-    @new_member.save ? flash[:success] = "Membro aggiunto!"
-                     : flash[:danger] = "Membro non aggiunto!"
+    if @new_member.save 
+      flash[:success] = "Membro aggiunto!"
+
+      # invio la notifica
+      Notification.create(recipient: @new_member.user, 
+                          actor: current_user, 
+                          action: "ti ha invitato in un gruppo privato.", 
+                          notifiable: @group)
+
+    else
+      flash[:danger] = "Membro non aggiunto!"
+    end
+
     redirect_to :controller => 'members',
                 :action => 'index'
   end
@@ -33,9 +44,10 @@ class MembersController < ApplicationController
 
   def destroy
     if @member.membership == "creator"
-      redirect_to :controller => 'groups', 
-                  :action => 'destroy',
-                  :id => @member.group_id
+      
+    redirect_to :controller => 'groups', 
+                :action => 'destroy',
+                :id => @member.group_id
     else
       @member.destroy ? flash[:success] = "Membro eliminato!"
                       : flash[:danger] = "Membro non eliminato!"

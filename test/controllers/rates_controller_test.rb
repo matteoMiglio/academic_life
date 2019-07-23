@@ -3,7 +3,7 @@ require 'test_helper'
 class RatesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @message_board = message_boards(:rdc)
-    @user = users(:luca)
+    @user = users(:dario)
   end
 
   test "should get index" do

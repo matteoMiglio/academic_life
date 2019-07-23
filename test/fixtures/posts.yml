@@ -20,7 +20,7 @@ medium:
 
 recent:
   description: "Questo post è di 10 minuti fa"
-  user: luca
+  user: dario
   message_board: rdc
   created_at: <%= 10.minutes.ago %>
 
