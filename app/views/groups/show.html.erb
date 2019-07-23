@@ -17,7 +17,7 @@
   <div class="card-body">
     <% if @events.any? %>
       <ul class="list-group list-group-flush">
-        <%=  render @events,  :creator => @creator,
+        <%=  render @events,  :creators => @creators,
                               :message_board => @message_board,
                               :group => @group %>
       </ul>

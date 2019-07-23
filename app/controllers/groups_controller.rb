@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
 
   def show
     @events = @group.events.find_next
-    @creator = Participant.where(role: "creator")
+    @creators = Participant.where(role: "creator")
   end
 
   def create
