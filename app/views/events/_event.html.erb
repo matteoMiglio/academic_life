@@ -8,7 +8,7 @@
       <% @creators.each do |creator| %>
         <% if creator.event_id == event.id && creator.user_id == current_user.id %>
           <%= link_to message_board_group_event_url(@message_board, @group, event), method: :delete do %>
-            <button type="button" class="btn btn-danger">Elimina evento</button>
+            <button type="button" class="btn btn-danger">Elimina</button>
           <% end %>
         <% end %>
       <% end %>

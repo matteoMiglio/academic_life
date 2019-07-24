@@ -15,7 +15,13 @@ class GroupsController < ApplicationController
 
   def show
     @events = @group.events.find_next
-    @creators = Participant.where(role: "creator")
+    @events.each do |event|
+    end
+
+    @creators = Participant.where(role: "creator", user_id: current_user.id)
+    @creators.each do |creator|
+      creator.event_id
+    end
   end
 
   def create
