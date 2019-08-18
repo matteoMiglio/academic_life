@@ -31,6 +31,9 @@ class Ability
       # nested resources of post
       can :create, Comment
       can :destroy, Comment, user_id: user.id
+
+      can :create, Approval
+      can :destroy, Approval, user_id: user.id
     end
   end
 end

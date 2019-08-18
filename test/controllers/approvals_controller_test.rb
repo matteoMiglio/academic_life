@@ -6,7 +6,7 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:luca)
     @post1 = posts(:most_recent)
     @post2 = posts(:older)
-    @approval = approvals(:one)
+    @approval_luca = approvals(:approval_luca)
   end
 
   test "should create approval" do
@@ -17,12 +17,30 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to message_board_post_url(@message_board, @post1)
   end
 
-
   test "should destroy approval" do
     login(@user)
     assert_difference 'Approval.count', -1 do
-      delete post_approval_url(@post2, @approval)
+      delete post_approval_url(@post2, @approval_luca)
     end
     assert_redirected_to message_board_post_url(@message_board, @post2)
+  end
+
+  test "user can only create approvals in his posts" do
+    login(@user)
+    other_post = posts(:post_so)
+    assert_no_difference "Approval.count" do
+      post post_approvals_url(@message_board, other_post)
+    end
+    assert_response :redirect
+    get errors_record_not_found_url
+    assert_response :success
+  end
+
+  test "user can only destroy his approvals" do
+    login(@user)
+    other_approval = approvals(:approval_giovanni)
+    ability = Ability.new(@user)
+    ability.can?(:destroy, @approval_luca)
+    ability.cannot?(:destroy, other_approval)
   end
 end
