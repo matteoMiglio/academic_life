@@ -28,6 +28,9 @@ class Ability
       # an membered user can leave a group
       can :destroy, Member, membership: "member", user_id: user.id
 
+      can :create, Event
+      can :destroy, Event, participants: { user_id: user.id, role: "creator" }
+
       # nested resources of post
       can :create, Comment
       can :destroy, Comment, user_id: user.id

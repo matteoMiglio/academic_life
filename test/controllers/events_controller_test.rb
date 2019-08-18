@@ -5,7 +5,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:luca)
     @message_board = message_boards(:rdc)
     @group = groups(:lafayette)
-    @event = events(:evento)
+    @event = events(:evento_lafayette)
   end
 
   test "should get create" do
@@ -16,7 +16,6 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
                                description: @event.description,
                                appointment: @event.appointment,
                                place: @event.place,
-                               group_id: @group.id 
                               } }
       end
     assert_redirected_to message_board_group_url(@message_board, @group)
@@ -35,5 +34,29 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to message_board_group_url(@message_board, @group)
   end  
+
+  test "user can only create events in his groups" do
+    login(@user)
+    other_group = groups(:cesare)
+    assert_no_difference "Event.count" do
+      post message_board_group_events_url(@message_board, other_group), 
+            params: { event: { name: @event.name,
+                               description: @event.description,
+                               appointment: @event.appointment,
+                               place: @event.place,
+                              } }
+    end
+    assert_response :redirect
+    get errors_record_not_found_url
+    assert_response :success
+  end
+
+  test "user can only destroy his events" do
+    login(@user)
+    other_event = events(:evento_napoleone)
+    ability = Ability.new(@user)
+    ability.can?(:destroy, @event)
+    ability.cannot?(:destroy, other_event)
+  end
 
 end

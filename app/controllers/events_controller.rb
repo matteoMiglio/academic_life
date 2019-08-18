@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
+  load_and_authorize_resource :message_board
+  load_and_authorize_resource :group, through: :message_board
+
   def show
   end
 
   def create
-    @message_board = MessageBoard.find(params[:message_board_id])
-    @group = Group.find(params[:group_id])
-    @event = current_user.events.build(events_params)
+    @event = @group.events.build(events_params)
     if @event.save 
       @event.participants.create(role: "creator", user_id: current_user.id)
       @group.users.each do |user|
@@ -29,8 +30,6 @@ class EventsController < ApplicationController
   end
 
   def new
-    @message_board = MessageBoard.find(params[:message_board_id])
-    @group = Group.find(params[:group_id])
     @event = Event.new
   end
 
@@ -45,6 +44,6 @@ class EventsController < ApplicationController
 
   private
     def events_params
-      params.require(:event).permit(:name, :description, :appointment, :place, :group_id)
+      params.require(:event).permit(:name, :description, :appointment, :place)
     end
 end

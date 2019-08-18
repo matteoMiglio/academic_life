@@ -1,8 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-evento: 
+evento_lafayette: 
   name: "Progetto"
   description: "Discussione casi d'uso"
   appointment: 2020-05-05 16:06:45
   place: "Ingegneria"
   group: lafayette
+
+evento_napoleone: 
+  name: "Progetto"
+  description: "Discussione sequence diagram"
+  appointment: 2020-04-11 10:00:30
+  place: "Ingegneria"
+  group: napoleone
