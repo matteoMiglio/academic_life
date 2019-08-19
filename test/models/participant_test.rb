@@ -3,9 +3,9 @@ require 'test_helper'
 class ParticipantTest < ActiveSupport::TestCase
   def setup
     @user = users(:luca)
-    @participant = participants(:luca)
-    @member = participants(:giovanni)
-    @creator = participants(:luca)
+    @participant = participants(:luca_lafayette)
+    @member = participants(:giovanni_lafayette)
+    @creator = participants(:luca_lafayette)
   end
 
   test "should be valid" do

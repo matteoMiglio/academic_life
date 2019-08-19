@@ -4,7 +4,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:luca)
     @message_board = message_boards(:rdc)
-    @post = posts(:recent)
+    @post = posts(:medium)
     @ability = Ability.new(@user)
   end
 
