@@ -19,6 +19,9 @@ class Ability
       can :create, Group
       can :destroy, Group, members: { user_id: user.id, membership: "creator" }
 
+      can [:index, :create], Document
+      can :destroy, Document, user_id: user.id
+
       # nested resources of group
       can :index, Member
       # only the creator can add and delete other members

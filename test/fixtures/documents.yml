@@ -1,8 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-prova:
+documento_luca:
   name: Appunti IS2
   description: Appunti presi oggi a lezione di Ingegneria del Software II
   message_board: rdc
   user: luca
+  category: one
+
+documento_giovanni:
+  name: Appunti RO
+  description: Appunti presi oggi a lezione di Ricerca Operativa
+  message_board: rdc
+  user: giovanni
   category: one

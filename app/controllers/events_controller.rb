@@ -2,9 +2,6 @@ class EventsController < ApplicationController
   load_and_authorize_resource :message_board
   load_and_authorize_resource :group, through: :message_board
 
-  def show
-  end
-
   def create
     @event = @group.events.build(events_params)
     if @event.save 

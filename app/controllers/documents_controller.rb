@@ -1,10 +1,10 @@
 class DocumentsController < ApplicationController
+  load_and_authorize_resource :message_board
+  before_action :load_documents, only: :index
   before_action :correct_user, only: :destroy
   
   def index
     @course = @message_board.course
-    @documents = @message_board.documents.pagination(params[:page], @message_board.documents.size)
-
     @documents.each do |document|
       document.file
     end
@@ -59,5 +59,9 @@ class DocumentsController < ApplicationController
         flash[:danger] = "Non puoi eliminare un documento caricato da un altro!"
         redirect_to request.referrer 
       end
+    end
+
+    def load_documents
+      @documents = @message_board.documents.pagination(params[:page], @message_board.documents.size)
     end
 end
