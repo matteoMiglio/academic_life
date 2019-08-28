@@ -3,26 +3,32 @@ class EventsController < ApplicationController
   load_and_authorize_resource :group, through: :message_board
 
   def create
-    @event = @group.events.build(events_params)
-    if @event.save 
-      @event.participants.create(role: "creator", user_id: current_user.id)
-      @group.users.each do |user|
-        if user.id != current_user.id
-          @event.participants.create(role: "member", user_id: user.id)
+    Event.transaction do
+      Notification.transaction do
 
-          Notification.create(recipient: user, 
-            actor: current_user, 
-            action: "ha creato un evento in un gruppo di cui fai parte.", 
-            notifiable: @event)
+        begin 
+          @event = @group.events.build(events_params)
+          @event.save 
+          
+          @event.participants.create(role: "creator", user_id: current_user.id)
+          @group.users.each do |user|
+            if user.id != current_user.id
+              @event.participants.create(role: "member", user_id: user.id)
+
+              Notification.create(recipient: user, 
+                actor: current_user, 
+                action: "ha creato un evento in un gruppo di cui fai parte.", 
+                notifiable: @event)
+            end
+          end
+            
+          flash[:success] = "Evento creato!" 
+        
+        rescue ActiveRecord::StatementInvalid
+          flash[:danger] = "Errore creazione evento"
         end
       end
-        
-      flash[:success] = "Evento creato!" 
-    
-    else
-      flash[:danger] = "Errore creazione evento"
     end
-    
     redirect_to message_board_group_url(@message_board, @group)
   end
 

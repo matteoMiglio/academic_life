@@ -15,21 +15,26 @@ class MembersController < ApplicationController
   end
 
   def create
-    @id_member_to_add = @message_board.course.users.find(member_params[:user_id]).id
-    @new_member = @group.members.build(user_id: @id_member_to_add, membership: "invited")
-    if @new_member.save 
-      flash[:success] = "Membro aggiunto!"
+    Member.transaction do
+      Notification.transaction do
 
-      # invio la notifica
-      Notification.create(recipient: @new_member.user, 
-                          actor: current_user, 
-                          action: "ti ha invitato in un gruppo privato.", 
-                          notifiable: @group)
+        begin
+          @id_member_to_add = @message_board.course.users.find(member_params[:user_id]).id
+          @new_member = @group.members.build(user_id: @id_member_to_add, membership: "invited")
+          @new_member.save 
+          flash[:success] = "Membro aggiunto!"
 
-    else
-      flash[:danger] = "Membro non aggiunto!"
+          # invio la notifica
+          Notification.create(recipient: @new_member.user, 
+                              actor: current_user, 
+                              action: "ti ha invitato in un gruppo privato.", 
+                              notifiable: @group)
+
+        rescue ActiveRecord::StatementInvalid
+          flash[:danger] = "Membro non aggiunto!"
+        end
+      end
     end
-
     redirect_to :controller => 'members',
                 :action => 'index'
   end
