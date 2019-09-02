@@ -29,6 +29,14 @@
           <p class="card-text"><%= document.description %></p>
         </div>
       </div>
+
+      <% if current_page?(controller: 'user_documents', action: 'index') %>
+        <div class="d-flex flex-row">
+          <div class="mr-auto p-2">
+            <b>Insegnamento:</b> <%= document.message_board.course.name %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="card-footer text-muted text-center">

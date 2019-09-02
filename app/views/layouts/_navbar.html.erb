@@ -37,16 +37,13 @@
         <%= link_to 'Insegnamenti', user_courses_url(current_user.id), class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <!--%= link_to 'Documenti', documents_path, class: 'nav-link' %-->
-        Documenti
+        <%= link_to 'Documenti', user_user_documents_url(current_user.id), class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <!--%= link_to 'Gruppi', groups_path, class: 'nav-link' %-->
-        Gruppi
+        <%= link_to 'Gruppi', user_user_groups_url(current_user.id), class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <!--%= link_to 'Eventi', events_path, class: 'nav-link' %-->
-        Eventi
+        <%= link_to 'Eventi', user_events_url(current_user.id), class: 'nav-link' %>
       </li>
     </ul>
   </div>

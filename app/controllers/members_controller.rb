@@ -30,7 +30,7 @@ class MembersController < ApplicationController
                               action: "ti ha invitato in un gruppo privato.", 
                               notifiable: @group)
 
-        rescue ActiveRecord::StatementInvalid
+        rescue ActiveRecord::RecordInvalid
           flash[:danger] = "Membro non aggiunto!"
         end
       end

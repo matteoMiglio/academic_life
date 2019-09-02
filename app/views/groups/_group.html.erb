@@ -10,10 +10,15 @@
         <% role = member.membership %>
         <span class="badge badge-<%= color(role) %>"> <%= role %> </span>
       </p>
+      <% if current_page?(controller: 'user_groups', action: 'index') %>
+        <p class="card-text"> 
+          <b>Insegnamento:</b> <%= group.message_board.course.name %>
+        </p>
+      <% end %>
     </div>
     <div class="card-footer text-muted text-center">
     <% if current_page?(action: 'index') %>
-      <%= link_to "Show", message_board_group_url(@message_board, group.id), class: "card-link" %>
+      <%= link_to "Show", message_board_group_url(group.message_board, group.id), class: "card-link" %>
     <% else %>
       <%= accept_link(member) %>
       <%= exit_link(member) %>

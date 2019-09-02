@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
     @course = @message_board.course
     @groups.each do |group|
       group.members.each { |member| member.membership if current_user.id == member.user_id }
+      group.message_board
     end
     @new_group = Group.new
     @errors = params[:errors] if not params[:errors].nil?

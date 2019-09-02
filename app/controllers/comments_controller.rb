@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
                       :id => @post.id,
                       :message_board_id => @message_board.id
 
-        rescue ActiveRecord::StatementInvalid
+        rescue ActiveRecord::RecordInvalid
           flash[:danger] = "Commento non inserito!"
           redirect_to :controller => 'posts', 
                       :action => 'show', 

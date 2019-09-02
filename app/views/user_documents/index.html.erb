@@ -1,0 +1,17 @@
+<h1>Documenti</h1>
+
+<% if @documents.any? %>
+  <ul class="documents">
+    <%= render @documents %>
+  </ul>
+<% else %>
+  <div class="row">
+    <div class="col-xs-12 col-lg-8 offset-lg-2">
+      <div class="card text-center">
+        <div class="card-body">
+          Non hai caricato ancora nessun documento.
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

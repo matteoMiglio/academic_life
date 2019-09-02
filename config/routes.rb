@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user_groups/index'
+  get 'user_documents/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'user_sessions#new'
 
@@ -6,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :courses, only: [:index, :show]
+    resources :events, only: [:index]
+    resources :user_documents, only: [:index]
+    resources :user_groups, only: [:index]
   end
 
   resources :user_sessions, only: [:create, :destroy]

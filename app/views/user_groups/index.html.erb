@@ -1,0 +1,17 @@
+<h1>Gruppi</h1>
+
+<% if @groups.any? %>
+  <ul class="groups">
+    <%= render @groups %>
+  </ul>
+<% else %>
+  <div class="row">
+    <div class="col-xs-12 col-lg-8 offset-lg-2">
+      <div class="card text-center">
+        <div class="card-body">
+          Non partecipi ancora a nessun gruppo.
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

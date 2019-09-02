@@ -2,6 +2,17 @@ class EventsController < ApplicationController
   load_and_authorize_resource :message_board
   load_and_authorize_resource :group, through: :message_board
 
+  def index
+    @events = current_user.events.paginated(params[:page], current_user.events.size)
+    @events.each do |event|
+    end
+
+    @creators = Participant.where(role: "creator", user_id: current_user.id)
+    @creators.each do |creator|
+      creator.event_id
+    end
+  end
+
   def create
     Event.transaction do
       Notification.transaction do
@@ -24,7 +35,7 @@ class EventsController < ApplicationController
             
           flash[:success] = "Evento creato!" 
         
-        rescue ActiveRecord::StatementInvalid
+        rescue ActiveRecord::RecordInvalid
           flash[:danger] = "Errore creazione evento"
         end
       end
