@@ -7,7 +7,7 @@ Comment.all.each do |comment|
                       notifiable: comment)
 
   # creo le notifiche per tutti quelli che hanno commentato un post
-  comment.post.comments.group(:user_id).uniq.each do |c2|
+  comment.post.comments.select(:user_id).group(:user_id).uniq.each do |c2|
     if comment.user != c2.user
       Notification.create(recipient: c2.user, 
                           actor: comment.user, 
