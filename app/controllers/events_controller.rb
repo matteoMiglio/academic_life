@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
         begin 
           @event = @group.events.build(events_params)
-          @event.save 
+          @event.save! 
           
           @event.participants.create(role: "creator", user_id: current_user.id)
           @group.users.each do |user|

@@ -12,4 +12,16 @@ class Event < ApplicationRecord
   default_scope -> { order(appointment: :asc) }
   scope :find_next, -> { where('appointment > ?', DateTime.now.beginning_of_day) }
   scope :paginated, -> (page, entries) { paginate(page: page, per_page: 4, total_entries: entries)}
+
+  validate :appointment_date
+
+  private
+
+    def appointment_date
+      return if appointment.blank?
+
+      if appointment <= DateTime.now.beginning_of_day
+        errors.add(:appointment, "must be after today")
+      end
+  end
 end
