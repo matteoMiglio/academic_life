@@ -8,7 +8,7 @@ User.populate 1 do |user|
   user.email              = "matteo.miglioli@academiclife.com"
   user.password_salt      = Authlogic::Random.hex_token
   user.crypted_password   = Authlogic::CryptoProviders::SCrypt.encrypt("password" + user.password_salt)
-  user.birthday           = 1995-12-03
+  user.birthday           = Date.strptime("03/12/1995", "%d/%m/%Y")
   user.address            = Faker::Address.full_address
   
   user.serial_number      = Faker::Number.unique.number(6)
@@ -24,7 +24,7 @@ User.populate 1 do |user|
   user.email              = "andrea.fortini@academiclife.com"
   user.password_salt      = Authlogic::Random.hex_token
   user.crypted_password   = Authlogic::CryptoProviders::SCrypt.encrypt("password" + user.password_salt)
-  user.birthday           = 1995-12-20
+  user.birthday           = Date.strptime("20/12/1995", "%d/%m/%Y")
   user.address            = Faker::Address.full_address
   user.serial_number      = Faker::Number.unique.number(6)
   user.admin              = Faker::Boolean.boolean(1)
@@ -39,7 +39,7 @@ User.populate 1 do |user|
   user.email              = "mattia.fogli@academiclife.com"
   user.password_salt      = Authlogic::Random.hex_token
   user.crypted_password   = Authlogic::CryptoProviders::SCrypt.encrypt("password" + user.password_salt)
-  user.birthday           = 1995-06-09
+  user.birthday           = Date.strptime("09/06/1995", "%d/%m/%Y")
   user.address            = Faker::Address.full_address
   user.serial_number      = Faker::Number.unique.number(6)
   user.admin              = Faker::Boolean.boolean(1)
