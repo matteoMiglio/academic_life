@@ -46,24 +46,24 @@ case Rails.env
     # Order matters
     load 'db/seeds/production/message_board.rb' # Depends on course
     load 'db/seeds/production/degree.rb'        # Depends on department
-    load 'db/seeds/production/group.rb'         # Depends on message_board
+    # load 'db/seeds/production/group.rb'         # Depends on message_board
     
-    load 'db/seeds/production/event.rb'         # Depends on user and group
-    load 'db/seeds/production/post.rb'          # Depends on user and message_board
-    load 'db/seeds/production/comment.rb'       # Depends on user and post
-    load 'db/seeds/production/rate.rb'          # Depends on user and message_board
-    load 'db/seeds/production/review.rb'        # Depends on user and message_board
-    load 'db/seeds/production/approval.rb'      # Depends on user and post
-    load 'db/seeds/production/member.rb'        # Depends on user and group
-    load 'db/seeds/production/participant.rb'   # Depends on user and event
+    # load 'db/seeds/production/event.rb'         # Depends on user and group
+    # load 'db/seeds/production/post.rb'          # Depends on user and message_board
+    # load 'db/seeds/production/comment.rb'       # Depends on user and post
+    # load 'db/seeds/production/rate.rb'          # Depends on user and message_board
+    # load 'db/seeds/production/review.rb'        # Depends on user and message_board
+    # load 'db/seeds/production/approval.rb'      # Depends on user and post
+    # load 'db/seeds/production/member.rb'        # Depends on user and group
+    # load 'db/seeds/production/participant.rb'   # Depends on user and event
     
-    load 'db/seeds/production/document.rb'      # Depends on user, message_board and category
-    load 'db/seeds/production/notification.rb'
+    # load 'db/seeds/production/document.rb'      # Depends on user, message_board and category
+    # load 'db/seeds/production/notification.rb'
     
     # Tables without models
-    load 'db/seeds/production/posts_users.rb'
+    # load 'db/seeds/production/posts_users.rb'
     load 'db/seeds/production/courses_users.rb'
-    load 'db/seeds/production/events_users.rb'
+    # load 'db/seeds/production/events_users.rb'
     load 'db/seeds/production/courses_degrees.rb'
 
   when "development"

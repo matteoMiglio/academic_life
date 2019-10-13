@@ -2,6 +2,7 @@ Faker::Internet.unique.clear
 Faker::Number.unique.clear
 
 User.populate 1 do |user|
+  user.id = 1
   user.name               = "Matteo"
   user.surname            = "Miglioli"
   user.email              = "matteo.miglioli@academiclife.com"
@@ -17,6 +18,7 @@ User.populate 1 do |user|
 end
 
 User.populate 1 do |user|
+  user.id = 2
   user.name               = "Andrea"
   user.surname            = "Fortini"
   user.email              = "andrea.fortini@academiclife.com"
@@ -31,6 +33,7 @@ User.populate 1 do |user|
 end
 
 User.populate 1 do |user|
+  user.id = 3
   user.name               = "Mattia"
   user.surname            = "Fogli"
   user.email              = "mattia.fogli@academiclife.com"
