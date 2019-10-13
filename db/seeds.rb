@@ -8,6 +8,7 @@
 
 case Rails.env
   when "production"
+
     [
       # 3 addictions
       Document,
@@ -37,6 +38,10 @@ case Rails.env
       ActiveStorage::Attachment
     ].each(&:delete_all)
     
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    end
+
     # No requirements
     load 'db/seeds/production/user.rb'
     load 'db/seeds/production/course.rb'
@@ -95,7 +100,7 @@ case Rails.env
       ActiveStorage::Blob,
       ActiveStorage::Attachment
     ].each(&:delete_all)
-    
+
     # No requirements
     load 'db/seeds/development/user.rb'
     load 'db/seeds/development/course.rb'
