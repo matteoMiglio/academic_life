@@ -6,60 +6,122 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-[
-  # 3 addictions
-  Document,
+case Rails.env
+  when "production"
+    [
+      # 3 addictions
+      Document,
+    
+      # 2 addictions
+      Participant,
+      Review,
+      Rate,
+      Member,
+      Comment,
+      Event,
+      Approval,
+      Post,
+    
+      # 1 addiction
+      Group,
+      MessageBoard,
+      Degree,
+    
+      # No requirements
+      User, 
+      Course, 
+      Category, 
+      Department,
+      Notification,
+      ActiveStorage::Blob,
+      ActiveStorage::Attachment
+    ].each(&:delete_all)
+    
+    # No requirements
+    load 'db/seeds/production/user.rb'
+    load 'db/seeds/production/course.rb'
+    load 'db/seeds/production/category.rb'
+    load 'db/seeds/production/department.rb'
+    
+    # Order matters
+    load 'db/seeds/production/message_board.rb' # Depends on course
+    load 'db/seeds/production/degree.rb'        # Depends on department
+    load 'db/seeds/production/group.rb'         # Depends on message_board
+    
+    load 'db/seeds/production/event.rb'         # Depends on user and group
+    load 'db/seeds/production/post.rb'          # Depends on user and message_board
+    load 'db/seeds/production/comment.rb'       # Depends on user and post
+    load 'db/seeds/production/rate.rb'          # Depends on user and message_board
+    load 'db/seeds/production/review.rb'        # Depends on user and message_board
+    load 'db/seeds/production/approval.rb'      # Depends on user and post
+    load 'db/seeds/production/member.rb'        # Depends on user and group
+    load 'db/seeds/production/participant.rb'   # Depends on user and event
+    
+    load 'db/seeds/production/document.rb'      # Depends on user, message_board and category
+    load 'db/seeds/production/notification.rb'
+    
+    # Tables without models
+    load 'db/seeds/production/posts_users.rb'
+    load 'db/seeds/production/courses_users.rb'
+    load 'db/seeds/production/events_users.rb'
+    load 'db/seeds/production/courses_degrees.rb'
 
-  # 2 addictions
-  Participant,
-  Review,
-  Rate,
-  Member,
-  Comment,
-  Event,
-  Approval,
-  Post,
-
-  # 1 addiction
-  Group,
-  MessageBoard,
-  Degree,
-
-  # No requirements
-  User, 
-  Course, 
-  Category, 
-  Department,
-  Notification,
-  ActiveStorage::Blob,
-  ActiveStorage::Attachment
-].each(&:delete_all)
-
-# No requirements
-load 'db/seeds/user.rb'
-load 'db/seeds/course.rb'
-load 'db/seeds/category.rb'
-load 'db/seeds/department.rb'
-
-# Order matters
-load 'db/seeds/message_board.rb' # Depends on course
-load 'db/seeds/degree.rb'        # Depends on department
-load 'db/seeds/group.rb'         # Depends on message_board
-
-load 'db/seeds/event.rb'         # Depends on user and group
-load 'db/seeds/post.rb'          # Depends on user and message_board
-load 'db/seeds/comment.rb'       # Depends on user and post
-load 'db/seeds/rate.rb'          # Depends on user and message_board
-load 'db/seeds/review.rb'        # Depends on user and message_board
-load 'db/seeds/approval.rb'      # Depends on user and post
-load 'db/seeds/member.rb'        # Depends on user and group
-load 'db/seeds/participant.rb'   # Depends on user and event
-
-load 'db/seeds/document.rb'      # Depends on user, message_board and category
-load 'db/seeds/notification.rb'
-
-# Tables without models
-load 'db/seeds/posts_users.rb'
-load 'db/seeds/courses_users.rb'
-load 'db/seeds/events_users.rb'
-load 'db/seeds/courses_degrees.rb'
+  when "development"
+    [
+      # 3 addictions
+      Document,
+    
+      # 2 addictions
+      Participant,
+      Review,
+      Rate,
+      Member,
+      Comment,
+      Event,
+      Approval,
+      Post,
+    
+      # 1 addiction
+      Group,
+      MessageBoard,
+      Degree,
+    
+      # No requirements
+      User, 
+      Course, 
+      Category, 
+      Department,
+      Notification,
+      ActiveStorage::Blob,
+      ActiveStorage::Attachment
+    ].each(&:delete_all)
+    
+    # No requirements
+    load 'db/seeds/development/user.rb'
+    load 'db/seeds/development/course.rb'
+    load 'db/seeds/development/category.rb'
+    load 'db/seeds/development/department.rb'
+    
+    # Order matters
+    load 'db/seeds/development/message_board.rb' # Depends on course
+    load 'db/seeds/development/degree.rb'        # Depends on department
+    load 'db/seeds/development/group.rb'         # Depends on message_board
+    
+    load 'db/seeds/development/event.rb'         # Depends on user and group
+    load 'db/seeds/development/post.rb'          # Depends on user and message_board
+    load 'db/seeds/development/comment.rb'       # Depends on user and post
+    load 'db/seeds/development/rate.rb'          # Depends on user and message_board
+    load 'db/seeds/development/review.rb'        # Depends on user and message_board
+    load 'db/seeds/development/approval.rb'      # Depends on user and post
+    load 'db/seeds/development/member.rb'        # Depends on user and group
+    load 'db/seeds/development/participant.rb'   # Depends on user and event
+    
+    load 'db/seeds/development/document.rb'      # Depends on user, message_board and category
+    load 'db/seeds/development/notification.rb'
+    
+    # Tables without models
+    load 'db/seeds/development/posts_users.rb'
+    load 'db/seeds/development/courses_users.rb'
+    load 'db/seeds/development/events_users.rb'
+    load 'db/seeds/development/courses_degrees.rb'
+end
