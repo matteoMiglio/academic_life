@@ -9,7 +9,7 @@ Course.populate 1 do |course|
   course.id = 2
   course.name      = "Programmazione Concorrente"
   course.credit    = 6
-  course.professor = Faker::Name.name
+  course.professor = "Cesare Stefanelli"
 end
 
 Course.populate 1 do |course|

@@ -5,7 +5,7 @@ class ApprovalsController < ApplicationController
     if not already_approved?
       @approval = @post.approvals.create(user: current_user)
       if @approval.save
-        redirect_to message_board_post_url(@post.message_board_id, @post)
+        redirect_to message_board_posts_url(@post.message_board_id, anchor: @post.id)
       else
         flash[:error] = "Operazione non riuscita."
       end
@@ -18,7 +18,8 @@ class ApprovalsController < ApplicationController
         flash[:error] = "Operazione non riuscita."
       end
     end
-    redirect_to message_board_post_url(@post.message_board_id, @post)
+
+    redirect_to message_board_posts_url(@post.message_board_id, anchor: @post.id)
   end
 
   private
