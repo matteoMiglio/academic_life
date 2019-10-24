@@ -5,7 +5,8 @@
       <%= render 'shared/errors', object: f.object %>
       <div class="form-row">
         <div class="col-4">
-          <%= f.select :user_id, options_for_select(@users), { include_blank: true }, class: "form-control" %>
+          <%= f.select :user_id, options_for_select(@users), { include_blank: true }, 
+                       class: "form-control", required: true %>
         </div>
         <div class="col-1">
           <%= f.submit "Aggiungi", class: "btn btn-primary" %>

@@ -5,7 +5,8 @@ class MembersController < ApplicationController
   load_and_authorize_resource :member, through: :group
   
   def index
-    @users = @message_board.course.users.map { |user| [helpers.full_name(user), user.id] }
+    @users = @message_board.course.users
+                           .where.not(id: current_user.id).map { |user| [helpers.full_name(user), user.id] }
     @creator = @group.members.find_creator
     @members.each do |member|
       member.user.name
@@ -25,11 +26,12 @@ class MembersController < ApplicationController
           flash[:success] = "Membro aggiunto!"
 
           # invio la notifica
-          Notification.create(recipient: @new_member.user, 
-                              actor: current_user, 
-                              action: "ti ha invitato in un gruppo privato.", 
-                              notifiable: @group)
-
+          if current_user != @new_member.user
+            Notification.create(recipient: @new_member.user, 
+                                actor: current_user, 
+                                action: "ti ha invitato in un gruppo privato.", 
+                                notifiable: @group)
+          end
         rescue ActiveRecord::RecordInvalid
           flash[:danger] = "Membro non aggiunto!"
         end

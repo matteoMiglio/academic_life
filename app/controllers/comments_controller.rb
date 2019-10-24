@@ -11,14 +11,14 @@ class CommentsController < ApplicationController
           @comment = @post.comments.build(description: comment_params[:description],
                                           user_id: current_user.id)
           @comment.save
-          flash[:success] = "Commento inserito!" 
 
           # Create the notification to the owner's post
-          @post = @comment.post
-          Notification.create(recipient: @post.user, 
-                              actor: current_user, 
-                              action: "ha commentato il tuo post.", 
-                              notifiable: @comment)
+          if @post.user != current_user
+            Notification.create(recipient: @post.user, 
+                                actor: current_user, 
+                                action: "ha commentato il tuo post.", 
+                                notifiable: @comment)
+          end
 
           # Create the notifications
           @post.comments.select(:user_id).distinct.each do |comment|
@@ -29,6 +29,9 @@ class CommentsController < ApplicationController
                                   notifiable: @comment)
             end
           end
+
+          flash[:success] = "Commento inserito!" 
+
           redirect_to :controller => 'posts', 
                       :action => 'show', 
                       :id => @post.id,
