@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
                               notifiable: @comment)
 
           # Create the notifications
-          @post.comments.group(:user_id).uniq.each do |comment|
+          @post.comments.select(:user_id).distinct.each do |comment|
             if comment.user != current_user
               Notification.create(recipient: comment.user, 
                                   actor: current_user, 

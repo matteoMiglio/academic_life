@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @course = @message_board.course
     @events = @group.events.find_next
     @events.each do |event|
     end

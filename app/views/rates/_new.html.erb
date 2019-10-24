@@ -4,7 +4,7 @@
     <%= form_for [@message_board, @new_rate] do |f| %>
       
       <div class="form-group">
-        <%= f.text_field :grade, class: "form-control" %>
+        <%= f.number_field :grade, class: "form-control", min: 18, max: 31 %>
       </div>
 
       <%= f.hidden_field :message_board_id, :value => @message_board.id %>
