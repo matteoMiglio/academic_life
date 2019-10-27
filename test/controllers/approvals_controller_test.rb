@@ -14,7 +14,7 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Approval.count') do
       post post_approvals_url(@post1), params: { post_id: @post1.id }
     end
-    assert_redirected_to message_board_post_url(@message_board, @post1)
+    assert_redirected_to message_board_posts_url(@post1.message_board_id, anchor: @post1.id)
   end
 
   test "should destroy approval" do
@@ -22,7 +22,7 @@ class ApprovalsControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'Approval.count', -1 do
       delete post_approval_url(@post2, @approval_luca)
     end
-    assert_redirected_to message_board_post_url(@message_board, @post2)
+    assert_redirected_to message_board_posts_url(@post2.message_board_id, anchor: @post2.id)
   end
 
   test "user can only create approvals in his posts" do

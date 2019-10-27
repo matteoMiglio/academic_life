@@ -16,6 +16,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
                                description: @event.description,
                                appointment: @event.appointment,
                                place: @event.place,
+                               user: @user
                               } }
       end
     assert_redirected_to message_board_group_url(@message_board, @group)

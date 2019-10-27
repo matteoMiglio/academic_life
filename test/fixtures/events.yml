@@ -6,6 +6,7 @@ evento_lafayette:
   appointment: 2020-05-05 16:06:45
   place: "Ingegneria"
   group: lafayette
+  user: luca
 
 evento_napoleone: 
   name: "Progetto"
@@ -13,3 +14,4 @@ evento_napoleone:
   appointment: 2020-04-11 10:00:30
   place: "Ingegneria"
   group: napoleone
+  user: giovanni

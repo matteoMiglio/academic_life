@@ -3,14 +3,15 @@ class EventsController < ApplicationController
   load_and_authorize_resource :group, through: :message_board
 
   def index
+
+    # @id_events = Participant.where(user_id: current_user).select(:event_id)
+    # @events = Event.where(:id => @id_events).paginated(params[:page], Event.where(:id => @id_events).size)
+
     @events = current_user.events.paginated(params[:page], current_user.events.size)
+
     @events.each do |event|
     end
-
-    @creators = Participant.where(role: "creator", user_id: current_user.id)
-    @creators.each do |creator|
-      creator.event_id
-    end
+    
   end
 
   def create
@@ -18,6 +19,7 @@ class EventsController < ApplicationController
       Notification.transaction do
 
         begin 
+
           @event = @group.events.build(events_params)
           @event.save! 
           
@@ -59,5 +61,6 @@ class EventsController < ApplicationController
   private
     def events_params
       params.require(:event).permit(:name, :description, :appointment, :place)
+                            .merge(user_id: current_user.id)
     end
 end

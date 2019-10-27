@@ -127,6 +127,5 @@ case Rails.env
     # Tables without models
     load 'db/seeds/development/posts_users.rb'
     load 'db/seeds/development/courses_users.rb'
-    load 'db/seeds/development/events_users.rb'
     load 'db/seeds/development/courses_degrees.rb'
 end

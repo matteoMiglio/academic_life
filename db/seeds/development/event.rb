@@ -4,4 +4,5 @@ Event.populate 200 do |event|
   event.appointment = Faker::Date.forward(45)
   event.place       = Faker::Address.full_address
   event.group_id    = Faker::Number.between(1, 20)
+  event.user_id    = Faker::Number.between(1, 10)
 end

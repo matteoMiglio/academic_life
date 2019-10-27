@@ -14,6 +14,11 @@ class EventTest < ActiveSupport::TestCase
     assert_not @event.valid?
   end
 
+  test "user id should be present" do
+    @event.user_id = nil
+    assert_not @event.valid?
+  end
+
   test "name should be present" do
     @event.name = " "
     assert_not @event.valid?
