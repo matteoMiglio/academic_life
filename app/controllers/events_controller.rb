@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
     @events.each do |event|
     end
-    
+
   end
 
   def create
@@ -61,6 +61,6 @@ class EventsController < ApplicationController
   private
     def events_params
       params.require(:event).permit(:name, :description, :appointment, :place)
-                            .merge(user_id: current_user.id)
+                            .merge(:user_id => current_user.id)
     end
 end
