@@ -28,12 +28,7 @@ class EventTest < ActiveSupport::TestCase
     @event.name = "a" * 101
     assert_not @event.valid?
   end
-
-  test "description should be present" do
-    @event.description = " "
-    assert_not @event.valid?
-  end
-
+  
   test "description should be at most 300 characters" do
     @event.description = "a" * 301
     assert_not @event.valid?

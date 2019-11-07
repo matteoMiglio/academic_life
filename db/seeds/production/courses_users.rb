@@ -49,4 +49,39 @@ ActiveRecord::Base.connection.execute delete_sql
   insert_sql = "INSERT INTO courses_users (user_id, course_id) 
                 values (3, 4);"
   ActiveRecord::Base.connection.execute insert_sql
+
+  # Mauro Tortonesi
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (4, 1);"
+  ActiveRecord::Base.connection.execute insert_sql 
+
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (4, 2);"
+  ActiveRecord::Base.connection.execute insert_sql
+
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (4, 3);"
+  ActiveRecord::Base.connection.execute insert_sql
+
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (4, 4);"
+  ActiveRecord::Base.connection.execute insert_sql
+
+  # Stefano Alvisi
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (5, 1);"
+  ActiveRecord::Base.connection.execute insert_sql 
+
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (5, 2);"
+  ActiveRecord::Base.connection.execute insert_sql
+
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (5, 3);"
+  ActiveRecord::Base.connection.execute insert_sql
+
+  insert_sql = "INSERT INTO courses_users (user_id, course_id) 
+                values (5, 4);"
+  ActiveRecord::Base.connection.execute insert_sql
+
 end

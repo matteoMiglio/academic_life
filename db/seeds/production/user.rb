@@ -46,3 +46,35 @@ User.populate 1 do |user|
   user.login_count        = 0
   user.failed_login_count = 0
 end
+
+User.populate 1 do |user|
+  user.id = 4
+  user.name               = "Mauro"
+  user.surname            = "Tortonesi"
+  user.email              = "mauro.tortonesi@unife.it"
+  user.password_salt      = Authlogic::Random.hex_token
+  user.crypted_password   = Authlogic::CryptoProviders::SCrypt.encrypt("password" + user.password_salt)
+  user.birthday           = Date.strptime("01/01/2000", "%d/%m/%Y")
+  user.address            = Faker::Address.full_address
+  
+  user.serial_number      = Faker::Number.unique.number(6)
+  user.admin              = Faker::Boolean.boolean(1)
+  user.login_count        = 0
+  user.failed_login_count = 0
+end
+
+User.populate 1 do |user|
+  user.id = 5
+  user.name               = "Stefano"
+  user.surname            = "Alvisi"
+  user.email              = "stefano.alvisi@unife.it"
+  user.password_salt      = Authlogic::Random.hex_token
+  user.crypted_password   = Authlogic::CryptoProviders::SCrypt.encrypt("password" + user.password_salt)
+  user.birthday           = Date.strptime("01/01/2000", "%d/%m/%Y")
+  user.address            = Faker::Address.full_address
+  
+  user.serial_number      = Faker::Number.unique.number(6)
+  user.admin              = Faker::Boolean.boolean(1)
+  user.login_count        = 0
+  user.failed_login_count = 0
+end
