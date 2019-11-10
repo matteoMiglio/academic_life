@@ -1,24 +1,26 @@
-# README
+# AcademicLife
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+AcademicLife è una piattaforma web pensata per intercettare le esigenze degli studenti nel corso del loro percorso universitario. Con tale progetto si ha l’ambizione di soddisfare alcuni di quei bisogni che si possono generalmente definire comuni ad ogni studente.
 
-Things you may want to cover:
+La piattaforma è costruita a partire da una conoscenza fornita dalla base di dati gestita dall’Università di Ferrara. AcademicLife è progettata per essere un prodotto software che agisce in maniera integrata con il contesto universitario ferrarese.
 
-* Ruby version
+## Panoramica delle funzionalità
+Ciascuno studente, accedendo ad AcademicLife (idealmente utilizzando le credenziali unife), può usufruire dei seguenti servizi:
 
-* System dependencies
+* Visione degli insegnamenti presenti nel suo piano di studi. Per ciascun corso è presente la media dei voti e le recensioni degli altri studenti.
 
-* Configuration
+* A ciascun corso di studio è associata una bacheca. Gli studenti che stanno frequentando quel corso la possono utilizzare per pubblicare post, commentare, creare gruppi e pubblicare documenti;
 
-* Database creation
+* In ciascun gruppo sono ammesse tre tipologie di utenti: il creatore, che gode di privilegi da amministratore (è il solo soggetto col potere di eliminare il gruppo e aggiungere/rimuovere membri); il membro, ovvero uno studente che ha ricevuto l’invito e che l’ha accettato; l’invitato, cioè colui che ha ricevuto l’invito ma che deve ancora decidere se accettarlo o declinarlo;
 
-* Database initialization
+* In ciascun gruppo è possibile schedulare degli eventi. Un evento è concepito come un modo per organizzare i momenti di studio tra un gruppo affine di persone;
 
-* How to run the test suite
+* Una sezione di notifiche per aggiornare lo studente in merito a eventuali inviti in gruppi, creazioni di eventi o commenti a post in cui è coinvolto.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Team di sviluppo
 
-* Deployment instructions
+* Mattia Fogli
 
-* ...
+* Andrea Fortini
+
+* Matteo Miglioli
