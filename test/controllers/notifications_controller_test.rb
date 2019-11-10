@@ -2,7 +2,6 @@ require 'test_helper'
 
 class NotificationsControllerTest < ActionDispatch::IntegrationTest
   def setup
-
     @user = users(:dario)
     @current_user = users(:luca)
     @comment = comments(:example)
