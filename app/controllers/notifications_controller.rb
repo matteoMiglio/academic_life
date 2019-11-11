@@ -1,24 +1,11 @@
 class NotificationsController < ApplicationController
+  load_and_authorize_resource :notification
+  before_action :load_notifications, only: :index
 
   def index
-    @length_notifications = Notification.where(recipient_id: current_user).count
-
-    if @length_notifications > 0
-      @notifications = Notification.where(recipient_id: current_user)
-                                  .pagination(params[:page], @length_notifications)
-
-      @notifications.each do |notification|
-        notification.actor.name
-        notification.actor.surname
-      end
-    else
-      @notifications = nil
-    end
   end
 
   def show
-    @notification = Notification.find_by(id: params[:id])
-
     @notification.read_at = Time.zone.now
 
     if @notification.save
@@ -51,11 +38,25 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    @notifications = Notification.find_by(id: params[:id])
-
-    @notifications.destroy ? flash[:success] = "Notifica eliminata!" 
+    @notification.destroy ? flash[:success] = "Notifica eliminata!" 
                            : flash[:danger] = "Notifica non eliminata!"
 
     redirect_to notifications_url()
+  end
+
+  def load_notifications
+    @length_notifications = Notification.where(recipient_id: current_user).count
+
+    if @length_notifications > 0
+      @notifications = Notification.where(recipient_id: current_user)
+                                  .pagination(params[:page], @length_notifications)
+
+      @notifications.each do |notification|
+        notification.actor.name
+        notification.actor.surname
+      end
+    else
+      @notifications = nil
+    end
   end
 end

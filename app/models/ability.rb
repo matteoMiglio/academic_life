@@ -5,6 +5,8 @@ class Ability
 
   def initialize(user)
     if user.present?
+      can [:read, :destroy], Notification, recipient_id: user.id
+
       can :show, User, id: user.id
       can :read, MessageBoard, course: { users: { id: user.id } }
 
