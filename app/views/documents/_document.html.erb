@@ -7,21 +7,28 @@
           <h5 class="card-title"><%= document.name %></h5>  
         </div>
       
-        <% if document.file.attached? %>
+        <% if current_page?(controller: 'user_documents', action: 'index') %>
           <div class="p-2">
-            <%= link_to "Download", 
-                rails_blob_url(document.file, disposition: 'attachment'),
-                class: "btn btn-success" %>
+            <%= link_to "Vai all'insegnamento", message_board_documents_url(document.message_board_id), 
+                        class: "btn btn-info" %>          
           </div>
-        <% end %>       
+        <% else %>
+          <% if document.file.attached? %>
+            <div class="p-2">
+              <%= link_to "Download", 
+                  rails_blob_url(document.file, disposition: 'attachment'),
+                  class: "btn btn-success" %>
+            </div>
+          <% end %>       
 
-        <% if current_user.id == document.user_id %>
-          <div class="p-2">
-          <%= button_to "Elimina", message_board_document_url(document.message_board_id, document.id), 
-                                  method: :delete, data: { confirm: "Vuoi eliminare il documento?" }, 
-                                  class: "btn btn-danger" %>
-          </div>
-        <% end %>     
+          <% if current_user.id == document.user_id %>
+            <div class="p-2">
+              <%= button_to "Elimina", message_board_document_url(document.message_board_id, document.id), 
+                                      method: :delete, data: { confirm: "Vuoi eliminare il documento?" }, 
+                                      class: "btn btn-danger" %>
+            </div>
+          <% end %>   
+        <% end%> 
       </div>
 
       <div class="d-flex flex-row">

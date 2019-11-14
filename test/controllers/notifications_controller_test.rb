@@ -6,17 +6,15 @@ class NotificationsControllerTest < ActionDispatch::IntegrationTest
     @current_user = users(:luca)
     @comment = comments(:example)
     @comment_notification = Notification.create(recipient_id: @user.id, 
-                                             actor_id: @current_user.id, 
-                                             action: "ha commentato un tuo post.", 
-                                             notifiable: @comment)
+                                                actor_id: @current_user.id, 
+                                                action: "ha commentato un tuo post.", 
+                                                notifiable: @comment)
 
     @group = groups(:lafayette)
     @group_notification = Notification.create(recipient_id: @user.id, 
-                                           actor_id: @current_user.id, 
-                                           action: "ti ha invitato in un gruppo privato.", 
-                                           notifiable: @group)
-
-    @notification = notifications(:c_notification)
+                                              actor_id: @current_user.id, 
+                                              action: "ti ha invitato in un gruppo privato.", 
+                                              notifiable: @group)
   end
 
   test "should get index" do
@@ -53,7 +51,7 @@ class NotificationsControllerTest < ActionDispatch::IntegrationTest
   test "should get destroy" do
     login(@user)
     assert_difference 'Notification.count', -1 do
-      delete notification_url(@notification)
+      delete notification_url(@comment_notification)
     end
     assert_redirected_to notifications_url()
   end

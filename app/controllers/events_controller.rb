@@ -10,8 +10,8 @@ class EventsController < ApplicationController
     @events = current_user.events.paginated(params[:page], current_user.events.size)
 
     @events.each do |event|
+      event.group.message_board
     end
-
   end
 
   def create
