@@ -1,23 +1,37 @@
 # AcademicLife
 
-AcademicLife è una piattaforma web pensata per intercettare le esigenze degli studenti nel corso del loro percorso universitario. Con tale progetto si ha l’ambizione di soddisfare alcuni di quei bisogni che si possono generalmente definire comuni ad ogni studente.
+AcademicLife is a web application that aims to improve the quality and the service of the classes at the University of Ferrara. The main goal of this app is to connect students and let them exchange information and materials on the classes they are following.
 
-La piattaforma è costruita a partire da una conoscenza fornita dalla base di dati gestita dall’Università di Ferrara. AcademicLife è progettata per essere un prodotto software che agisce in maniera integrata con il contesto universitario ferrarese.
+AcademicLife is designed to be integrated with other services that are already used at the University.
 
-## Panoramica delle funzionalità
-Ciascuno studente, accedendo ad AcademicLife (idealmente utilizzando le credenziali unife), può usufruire dei seguenti servizi:
+## 🥅 Purpose of this project
 
-* Visione degli insegnamenti presenti nel suo piano di studi. Per ciascun corso è presente la media dei voti e le recensioni degli altri studenti.
+This project was developed for a practical exam in the degree course of Computer Engineering.
+It's not a ready-to-use project. It was created as a proof of concept to promote the idea behind this application.
 
-* A ciascun corso di studio è associata una bacheca. Gli studenti che stanno frequentando quel corso la possono utilizzare per pubblicare post, commentare, creare gruppi e pubblicare documenti;
+This project also participated in a contest inside the course of Computer Engineering.
 
-* In ciascun gruppo sono ammesse tre tipologie di utenti: il creatore, che gode di privilegi da amministratore (è il solo soggetto col potere di eliminare il gruppo e aggiungere/rimuovere membri); il membro, ovvero uno studente che ha ricevuto l’invito e che l’ha accettato; l’invitato, cioè colui che ha ricevuto l’invito ma che deve ancora decidere se accettarlo o declinarlo;
+## 🛠 Development Method
 
-* In ciascun gruppo è possibile schedulare degli eventi. Un evento è concepito come un modo per organizzare i momenti di studio tra un gruppo affine di persone;
+We were a team of three guys and we approached the development using the Test-Driven Development (TDD).
 
-* Una sezione di notifiche per aggiornare lo studente in merito a eventuali inviti in gruppi, creazioni di eventi o commenti a post in cui è coinvolto.
+## 💡 Functionalities
+Every student subscribed at the University of Ferrara would enjoy these functionalities:
 
-## Team di sviluppo
+* He/She can watch the classes present in his/her study plan. For each course there is the average of the marks and the reviews made by other students;
+
+* A bulletin board is associated with each course of study. The students that are enrolled in that course can use it to publish posts, comments, create study groups, and share documents;
+
+* In each group there are three types of users:
+  * the admin: who can create the groups and he's the only one who can manage the group;
+  * the member: who accepted the invitation and is effectively a member of the group;
+  * the invited: who received an invitation;
+
+* In each group, there is the possibility to schedule events. An event aims to organize a group of students to study together;
+
+* Each student has their notifications to stay updated on group invitations, events scheduled or new comments where he/she is involved.
+
+## 👥 Developers Team
 
 * Mattia Fogli
 
